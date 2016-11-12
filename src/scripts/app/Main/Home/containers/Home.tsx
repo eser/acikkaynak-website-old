@@ -17,9 +17,9 @@ export class Home extends React.Component<HomePropsInterface, HomeStateInterface
     render(): any {
         return (
             <div>
-                <h1>Home</h1>
+                <h1>Giriş</h1>
 
-                ...and there is a dummy content
+                ...içerik buraya gelecek
             </div>
         );
     }

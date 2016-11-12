@@ -4,15 +4,13 @@ import { Route, IndexRoute } from 'react-router';
 import { app, App, AppModuleInterface } from '../';
 import { NavigationItemInterface } from '../utils/NavigationManager';
 
-import { PageModel } from './Pages/models/PageModel';
+// import { PageModel } from './Pages/models/PageModel';
 
 import { Layout } from './Layout';
 import { NotFound } from './Shared/containers/NotFound';
 import { Home } from './Home/containers/Home';
-import { EntriesByProperty } from './Pages/containers/EntriesByProperty';
-import { EntriesByTag } from './Pages/containers/EntriesByTag';
-import { Pages } from './Pages/containers/Pages';
-import { PageByName } from './Pages/containers/PageByName';
+import { Content } from './Content/containers/Content';
+import { Projects } from './Projects/containers/Projects';
 
 export interface PageInterface {
     page: string;
@@ -29,10 +27,8 @@ export class Main implements AppModuleInterface {
             (
                 <Route key="route-main" path="/" component={Layout}>
                     <IndexRoute key="route-main-index" component={Home} />
-                    <Route key="route-main-properties-property-value" path="properties/:property/:value" component={EntriesByProperty} />
-                    <Route key="route-main-tags-tag" path="tags/:tag" component={EntriesByTag} />
-                    <Route key="route-main-pages" path="pages" component={Pages} />
-                    <Route key="route-main-pages-name" path="pages/:name" component={PageByName} />
+                    <Route key="route-main-content" path="content" component={Content} />
+                    <Route key="route-main-projects" path="projects" component={Projects} />
                     <Route key="route-main-catch-all" path="*" component={NotFound} status={404} />
                 </Route>
             )
@@ -41,6 +37,7 @@ export class Main implements AppModuleInterface {
 
     getNavigationItems(): Map<string, NavigationItemInterface> {
         return new Map<string, NavigationItemInterface>([
+            /*
             [
                 'page',
                 {
@@ -63,6 +60,7 @@ export class Main implements AppModuleInterface {
                     }
                 }
             ]
+            */
         ]);
     }
 

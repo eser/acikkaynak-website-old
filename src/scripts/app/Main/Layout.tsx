@@ -65,12 +65,13 @@ export class Layout extends React.Component<LayoutPropsInterface, LayoutStateInt
                 <div>
                     <div className="header">
                         <ul className="inner">
-                            <li><IndexLink to="/" activeClassName="active">Home</IndexLink></li>
-                            <li><Link to="/pages" activeClassName="active">Pages</Link></li>
+                            <li><IndexLink to="/" activeClassName="active">Giriş</IndexLink></li>
+                            <li><Link to="/content" activeClassName="active">İçerik</Link></li>
+                            <li><Link to="/projects" activeClassName="active">Projeler</Link></li>
                             <li className="pull-right text-right">
-                                <a href="https://github.com/eserozvataf/ts-spa-boilerplate">
-                                    <i className="fa fa-code-fork fa-fw" aria-hidden="true"></i>
-                                    ts-spa-boilerplate
+                                <a href="http://acikkaynak.info">
+                                    <i className="fa fa-home fa-fw" aria-hidden="true"></i>
+                                    açık kaynak
                                 </a>
                             </li>
                         </ul>
