@@ -1,6 +1,8 @@
 import * as React from 'react';
 import { Link } from 'react-router';
 
+import * as ReactMarkdown from 'react-markdown';
+
 export interface ProjectListPropsInterface {
     datasource: any;
 }
@@ -34,7 +36,12 @@ export class ProjectList extends React.Component<ProjectListPropsInterface, Proj
                                     const projectKey = `project.${encodeURIComponent(project.name)}`;
 
                                     return (
-                                        <li key={`${categoryKey}.${projectKey}`}><Link key={`${categoryKey}.${projectKey}.link`} to={`/projects/${encodeURIComponent(project.name)}`}><i className="fa-li fa fa-file-o fa-fw"></i>{project.name}</Link></li>
+                                        <li key={`${categoryKey}.${projectKey}`}>
+                                            <a key={`${categoryKey}.${projectKey}.link`} href={project.url}><i className="fa-li fa fa-file-o fa-fw"></i>{project.name}</a>
+                                            <p>
+                                                <ReactMarkdown source={project.content} />
+                                            </p>
+                                        </li>
                                     );
                                 })}
                             </ul>
