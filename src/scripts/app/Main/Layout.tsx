@@ -69,8 +69,8 @@ export class Layout extends React.Component<LayoutPropsInterface, LayoutStateInt
                             <li><Link to="/content" activeClassName="active">İçerik</Link></li>
                             <li><Link to="/projects" activeClassName="active">Projeler</Link></li>
                             <li className="pull-right text-right">
-                                <a href="http://acikkaynak.info">
-                                    <i className="fa fa-home fa-fw" aria-hidden="true"></i>
+                                <a href="http://github.com/acikkaynak/acikkaynak">
+                                    <i className="fa fa-github fa-fw" aria-hidden="true"></i>
                                     açık kaynak
                                 </a>
                             </li>

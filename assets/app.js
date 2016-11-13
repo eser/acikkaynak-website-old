@@ -3,7 +3,7 @@ webpackJsonp([1],{
 /***/ 0:
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__(308);
+	module.exports = __webpack_require__(313);
 
 
 /***/ },
@@ -11,9 +11,9 @@ webpackJsonp([1],{
 /***/ 54:
 /***/ function(module, exports, __webpack_require__) {
 
-	var baseGetTag = __webpack_require__(187),
-	    getPrototype = __webpack_require__(189),
-	    isObjectLike = __webpack_require__(194);
+	var baseGetTag = __webpack_require__(188),
+	    getPrototype = __webpack_require__(190),
+	    isObjectLike = __webpack_require__(195);
 	
 	/** `Object#toString` result references. */
 	var objectTag = '[object Object]';
@@ -85,27 +85,27 @@ webpackJsonp([1],{
 	exports.__esModule = true;
 	exports.compose = exports.applyMiddleware = exports.bindActionCreators = exports.combineReducers = exports.createStore = undefined;
 	
-	var _createStore = __webpack_require__(147);
+	var _createStore = __webpack_require__(148);
 	
 	var _createStore2 = _interopRequireDefault(_createStore);
 	
-	var _combineReducers = __webpack_require__(289);
+	var _combineReducers = __webpack_require__(290);
 	
 	var _combineReducers2 = _interopRequireDefault(_combineReducers);
 	
-	var _bindActionCreators = __webpack_require__(288);
+	var _bindActionCreators = __webpack_require__(289);
 	
 	var _bindActionCreators2 = _interopRequireDefault(_bindActionCreators);
 	
-	var _applyMiddleware = __webpack_require__(287);
+	var _applyMiddleware = __webpack_require__(288);
 	
 	var _applyMiddleware2 = _interopRequireDefault(_applyMiddleware);
 	
-	var _compose = __webpack_require__(146);
+	var _compose = __webpack_require__(147);
 	
 	var _compose2 = _interopRequireDefault(_compose);
 	
-	var _warning = __webpack_require__(148);
+	var _warning = __webpack_require__(149);
 	
 	var _warning2 = _interopRequireDefault(_warning);
 	
@@ -129,10 +129,110 @@ webpackJsonp([1],{
 
 /***/ },
 
-/***/ 102:
+/***/ 89:
 /***/ function(module, exports, __webpack_require__) {
 
-	var root = __webpack_require__(193);
+	"use strict";
+	var __assign = (this && this.__assign) || Object.assign || function(t) {
+	    for (var s, i = 1, n = arguments.length; i < n; i++) {
+	        s = arguments[i];
+	        for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+	            t[p] = s[p];
+	    }
+	    return t;
+	};
+	const React = __webpack_require__(4);
+	const ReactDOM = __webpack_require__(104);
+	const ReactDOMServer = __webpack_require__(197);
+	const react_router_1 = __webpack_require__(29);
+	const ServiceContainer_1 = __webpack_require__(311);
+	const NavigationManager_1 = __webpack_require__(310);
+	const camelize_1 = __webpack_require__(312);
+	const history_1 = __webpack_require__(308);
+	(function (RenderResultType) {
+	    RenderResultType[RenderResultType["Success"] = 0] = "Success";
+	    RenderResultType[RenderResultType["Redirect"] = 1] = "Redirect";
+	    RenderResultType[RenderResultType["NotFound"] = 2] = "NotFound";
+	})(exports.RenderResultType || (exports.RenderResultType = {}));
+	var RenderResultType = exports.RenderResultType;
+	;
+	class App {
+	    constructor() {
+	        this.services = new ServiceContainer_1.ServiceContainer();
+	        this.navigationManager = new NavigationManager_1.NavigationManager();
+	        this.history = history_1.history.create(history_1.HistoryType.Hash);
+	        this.modules = {};
+	        this.routerRenderCount = 0;
+	    }
+	    addModule(appModuleType) {
+	        const appModule = new appModuleType();
+	        this.modules[camelize_1.camelize(appModuleType.name)] = appModule;
+	    }
+	    init() {
+	        for (const moduleKey of Object.keys(this.modules)) {
+	            const module = this.modules[moduleKey];
+	            this.navigationManager.addRange(module.getNavigationItems());
+	        }
+	        this.navigationManager.prefetchUrl(location.hash);
+	    }
+	    *getRoutes() {
+	        for (const moduleKey of Object.keys(this.modules)) {
+	            const module = this.modules[moduleKey];
+	            for (const moduleRoute of module.getRoutes()) {
+	                yield moduleRoute;
+	            }
+	        }
+	    }
+	    compile() {
+	        return (React.createElement(react_router_1.Router, { key: this.routerRenderCount++, history: this.history }, [...this.getRoutes()]));
+	    }
+	    renderToDOM(targetElement) {
+	        ReactDOM.render(this.compile(), targetElement);
+	    }
+	    renderToString(url) {
+	        return new Promise((resolve, reject) => {
+	            react_router_1.match({
+	                routes: this.compile(),
+	                location: this.history.createLocation(url)
+	            }, (err, redirectLocation, renderProps) => {
+	                if (err) {
+	                    reject(err);
+	                    return;
+	                }
+	                if (redirectLocation) {
+	                    resolve({
+	                        type: RenderResultType.Redirect,
+	                        location: redirectLocation.pathname + redirectLocation.search
+	                    });
+	                    return;
+	                }
+	                if (renderProps === null) {
+	                    resolve({
+	                        type: RenderResultType.NotFound
+	                    });
+	                    return;
+	                }
+	                const content = ReactDOMServer.renderToString(React.createElement(react_router_1.RouterContext, __assign({}, renderProps)));
+	                resolve({
+	                    type: RenderResultType.Success,
+	                    content: content
+	                });
+	            });
+	        });
+	    }
+	}
+	exports.App = App;
+	exports.app = new App();
+	Object.defineProperty(exports, "__esModule", { value: true });
+	exports.default = exports.app;
+
+
+/***/ },
+
+/***/ 103:
+/***/ function(module, exports, __webpack_require__) {
+
+	var root = __webpack_require__(194);
 	
 	/** Built-in value references. */
 	var Symbol = root.Symbol;
@@ -142,14 +242,14 @@ webpackJsonp([1],{
 
 /***/ },
 
-/***/ 104:
+/***/ 105:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
 	exports.__esModule = true;
 	
-	var _react = __webpack_require__(5);
+	var _react = __webpack_require__(4);
 	
 	exports["default"] = _react.PropTypes.shape({
 	  subscribe: _react.PropTypes.func.isRequired,
@@ -159,7 +259,7 @@ webpackJsonp([1],{
 
 /***/ },
 
-/***/ 105:
+/***/ 106:
 /***/ function(module, exports) {
 
 	'use strict';
@@ -189,7 +289,7 @@ webpackJsonp([1],{
 
 /***/ },
 
-/***/ 146:
+/***/ 147:
 /***/ function(module, exports) {
 
 	"use strict";
@@ -233,7 +333,7 @@ webpackJsonp([1],{
 
 /***/ },
 
-/***/ 147:
+/***/ 148:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -246,7 +346,7 @@ webpackJsonp([1],{
 	
 	var _isPlainObject2 = _interopRequireDefault(_isPlainObject);
 	
-	var _symbolObservable = __webpack_require__(290);
+	var _symbolObservable = __webpack_require__(291);
 	
 	var _symbolObservable2 = _interopRequireDefault(_symbolObservable);
 	
@@ -500,7 +600,7 @@ webpackJsonp([1],{
 
 /***/ },
 
-/***/ 148:
+/***/ 149:
 /***/ function(module, exports) {
 
 	'use strict';
@@ -531,112 +631,12 @@ webpackJsonp([1],{
 
 /***/ },
 
-/***/ 150:
+/***/ 188:
 /***/ function(module, exports, __webpack_require__) {
 
-	"use strict";
-	var __assign = (this && this.__assign) || Object.assign || function(t) {
-	    for (var s, i = 1, n = arguments.length; i < n; i++) {
-	        s = arguments[i];
-	        for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
-	            t[p] = s[p];
-	    }
-	    return t;
-	};
-	const React = __webpack_require__(5);
-	const ReactDOM = __webpack_require__(103);
-	const ReactDOMServer = __webpack_require__(196);
-	const react_router_1 = __webpack_require__(35);
-	const ServiceContainer_1 = __webpack_require__(306);
-	const NavigationManager_1 = __webpack_require__(305);
-	const camelize_1 = __webpack_require__(307);
-	const history_1 = __webpack_require__(304);
-	(function (RenderResultType) {
-	    RenderResultType[RenderResultType["Success"] = 0] = "Success";
-	    RenderResultType[RenderResultType["Redirect"] = 1] = "Redirect";
-	    RenderResultType[RenderResultType["NotFound"] = 2] = "NotFound";
-	})(exports.RenderResultType || (exports.RenderResultType = {}));
-	var RenderResultType = exports.RenderResultType;
-	;
-	class App {
-	    constructor() {
-	        this.services = new ServiceContainer_1.ServiceContainer();
-	        this.navigationManager = new NavigationManager_1.NavigationManager();
-	        this.history = history_1.history.create(history_1.HistoryType.Hash);
-	        this.modules = {};
-	        this.routerRenderCount = 0;
-	    }
-	    addModule(appModuleType) {
-	        const appModule = new appModuleType();
-	        this.modules[camelize_1.camelize(appModuleType.name)] = appModule;
-	    }
-	    init() {
-	        for (const moduleKey of Object.keys(this.modules)) {
-	            const module = this.modules[moduleKey];
-	            this.navigationManager.addRange(module.getNavigationItems());
-	        }
-	        this.navigationManager.prefetchUrl(location.hash);
-	    }
-	    *getRoutes() {
-	        for (const moduleKey of Object.keys(this.modules)) {
-	            const module = this.modules[moduleKey];
-	            for (const moduleRoute of module.getRoutes()) {
-	                yield moduleRoute;
-	            }
-	        }
-	    }
-	    compile() {
-	        return (React.createElement(react_router_1.Router, { key: this.routerRenderCount++, history: this.history }, [...this.getRoutes()]));
-	    }
-	    renderToDOM(targetElement) {
-	        ReactDOM.render(this.compile(), targetElement);
-	    }
-	    renderToString(url) {
-	        return new Promise((resolve, reject) => {
-	            react_router_1.match({
-	                routes: this.compile(),
-	                location: this.history.createLocation(url)
-	            }, (err, redirectLocation, renderProps) => {
-	                if (err) {
-	                    reject(err);
-	                    return;
-	                }
-	                if (redirectLocation) {
-	                    resolve({
-	                        type: RenderResultType.Redirect,
-	                        location: redirectLocation.pathname + redirectLocation.search
-	                    });
-	                    return;
-	                }
-	                if (renderProps === null) {
-	                    resolve({
-	                        type: RenderResultType.NotFound
-	                    });
-	                    return;
-	                }
-	                const content = ReactDOMServer.renderToString(React.createElement(react_router_1.RouterContext, __assign({}, renderProps)));
-	                resolve({
-	                    type: RenderResultType.Success,
-	                    content: content
-	                });
-	            });
-	        });
-	    }
-	}
-	exports.App = App;
-	exports.app = new App();
-	Object.defineProperty(exports, "__esModule", { value: true });
-	exports.default = exports.app;
-
-
-/***/ },
-
-/***/ 187:
-/***/ function(module, exports, __webpack_require__) {
-
-	var Symbol = __webpack_require__(102),
-	    getRawTag = __webpack_require__(190),
-	    objectToString = __webpack_require__(191);
+	var Symbol = __webpack_require__(103),
+	    getRawTag = __webpack_require__(191),
+	    objectToString = __webpack_require__(192);
 	
 	/** `Object#toString` result references. */
 	var nullTag = '[object Null]',
@@ -667,7 +667,7 @@ webpackJsonp([1],{
 
 /***/ },
 
-/***/ 188:
+/***/ 189:
 /***/ function(module, exports) {
 
 	/* WEBPACK VAR INJECTION */(function(global) {/** Detect free variable `global` from Node.js. */
@@ -679,10 +679,10 @@ webpackJsonp([1],{
 
 /***/ },
 
-/***/ 189:
+/***/ 190:
 /***/ function(module, exports, __webpack_require__) {
 
-	var overArg = __webpack_require__(192);
+	var overArg = __webpack_require__(193);
 	
 	/** Built-in value references. */
 	var getPrototype = overArg(Object.getPrototypeOf, Object);
@@ -692,10 +692,10 @@ webpackJsonp([1],{
 
 /***/ },
 
-/***/ 190:
+/***/ 191:
 /***/ function(module, exports, __webpack_require__) {
 
-	var Symbol = __webpack_require__(102);
+	var Symbol = __webpack_require__(103);
 	
 	/** Used for built-in method references. */
 	var objectProto = Object.prototype;
@@ -745,7 +745,7 @@ webpackJsonp([1],{
 
 /***/ },
 
-/***/ 191:
+/***/ 192:
 /***/ function(module, exports) {
 
 	/** Used for built-in method references. */
@@ -774,7 +774,7 @@ webpackJsonp([1],{
 
 /***/ },
 
-/***/ 192:
+/***/ 193:
 /***/ function(module, exports) {
 
 	/**
@@ -796,10 +796,10 @@ webpackJsonp([1],{
 
 /***/ },
 
-/***/ 193:
+/***/ 194:
 /***/ function(module, exports, __webpack_require__) {
 
-	var freeGlobal = __webpack_require__(188);
+	var freeGlobal = __webpack_require__(189);
 	
 	/** Detect free variable `self`. */
 	var freeSelf = typeof self == 'object' && self && self.Object === Object && self;
@@ -812,7 +812,7 @@ webpackJsonp([1],{
 
 /***/ },
 
-/***/ 194:
+/***/ 195:
 /***/ function(module, exports) {
 
 	/**
@@ -848,17 +848,17 @@ webpackJsonp([1],{
 
 /***/ },
 
-/***/ 196:
+/***/ 197:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	module.exports = __webpack_require__(248);
+	module.exports = __webpack_require__(249);
 
 
 /***/ },
 
-/***/ 197:
+/***/ 198:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -866,13 +866,13 @@ webpackJsonp([1],{
 	exports.__esModule = true;
 	exports["default"] = undefined;
 	
-	var _react = __webpack_require__(5);
+	var _react = __webpack_require__(4);
 	
-	var _storeShape = __webpack_require__(104);
+	var _storeShape = __webpack_require__(105);
 	
 	var _storeShape2 = _interopRequireDefault(_storeShape);
 	
-	var _warning = __webpack_require__(105);
+	var _warning = __webpack_require__(106);
 	
 	var _warning2 = _interopRequireDefault(_warning);
 	
@@ -942,7 +942,7 @@ webpackJsonp([1],{
 
 /***/ },
 
-/***/ 198:
+/***/ 199:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -952,21 +952,21 @@ webpackJsonp([1],{
 	exports.__esModule = true;
 	exports["default"] = connect;
 	
-	var _react = __webpack_require__(5);
+	var _react = __webpack_require__(4);
 	
-	var _storeShape = __webpack_require__(104);
+	var _storeShape = __webpack_require__(105);
 	
 	var _storeShape2 = _interopRequireDefault(_storeShape);
 	
-	var _shallowEqual = __webpack_require__(200);
+	var _shallowEqual = __webpack_require__(201);
 	
 	var _shallowEqual2 = _interopRequireDefault(_shallowEqual);
 	
-	var _wrapActionCreators = __webpack_require__(201);
+	var _wrapActionCreators = __webpack_require__(202);
 	
 	var _wrapActionCreators2 = _interopRequireDefault(_wrapActionCreators);
 	
-	var _warning = __webpack_require__(105);
+	var _warning = __webpack_require__(106);
 	
 	var _warning2 = _interopRequireDefault(_warning);
 	
@@ -974,7 +974,7 @@ webpackJsonp([1],{
 	
 	var _isPlainObject2 = _interopRequireDefault(_isPlainObject);
 	
-	var _hoistNonReactStatics = __webpack_require__(101);
+	var _hoistNonReactStatics = __webpack_require__(102);
 	
 	var _hoistNonReactStatics2 = _interopRequireDefault(_hoistNonReactStatics);
 	
@@ -1341,7 +1341,7 @@ webpackJsonp([1],{
 
 /***/ },
 
-/***/ 199:
+/***/ 200:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -1349,11 +1349,11 @@ webpackJsonp([1],{
 	exports.__esModule = true;
 	exports.connect = exports.Provider = undefined;
 	
-	var _Provider = __webpack_require__(197);
+	var _Provider = __webpack_require__(198);
 	
 	var _Provider2 = _interopRequireDefault(_Provider);
 	
-	var _connect = __webpack_require__(198);
+	var _connect = __webpack_require__(199);
 	
 	var _connect2 = _interopRequireDefault(_connect);
 	
@@ -1364,7 +1364,7 @@ webpackJsonp([1],{
 
 /***/ },
 
-/***/ 200:
+/***/ 201:
 /***/ function(module, exports) {
 
 	"use strict";
@@ -1396,7 +1396,7 @@ webpackJsonp([1],{
 
 /***/ },
 
-/***/ 201:
+/***/ 202:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -1414,7 +1414,7 @@ webpackJsonp([1],{
 
 /***/ },
 
-/***/ 248:
+/***/ 249:
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -1430,8 +1430,8 @@ webpackJsonp([1],{
 	
 	'use strict';
 	
-	var ReactDefaultInjection = __webpack_require__(126);
-	var ReactServerRendering = __webpack_require__(261);
+	var ReactDefaultInjection = __webpack_require__(127);
+	var ReactServerRendering = __webpack_require__(262);
 	var ReactVersion = __webpack_require__(78);
 	
 	ReactDefaultInjection.inject();
@@ -1446,7 +1446,7 @@ webpackJsonp([1],{
 
 /***/ },
 
-/***/ 260:
+/***/ 261:
 /***/ function(module, exports) {
 
 	/**
@@ -1474,7 +1474,7 @@ webpackJsonp([1],{
 
 /***/ },
 
-/***/ 261:
+/***/ 262:
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -1491,14 +1491,14 @@ webpackJsonp([1],{
 	
 	var _prodInvariant = __webpack_require__(2);
 	
-	var ReactDOMContainerInfo = __webpack_require__(123);
-	var ReactDefaultBatchingStrategy = __webpack_require__(125);
+	var ReactDOMContainerInfo = __webpack_require__(124);
+	var ReactDefaultBatchingStrategy = __webpack_require__(126);
 	var ReactElement = __webpack_require__(12);
 	var ReactInstrumentation = __webpack_require__(10);
-	var ReactMarkupChecksum = __webpack_require__(131);
+	var ReactMarkupChecksum = __webpack_require__(132);
 	var ReactReconciler = __webpack_require__(25);
-	var ReactServerBatchingStrategy = __webpack_require__(260);
-	var ReactServerRenderingTransaction = __webpack_require__(136);
+	var ReactServerBatchingStrategy = __webpack_require__(261);
+	var ReactServerRenderingTransaction = __webpack_require__(137);
 	var ReactUpdates = __webpack_require__(13);
 	
 	var emptyObject = __webpack_require__(26);
@@ -1570,7 +1570,7 @@ webpackJsonp([1],{
 
 /***/ },
 
-/***/ 287:
+/***/ 288:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -1581,7 +1581,7 @@ webpackJsonp([1],{
 	
 	exports['default'] = applyMiddleware;
 	
-	var _compose = __webpack_require__(146);
+	var _compose = __webpack_require__(147);
 	
 	var _compose2 = _interopRequireDefault(_compose);
 	
@@ -1634,7 +1634,7 @@ webpackJsonp([1],{
 
 /***/ },
 
-/***/ 288:
+/***/ 289:
 /***/ function(module, exports) {
 
 	'use strict';
@@ -1691,7 +1691,7 @@ webpackJsonp([1],{
 
 /***/ },
 
-/***/ 289:
+/***/ 290:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -1699,13 +1699,13 @@ webpackJsonp([1],{
 	exports.__esModule = true;
 	exports['default'] = combineReducers;
 	
-	var _createStore = __webpack_require__(147);
+	var _createStore = __webpack_require__(148);
 	
 	var _isPlainObject = __webpack_require__(54);
 	
 	var _isPlainObject2 = _interopRequireDefault(_isPlainObject);
 	
-	var _warning = __webpack_require__(148);
+	var _warning = __webpack_require__(149);
 	
 	var _warning2 = _interopRequireDefault(_warning);
 	
@@ -1839,15 +1839,15 @@ webpackJsonp([1],{
 
 /***/ },
 
-/***/ 290:
+/***/ 291:
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__(291);
+	module.exports = __webpack_require__(292);
 
 
 /***/ },
 
-/***/ 291:
+/***/ 292:
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(global, module) {'use strict';
@@ -1856,7 +1856,7 @@ webpackJsonp([1],{
 	  value: true
 	});
 	
-	var _ponyfill = __webpack_require__(292);
+	var _ponyfill = __webpack_require__(293);
 	
 	var _ponyfill2 = _interopRequireDefault(_ponyfill);
 	
@@ -1879,11 +1879,11 @@ webpackJsonp([1],{
 	
 	var result = (0, _ponyfill2['default'])(root);
 	exports['default'] = result;
-	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }()), __webpack_require__(293)(module)))
+	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }()), __webpack_require__(294)(module)))
 
 /***/ },
 
-/***/ 292:
+/***/ 293:
 /***/ function(module, exports) {
 
 	'use strict';
@@ -1912,7 +1912,7 @@ webpackJsonp([1],{
 
 /***/ },
 
-/***/ 293:
+/***/ 294:
 /***/ function(module, exports) {
 
 	module.exports = function(module) {
@@ -1933,7 +1933,7 @@ webpackJsonp([1],{
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
-	const React = __webpack_require__(5);
+	const React = __webpack_require__(4);
 	class Content extends React.Component {
 	    constructor(props) {
 	        super(props);
@@ -1955,7 +1955,7 @@ webpackJsonp([1],{
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
-	const React = __webpack_require__(5);
+	const React = __webpack_require__(4);
 	class Home extends React.Component {
 	    constructor(props) {
 	        super(props);
@@ -1977,12 +1977,12 @@ webpackJsonp([1],{
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
-	const React = __webpack_require__(5);
-	const react_router_1 = __webpack_require__(35);
-	const _1 = __webpack_require__(150);
+	const React = __webpack_require__(4);
+	const react_router_1 = __webpack_require__(29);
+	const _1 = __webpack_require__(89);
 	const redux_1 = __webpack_require__(88);
-	const react_redux_1 = __webpack_require__(199);
-	const combinedReducers_1 = __webpack_require__(301);
+	const react_redux_1 = __webpack_require__(200);
+	const combinedReducers_1 = __webpack_require__(305);
 	class Layout extends React.Component {
 	    constructor(props) {
 	        super(props);
@@ -2019,8 +2019,8 @@ webpackJsonp([1],{
 	                        React.createElement("li", null,
 	                            React.createElement(react_router_1.Link, { to: "/projects", activeClassName: "active" }, "Projeler")),
 	                        React.createElement("li", { className: "pull-right text-right" },
-	                            React.createElement("a", { href: "http://acikkaynak.info" },
-	                                React.createElement("i", { className: "fa fa-home fa-fw", "aria-hidden": "true" }),
+	                            React.createElement("a", { href: "http://github.com/acikkaynak/acikkaynak" },
+	                                React.createElement("i", { className: "fa fa-github fa-fw", "aria-hidden": "true" }),
 	                                "a\u00E7\u0131k kaynak")))),
 	                React.createElement("div", { className: "content" },
 	                    React.createElement("div", { className: "inner", onClick: this.clickHandler.bind(this) }, this.props.children)))));
@@ -2037,15 +2037,41 @@ webpackJsonp([1],{
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
-	const React = __webpack_require__(5);
+	const React = __webpack_require__(4);
+	const _1 = __webpack_require__(89);
+	const ProjectModel_1 = __webpack_require__(299);
+	const ProjectList_1 = __webpack_require__(300);
+	const Loading_1 = __webpack_require__(304);
+	const Error_1 = __webpack_require__(303);
 	class Projects extends React.Component {
 	    constructor(props) {
 	        super(props);
+	        this.state = {
+	            datasource: null,
+	            error: false
+	        };
+	        this.model = _1.app.services.get(ProjectModel_1.ProjectModel);
+	        this.updateDatasource();
+	    }
+	    componentWillReceiveProps(nextProps) {
+	        this.updateDatasource();
 	    }
 	    render() {
+	        if (this.state.error) {
+	            console.error(this.state.error);
+	            return (React.createElement(Error_1.Error, { message: "Bir hata oluştu" }));
+	        }
+	        if (this.state.datasource === null) {
+	            return (React.createElement(Loading_1.Loading, null));
+	        }
 	        return (React.createElement("div", null,
 	            React.createElement("h1", null, "Projeler"),
-	            "...i\u00E7erik buraya gelecek"));
+	            React.createElement(ProjectList_1.ProjectList, { datasource: this.state.datasource })));
+	    }
+	    updateDatasource() {
+	        this.model.getProjects()
+	            .then((response) => { this.setState({ datasource: response, error: false }); })
+	            .catch((err) => { this.setState({ datasource: null, error: err }); });
 	    }
 	}
 	exports.Projects = Projects;
@@ -2059,7 +2085,82 @@ webpackJsonp([1],{
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
-	const React = __webpack_require__(5);
+	var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+	    return new (P || (P = Promise))(function (resolve, reject) {
+	        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+	        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+	        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
+	        step((generator = generator.apply(thisArg, _arguments)).next());
+	    });
+	};
+	__webpack_require__(151);
+	const CacheContainer_1 = __webpack_require__(309);
+	class ProjectModel {
+	    constructor() {
+	        this.cache = new CacheContainer_1.CacheContainer();
+	        this.dataSourceUrl = 'https://raw.githubusercontent.com/acikkaynak/acikkaynak/master/projects.json';
+	    }
+	    getProjectsFetch() {
+	        return __awaiter(this, void 0, void 0, function* () {
+	            const promise = fetch(this.dataSourceUrl)
+	                .then((response) => response.json());
+	            this.cache.set(['projects'], promise);
+	            return yield promise;
+	        });
+	    }
+	    getProjects() {
+	        return __awaiter(this, void 0, void 0, function* () {
+	            return yield (this.cache.get(['projects']) || this.getProjectsFetch());
+	        });
+	    }
+	}
+	exports.ProjectModel = ProjectModel;
+	Object.defineProperty(exports, "__esModule", { value: true });
+	exports.default = ProjectModel;
+
+
+/***/ },
+
+/***/ 300:
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	const React = __webpack_require__(4);
+	const react_router_1 = __webpack_require__(29);
+	class ProjectList extends React.Component {
+	    constructor(props) {
+	        super(props);
+	    }
+	    render() {
+	        const data = this.props.datasource;
+	        return (React.createElement("ul", { className: "fa-ul" }, Object.keys(data).map((category) => {
+	            const categoryKey = `category.${encodeURIComponent(category)}`, categoryData = data[category];
+	            return (React.createElement("li", { key: categoryKey },
+	                React.createElement("h3", { key: `${categoryKey}.caption` },
+	                    React.createElement("i", { className: "fa-li fa fa-folder-o fa-fw" }),
+	                    category),
+	                React.createElement("ul", { className: "fa-ul", key: `${categoryKey}.list` }, categoryData.map((project) => {
+	                    const projectKey = `project.${encodeURIComponent(project.name)}`;
+	                    return (React.createElement("li", { key: `${categoryKey}.${projectKey}` },
+	                        React.createElement(react_router_1.Link, { key: `${categoryKey}.${projectKey}.link`, to: `/projects/${encodeURIComponent(project.name)}` },
+	                            React.createElement("i", { className: "fa-li fa fa-file-o fa-fw" }),
+	                            project.name)));
+	                }))));
+	        })));
+	    }
+	}
+	exports.ProjectList = ProjectList;
+	Object.defineProperty(exports, "__esModule", { value: true });
+	exports.default = ProjectList;
+
+
+/***/ },
+
+/***/ 301:
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	const React = __webpack_require__(4);
 	class NotFound extends React.Component {
 	    constructor(props) {
 	        super(props);
@@ -2077,11 +2178,11 @@ webpackJsonp([1],{
 
 /***/ },
 
-/***/ 300:
+/***/ 302:
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
-	const constants = __webpack_require__(303);
+	const constants = __webpack_require__(307);
 	const initialState = {
 	    userLevel: constants.UserLevels.Visitor
 	};
@@ -2099,12 +2200,54 @@ webpackJsonp([1],{
 
 /***/ },
 
-/***/ 301:
+/***/ 303:
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	const React = __webpack_require__(4);
+	class Error extends React.Component {
+	    constructor(props) {
+	        super(props);
+	    }
+	    render() {
+	        return (React.createElement("div", null,
+	            "Error: ",
+	            this.props.message));
+	    }
+	}
+	exports.Error = Error;
+	Object.defineProperty(exports, "__esModule", { value: true });
+	exports.default = Error;
+
+
+/***/ },
+
+/***/ 304:
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	const React = __webpack_require__(4);
+	class Loading extends React.Component {
+	    constructor(props) {
+	        super(props);
+	    }
+	    render() {
+	        return (React.createElement("div", null, "Loading..."));
+	    }
+	}
+	exports.Loading = Loading;
+	Object.defineProperty(exports, "__esModule", { value: true });
+	exports.default = Loading;
+
+
+/***/ },
+
+/***/ 305:
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 	const redux_1 = __webpack_require__(88);
-	const loginReducer_1 = __webpack_require__(300);
+	const loginReducer_1 = __webpack_require__(302);
 	exports.combinedReducers = redux_1.combineReducers({
 	    login: loginReducer_1.loginReducer
 	});
@@ -2112,14 +2255,14 @@ webpackJsonp([1],{
 
 /***/ },
 
-/***/ 302:
+/***/ 306:
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
-	const React = __webpack_require__(5);
-	const react_router_1 = __webpack_require__(35);
+	const React = __webpack_require__(4);
+	const react_router_1 = __webpack_require__(29);
 	const Layout_1 = __webpack_require__(297);
-	const NotFound_1 = __webpack_require__(299);
+	const NotFound_1 = __webpack_require__(301);
 	const Home_1 = __webpack_require__(296);
 	const Content_1 = __webpack_require__(295);
 	const Projects_1 = __webpack_require__(298);
@@ -2147,7 +2290,7 @@ webpackJsonp([1],{
 
 /***/ },
 
-/***/ 303:
+/***/ 307:
 /***/ function(module, exports) {
 
 	"use strict";
@@ -2162,11 +2305,11 @@ webpackJsonp([1],{
 
 /***/ },
 
-/***/ 304:
+/***/ 308:
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
-	const react_router_1 = __webpack_require__(35);
+	const react_router_1 = __webpack_require__(29);
 	(function (HistoryType) {
 	    HistoryType[HistoryType["Hash"] = 0] = "Hash";
 	    HistoryType[HistoryType["DOM"] = 1] = "DOM";
@@ -2179,7 +2322,7 @@ webpackJsonp([1],{
 	    create(type) {
 	        switch (type) {
 	            case HistoryType.Hash:
-	                const hashHistory = __webpack_require__(95);
+	                const hashHistory = __webpack_require__(96);
 	                return react_router_1.useRouterHistory(hashHistory)({
 	                    queryKey: false
 	                });
@@ -2187,10 +2330,10 @@ webpackJsonp([1],{
 	                const DOMHistory = __webpack_require__(52);
 	                return react_router_1.useRouterHistory(DOMHistory)();
 	            case HistoryType.Browser:
-	                const browserHistory = __webpack_require__(94);
+	                const browserHistory = __webpack_require__(95);
 	                return react_router_1.useRouterHistory(browserHistory)();
 	            case HistoryType.Memory:
-	                const memoryHistory = __webpack_require__(98);
+	                const memoryHistory = __webpack_require__(99);
 	                return react_router_1.useRouterHistory(memoryHistory)();
 	        }
 	    }
@@ -2203,7 +2346,35 @@ webpackJsonp([1],{
 
 /***/ },
 
-/***/ 305:
+/***/ 309:
+/***/ function(module, exports) {
+
+	"use strict";
+	class CacheContainer {
+	    constructor() {
+	        this.items = new Map();
+	    }
+	    serializeKey(key) {
+	        if (Array.isArray(key)) {
+	            return key.join('_');
+	        }
+	        return key;
+	    }
+	    set(key, value) {
+	        this.items[this.serializeKey(key)] = value;
+	    }
+	    get(key) {
+	        return this.items[this.serializeKey(key)];
+	    }
+	}
+	exports.CacheContainer = CacheContainer;
+	Object.defineProperty(exports, "__esModule", { value: true });
+	exports.default = CacheContainer;
+
+
+/***/ },
+
+/***/ 310:
 /***/ function(module, exports) {
 
 	"use strict";
@@ -2258,7 +2429,7 @@ webpackJsonp([1],{
 
 /***/ },
 
-/***/ 306:
+/***/ 311:
 /***/ function(module, exports) {
 
 	"use strict";
@@ -2280,7 +2451,7 @@ webpackJsonp([1],{
 
 /***/ },
 
-/***/ 307:
+/***/ 312:
 /***/ function(module, exports) {
 
 	"use strict";
@@ -2299,13 +2470,13 @@ webpackJsonp([1],{
 
 /***/ },
 
-/***/ 308:
+/***/ 313:
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(global) {"use strict";
-	const es6promise = __webpack_require__(89);
-	const _1 = __webpack_require__(150);
-	const Main_1 = __webpack_require__(302);
+	const es6promise = __webpack_require__(90);
+	const _1 = __webpack_require__(89);
+	const Main_1 = __webpack_require__(306);
 	if (global.Promise === undefined) {
 	    es6promise.polyfill();
 	}
