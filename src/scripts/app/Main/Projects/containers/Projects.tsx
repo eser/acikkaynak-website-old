@@ -30,11 +30,11 @@ export class Projects extends React.Component<ProjectsPropsInterface, ProjectsSt
         };
 
         this.model = app.services.get(ProjectModel);
-        this.updateDatasource();
+        this.updateDatasource(props);
     }
 
     componentWillReceiveProps(nextProps: ProjectsPropsInterface): void {
-        this.updateDatasource();
+        this.updateDatasource(nextProps);
     }
 
     render(): any {
@@ -61,7 +61,7 @@ export class Projects extends React.Component<ProjectsPropsInterface, ProjectsSt
         );
     }
 
-    updateDatasource(): void {
+    updateDatasource(props: ProjectsPropsInterface): void {
         this.model.getProjects()
             .then((response) => { this.setState({ datasource: response, error: false }); })
             .catch((err) => { this.setState({ datasource: null, error: err }); });

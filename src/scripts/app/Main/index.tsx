@@ -27,8 +27,8 @@ export class Main implements AppModuleInterface {
             (
                 <Route key="route-main" path="/" component={Layout}>
                     <IndexRoute key="route-main-index" component={Home} />
-                    <Route key="route-main-content" path="content" component={Content} />
-                    <Route key="route-main-projects" path="projects" component={Projects} />
+                    <Route key="route-main-content" path="content/*" component={Content} />
+                    <Route key="route-main-projects" path="projects/" component={Projects} />
                     <Route key="route-main-catch-all" path="*" component={NotFound} status={404} />
                 </Route>
             )
