@@ -65,14 +65,12 @@ export class Layout extends React.Component<LayoutPropsInterface, LayoutStateInt
                 <div>
                     <div className="header">
                         <ul className="inner">
-                            <li><IndexLink to="/" activeClassName="active">Giriş</IndexLink></li>
-                            <li><Link to="/content/" activeClassName="active">İçerik</Link></li>
-                            <li><Link to="/projects/" activeClassName="active">Projeler</Link></li>
-                            <li className="pull-right text-right">
-                                <a href="http://github.com/acikkaynak/acikkaynak">
-                                    <i className="fa fa-github fa-fw" aria-hidden="true"></i>
-                                    açık kaynak
-                                </a>
+                            <li className="link"><IndexLink to="/" activeClassName="active">Giriş</IndexLink></li>
+                            <li className="link"><Link to="/content/" activeClassName="active">İçerik</Link></li>
+                            <li className="link"><Link to="/projects/" activeClassName="active">Projeler</Link></li>
+                            <li className="buttons pull-right text-right">
+                                <a href="http://s.acikkaynak.info/slackin/"><img src="http://s.acikkaynak.info/slackin/badge.svg" /></a>
+                                <a href="https://github.com/acikkaynak/acikkaynak"><img src="https://img.shields.io/github/stars/acikkaynak/acikkaynak.svg?style=social&amp;label=Star" /></a>
                             </li>
                         </ul>
                     </div>

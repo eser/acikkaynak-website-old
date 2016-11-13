@@ -2,7 +2,7 @@ webpackJsonp([1],[
 /* 0 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__(341);
+	module.exports = __webpack_require__(342);
 
 
 /***/ },
@@ -181,10 +181,10 @@ webpackJsonp([1],[
 	const ReactDOM = __webpack_require__(110);
 	const ReactDOMServer = __webpack_require__(224);
 	const react_router_1 = __webpack_require__(36);
-	const ServiceContainer_1 = __webpack_require__(339);
-	const NavigationManager_1 = __webpack_require__(338);
-	const camelize_1 = __webpack_require__(340);
-	const history_1 = __webpack_require__(337);
+	const ServiceContainer_1 = __webpack_require__(340);
+	const NavigationManager_1 = __webpack_require__(339);
+	const camelize_1 = __webpack_require__(341);
+	const history_1 = __webpack_require__(338);
 	(function (RenderResultType) {
 	    RenderResultType[RenderResultType["Success"] = 0] = "Success";
 	    RenderResultType[RenderResultType["Redirect"] = 1] = "Redirect";
@@ -10374,8 +10374,33 @@ webpackJsonp([1],[
 	    }
 	    render() {
 	        return (React.createElement("div", null,
-	            React.createElement("h1", null, "Giri\u015F"),
-	            "...i\u00E7erik buraya gelecek"));
+	            React.createElement("img", { src: "./src/images/acikkaynak-logo-142px.png", alt: "açık kaynak" }),
+	            React.createElement("p", { className: "margin-top-15px" },
+	                "Merhaba,",
+	                React.createElement("br", null),
+	                React.createElement("br", null),
+	                "Bu organizasyon GitHub'\u0131n kendi do\u011Fal ara\u00E7lar\u0131 kullan\u0131larak T\u00FCrk\u00E7e konu\u015Fan kullan\u0131c\u0131lar\u0131n a\u00E7\u0131k kaynakl\u0131 projelere katk\u0131 sa\u011Flamas\u0131na yard\u0131mc\u0131 olmak amac\u0131yla olu\u015Fturulmu\u015Ftur.",
+	                React.createElement("br", null),
+	                React.createElement("br", null),
+	                "Ama\u00E7lar\u0131 aras\u0131nda,",
+	                React.createElement("ul", null,
+	                    React.createElement("li", null, "A\u00E7\u0131k kaynak felsefesini \u00E7e\u015Fitli kaynak/i\u00E7erik destekleriyle kullan\u0131c\u0131lara aktarmak,"),
+	                    React.createElement("li", null, "A\u00E7\u0131k kaynak projelere nas\u0131l katk\u0131da bulunabilece\u011Fi konusunda kaynak/i\u00E7erik sa\u011Flamak,"),
+	                    React.createElement("li", null, "T\u00FCrk\u00E7e konu\u015Fan kullan\u0131c\u0131lar\u0131n teknik veya dil bariyerlerinin kald\u0131rmas\u0131 i\u00E7in \u00E7al\u0131\u015Fmalar yapmak,"),
+	                    React.createElement("li", null, "Kullan\u0131c\u0131lar\u0131n kendi veya ba\u015Fka a\u00E7\u0131k kaynak projelerini tan\u0131tmas\u0131 i\u00E7in imkan sa\u011Flamak,"),
+	                    React.createElement("li", null, "Halihaz\u0131rda veya yeni a\u00E7\u0131k kaynak projelerine kat\u0131l\u0131mc\u0131 bulmak,"),
+	                    React.createElement("li", null, "Birlikte \u00E7al\u0131\u015Fma ve kat\u0131l\u0131m i\u00E7in insanlara bir platform sunmak,")),
+	                "bulunmaktad\u0131r.",
+	                React.createElement("br", null),
+	                React.createElement("br", null),
+	                "E\u011Fer proje ve birlikte \u00E7al\u0131\u015Fma deneyimini artt\u0131rmak isteyen, ba\u015Fka platformlarda geli\u015Ftirme yapmak konusunda bir ba\u015Flang\u0131\u00E7 arayan bir yaz\u0131l\u0131mc\u0131ysan\u0131z, veya yaln\u0131zca a\u00E7\u0131k kaynak'a kat\u0131l\u0131mc\u0131 olmak istiyorsan\u0131z bu adresi ziyaret edip kendinize kat\u0131l\u0131m sa\u011Flayabilece\u011Finiz, sizden yard\u0131m bekleyen bir proje bulabilirsiniz.",
+	                React.createElement("br", null),
+	                React.createElement("br", null),
+	                "Daha da iyisi ",
+	                React.createElement("a", { href: "https://github.com/acikkaynak/acikkaynak" }, "a\u00E7\u0131k kaynak repository'si"),
+	                " alt\u0131nda \"issue\" olu\u015Fturarak, (\u00F6rne\u011Fin) Bootstrap \u00FCzerinde istedi\u011Finiz bir \u00F6zelli\u011Fi di\u011Fer ki\u015Filere tan\u0131tarak bunun d\u00F6k\u00FCmantasyonundan testlerinde kadar ilgilenecek bir ekip olu\u015Fturup Bootstrap'in istedi\u011Fi standartlarda bir Pull Request haz\u0131rlayabilirsiniz."),
+	            React.createElement("p", { className: "text-right text-muted" },
+	                React.createElement("a", { href: "http://acikkaynak.info/" }, "a\u00E7\u0131k kaynak inisiyatifi"))));
 	    }
 	}
 	exports.Home = Home;
@@ -10393,7 +10418,7 @@ webpackJsonp([1],[
 	const _1 = __webpack_require__(52);
 	const redux_1 = __webpack_require__(91);
 	const react_redux_1 = __webpack_require__(227);
-	const combinedReducers_1 = __webpack_require__(334);
+	const combinedReducers_1 = __webpack_require__(335);
 	class Layout extends React.Component {
 	    constructor(props) {
 	        super(props);
@@ -10423,16 +10448,17 @@ webpackJsonp([1],[
 	            React.createElement("div", null,
 	                React.createElement("div", { className: "header" },
 	                    React.createElement("ul", { className: "inner" },
-	                        React.createElement("li", null,
+	                        React.createElement("li", { className: "link" },
 	                            React.createElement(react_router_1.IndexLink, { to: "/", activeClassName: "active" }, "Giri\u015F")),
-	                        React.createElement("li", null,
+	                        React.createElement("li", { className: "link" },
 	                            React.createElement(react_router_1.Link, { to: "/content/", activeClassName: "active" }, "\u0130\u00E7erik")),
-	                        React.createElement("li", null,
+	                        React.createElement("li", { className: "link" },
 	                            React.createElement(react_router_1.Link, { to: "/projects/", activeClassName: "active" }, "Projeler")),
-	                        React.createElement("li", { className: "pull-right text-right" },
-	                            React.createElement("a", { href: "http://github.com/acikkaynak/acikkaynak" },
-	                                React.createElement("i", { className: "fa fa-github fa-fw", "aria-hidden": "true" }),
-	                                "a\u00E7\u0131k kaynak")))),
+	                        React.createElement("li", { className: "buttons pull-right text-right" },
+	                            React.createElement("a", { href: "http://s.acikkaynak.info/slackin/" },
+	                                React.createElement("img", { src: "http://s.acikkaynak.info/slackin/badge.svg" })),
+	                            React.createElement("a", { href: "https://github.com/acikkaynak/acikkaynak" },
+	                                React.createElement("img", { src: "https://img.shields.io/github/stars/acikkaynak/acikkaynak.svg?style=social&label=Star" }))))),
 	                React.createElement("div", { className: "content" },
 	                    React.createElement("div", { className: "inner", onClick: this.clickHandler.bind(this) }, this.props.children)))));
 	    }
@@ -10535,6 +10561,7 @@ webpackJsonp([1],[
 	"use strict";
 	const React = __webpack_require__(4);
 	const ReactMarkdown = __webpack_require__(111);
+	const Conditional_1 = __webpack_require__(334);
 	class ProjectList extends React.Component {
 	    constructor(props) {
 	        super(props);
@@ -10553,6 +10580,10 @@ webpackJsonp([1],[
 	                        React.createElement("a", { key: `${categoryKey}.${projectKey}.link`, href: project.url },
 	                            React.createElement("i", { className: "fa-li fa fa-file-o fa-fw" }),
 	                            project.name),
+	                        React.createElement(Conditional_1.Conditional, { test: project.needsContribution },
+	                            React.createElement("span", { class: "label label-success" },
+	                                React.createElement("i", { class: "fa fa-code-fork", "aria-hidden": "true" }),
+	                                " Kat\u0131l\u0131m Bekliyor")),
 	                        React.createElement("p", null,
 	                            React.createElement(ReactMarkdown, { source: project.content }))));
 	                }))));
@@ -10590,7 +10621,7 @@ webpackJsonp([1],[
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
-	const constants = __webpack_require__(336);
+	const constants = __webpack_require__(337);
 	const initialState = {
 	    userLevel: constants.UserLevels.Visitor
 	};
@@ -10611,6 +10642,28 @@ webpackJsonp([1],[
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
+	const React = __webpack_require__(4);
+	class Conditional extends React.Component {
+	    constructor(props) {
+	        super(props);
+	    }
+	    render() {
+	        if (!this.props.test) {
+	            return null;
+	        }
+	        return this.props.children;
+	    }
+	}
+	exports.Conditional = Conditional;
+	Object.defineProperty(exports, "__esModule", { value: true });
+	exports.default = Conditional;
+
+
+/***/ },
+/* 335 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
 	const redux_1 = __webpack_require__(91);
 	const loginReducer_1 = __webpack_require__(333);
 	exports.combinedReducers = redux_1.combineReducers({
@@ -10619,7 +10672,7 @@ webpackJsonp([1],[
 
 
 /***/ },
-/* 335 */
+/* 336 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -10653,7 +10706,7 @@ webpackJsonp([1],[
 
 
 /***/ },
-/* 336 */
+/* 337 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -10667,7 +10720,7 @@ webpackJsonp([1],[
 
 
 /***/ },
-/* 337 */
+/* 338 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -10707,7 +10760,7 @@ webpackJsonp([1],[
 
 
 /***/ },
-/* 338 */
+/* 339 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -10761,7 +10814,7 @@ webpackJsonp([1],[
 
 
 /***/ },
-/* 339 */
+/* 340 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -10782,7 +10835,7 @@ webpackJsonp([1],[
 
 
 /***/ },
-/* 340 */
+/* 341 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -10800,13 +10853,13 @@ webpackJsonp([1],[
 
 
 /***/ },
-/* 341 */
+/* 342 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(global) {"use strict";
 	const es6promise = __webpack_require__(96);
 	const _1 = __webpack_require__(52);
-	const Main_1 = __webpack_require__(335);
+	const Main_1 = __webpack_require__(336);
 	if (global.Promise === undefined) {
 	    es6promise.polyfill();
 	}

@@ -19884,7 +19884,7 @@
 	function attemptVertx() {
 	  try {
 	    var r = require;
-	    var vertx = __webpack_require__(342);
+	    var vertx = __webpack_require__(343);
 	    vertxNext = vertx.runOnLoop || vertx.runOnContext;
 	    return useVertxTimer();
 	  } catch (e) {
@@ -41955,7 +41955,8 @@
 /* 339 */,
 /* 340 */,
 /* 341 */,
-/* 342 */
+/* 342 */,
+/* 343 */
 /***/ function(module, exports) {
 
 	/* (ignored) */

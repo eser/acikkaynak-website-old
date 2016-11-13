@@ -27,7 +27,7 @@ body {
         list-style-type: none;
         padding: 0;
 
-        & li {
+        & li.link {
             display: inline-block;
             vertical-align: middle;
 
@@ -51,6 +51,14 @@ body {
                 }
             }
         }
+
+        & li.buttons {
+            padding: 17px 0;
+
+            & a {
+                margin-left: 8px;
+            }
+        }
     }
 }
 
@@ -71,6 +79,10 @@ body {
             color: var(--content-header-color);
         }
     }
+}
+
+.margin-top-15px {
+    margin-top: 15px;
 }
 
 @media (max-width: 860px) {
