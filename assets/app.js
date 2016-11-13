@@ -10568,22 +10568,25 @@ webpackJsonp([1],[
 	    }
 	    render() {
 	        const data = this.props.datasource;
-	        return (React.createElement("ul", { className: "fa-ul" }, Object.keys(data).map((category) => {
+	        return (React.createElement("div", null, Object.keys(data).map((category) => {
 	            const categoryKey = `category.${encodeURIComponent(category)}`, categoryData = data[category];
-	            return (React.createElement("li", { key: categoryKey },
+	            return (React.createElement("div", { key: categoryKey },
 	                React.createElement("h3", { key: `${categoryKey}.caption` },
-	                    React.createElement("i", { className: "fa-li fa fa-folder-o fa-fw" }),
+	                    React.createElement("i", { className: "fa fa-folder-o fa-fw" }),
 	                    category),
-	                React.createElement("ul", { className: "fa-ul", key: `${categoryKey}.list` }, categoryData.map((project) => {
+	                React.createElement("div", { key: `${categoryKey}.list` }, categoryData.map((project) => {
 	                    const projectKey = `project.${encodeURIComponent(project.name)}`;
-	                    return (React.createElement("li", { key: `${categoryKey}.${projectKey}` },
-	                        React.createElement("a", { key: `${categoryKey}.${projectKey}.link`, href: project.url },
-	                            React.createElement("i", { className: "fa-li fa fa-file-o fa-fw" }),
-	                            project.name),
-	                        React.createElement(Conditional_1.Conditional, { test: project.needsContribution },
-	                            React.createElement("span", { class: "label label-success" },
-	                                React.createElement("i", { class: "fa fa-code-fork", "aria-hidden": "true" }),
-	                                " Kat\u0131l\u0131m Bekliyor")),
+	                    return (React.createElement("div", { className: "project", key: `${categoryKey}.${projectKey}` },
+	                        React.createElement("div", { className: "row" },
+	                            React.createElement("div", { className: "col-md-8" },
+	                                React.createElement("h4", null,
+	                                    React.createElement("a", { key: `${categoryKey}.${projectKey}.link`, href: project.url }, project.name))),
+	                            React.createElement("div", { className: "col-md-4 text-right" },
+	                                React.createElement(Conditional_1.Conditional, { test: project.needsContribution },
+	                                    React.createElement("span", { className: "label label-success margin-right-8px" },
+	                                        React.createElement("i", { className: "fa fa-code-fork", "aria-hidden": "true" }),
+	                                        " Kat\u0131l\u0131m Bekliyor")),
+	                                React.createElement("img", { src: `https://img.shields.io/github/stars/${project.githubUrl}.svg?style=social&amp;label=Star`, alt: `${project.name} stars` }))),
 	                        React.createElement("p", null,
 	                            React.createElement(ReactMarkdown, { source: project.content }))));
 	                }))));

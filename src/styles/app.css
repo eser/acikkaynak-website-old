@@ -54,11 +54,13 @@ body {
 
         & li.buttons {
             padding: 17px 0;
-
-            & a {
-                margin-left: 8px;
-            }
         }
+    }
+}
+
+.buttons {
+    & a {
+        margin-left: 8px;
     }
 }
 
@@ -81,8 +83,16 @@ body {
     }
 }
 
+.project {
+    margin-bottom: 35px;
+}
+
 .margin-top-15px {
     margin-top: 15px;
+}
+
+.margin-right-8px {
+    margin-right: 8px;
 }
 
 @media (max-width: 860px) {
