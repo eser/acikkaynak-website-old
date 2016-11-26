@@ -66,8 +66,9 @@ body {
 
 .content {
     padding: 25px 0;
-    line-height: 150%;
+    line-height: 200%;
     font-family: 'Arbutus Slab';
+    font-size: 16px;
     color: var(--content-text-color);
 
     & a {
@@ -83,8 +84,12 @@ body {
     }
 }
 
-.project {
+.project, .organization {
     margin-bottom: 35px;
+
+    & h4 {
+        font-weight: bold;
+    }
 }
 
 .margin-top-15px {
@@ -105,10 +110,18 @@ body {
             display: none;
         }
     }
+
+    .content {
+        font-size: 14px;
+    }
 }
 
 @media (max-width: 600px) {
 	body {
 		font-size: 12px;
 	}
+
+    .content {
+        font-size: 12px;
+    }
 }
