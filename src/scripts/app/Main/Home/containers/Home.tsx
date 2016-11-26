@@ -29,14 +29,16 @@ export class Home extends React.Component<HomePropsInterface, HomeStateInterface
                         <li>Açık kaynak projelere nasıl katkıda bulunabileceği konusunda kaynak/içerik sağlamak,</li>
                         <li>Türkçe konuşan kullanıcıların teknik veya dil bariyerlerinin kaldırması için çalışmalar yapmak,</li>
                         <li>Kullanıcıların kendi veya başka açık kaynak projelerini tanıtması için imkan sağlamak,</li>
-                        <li>Halihazırda veya yeni açık kaynak projelerine katılımcı bulmak,</li>
+                        <li>Yeni veya halihazırda bulunan açık kaynak projelerine katılımcı bulmak,</li>
                         <li>Birlikte çalışma ve katılım için insanlara bir platform sunmak,</li>
                     </ul>
                     bulunmaktadır.<br />
                     <br />
-                    Eğer proje ve birlikte çalışma deneyimini arttırmak isteyen, başka platformlarda geliştirme yapmak konusunda bir başlangıç arayan bir yazılımcıysanız, veya yalnızca açık kaynak'a katılımcı olmak istiyorsanız bu adresi ziyaret edip kendinize katılım sağlayabileceğiniz, sizden yardım bekleyen bir proje bulabilirsiniz.<br />
+                    Eğer proje ve birlikte çalışma deneyimini arttırmak isteyen, başka platformlarda geliştirme yapmak konusunda bir başlangıç arayan bir yazılımcı veya organizasyonsanız, veya yalnızca açık kaynak'a katılımcı olmak istiyorsanız inisiyatifimiz aracılığıyla kendinize katılım sağlayabileceğiniz, sizden yardım bekleyen bir proje bulabilirsiniz.<br />
                     <br />
-                    Daha da iyisi <a href="https://github.com/acikkaynak/acikkaynak">açık kaynak repository'si</a> altında "issue" oluşturarak, (örneğin) Bootstrap üzerinde istediğiniz bir özelliği diğer kişilere tanıtarak bunun dökümantasyonundan testlerinde kadar ilgilenecek bir ekip oluşturup Bootstrap'in istediği standartlarda bir Pull Request hazırlayabilirsiniz.
+                    Daha da iyisi <a href="https://github.com/acikkaynak/acikkaynak">açık kaynak repository'si</a> altında "issue" oluşturarak, (örneğin) Bootstrap üzerinde istediğiniz bir özelliği diğer kişilere tanıtarak bunun dökümantasyonundan testlerinde kadar ilgilenecek bir ekip oluşturup Bootstrap'in istediği standartlarda bir Pull Request hazırlayabilirsiniz.<br />
+                    <br />
+                    Çevrenize de bizden bahsedin, Türkçe de konuşan bir açık kaynak toplulukta hep birlikte iletişimde ve girişimde olalım.
                 </p>
                 <p className="text-right text-muted">
                     <a href="http://acikkaynak.info/">açık kaynak inisiyatifi</a>
