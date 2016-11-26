@@ -1,5 +1,6 @@
 {
     "compilerOptions": {
+        "baseUrl": ".",
         "target": "es6",
         "module": "commonjs",
         "moduleResolution": "node",
@@ -12,6 +13,7 @@
         "noImplicitAny": false,
         "removeComments": true,
         "noLib": false,
+        "noResolve": false,
         "preserveConstEnums": true,
         "suppressImplicitAnyIndexErrors": true,
         "strictNullChecks": true,

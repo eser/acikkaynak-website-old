@@ -13,7 +13,7 @@ export interface ContentPropsInterface {
 
 export interface ContentStateInterface {
     datasource: any;
-    origin: string|null;
+    metadata: any;
     error: any;
 }
 
@@ -27,7 +27,7 @@ export class Content extends React.Component<ContentPropsInterface, ContentState
 
         this.state = {
             datasource: null,
-            origin: null,
+            metadata: null,
             error: false
         };
 
@@ -37,6 +37,8 @@ export class Content extends React.Component<ContentPropsInterface, ContentState
 
     componentWillReceiveProps(nextProps: ContentPropsInterface): void {
         this.updateDatasource(nextProps);
+
+        window.scrollTo(0, 0);
     }
 
     render(): any {
@@ -55,14 +57,14 @@ export class Content extends React.Component<ContentPropsInterface, ContentState
         }
 
         return (
-            <ContentViewer datasource={this.state.datasource} origin={this.state.origin} />
+            <ContentViewer datasource={this.state.datasource} metadata={this.state.metadata} />
         );
     }
 
     updateDatasource(props: ContentPropsInterface): void {
         this.model.getContent(props.params.splat)
-            .then((response) => { this.setState({ datasource: response.datasource, origin: response.origin, error: false }); })
-            .catch((err) => { this.setState({ datasource: null, origin: null, error: err }); });
+            .then((response) => { this.setState({ datasource: response.datasource, metadata: response.metadata, error: false }); })
+            .catch((err) => { this.setState({ datasource: null, metadata: null, error: err }); });
     }
 
 }

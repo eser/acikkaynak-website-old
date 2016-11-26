@@ -2,7 +2,7 @@ webpackJsonp([1],[
 /* 0 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__(345);
+	module.exports = __webpack_require__(346);
 
 
 /***/ },
@@ -169,12 +169,12 @@ webpackJsonp([1],[
 	};
 	const React = __webpack_require__(3);
 	const ReactDOM = __webpack_require__(115);
-	const ReactDOMServer = __webpack_require__(225);
+	const ReactDOMServer = __webpack_require__(226);
 	const react_router_1 = __webpack_require__(36);
-	const ServiceContainer_1 = __webpack_require__(343);
-	const NavigationManager_1 = __webpack_require__(342);
-	const camelize_1 = __webpack_require__(344);
-	const history_1 = __webpack_require__(341);
+	const ServiceContainer_1 = __webpack_require__(344);
+	const NavigationManager_1 = __webpack_require__(343);
+	const camelize_1 = __webpack_require__(345);
+	const history_1 = __webpack_require__(342);
 	(function (RenderResultType) {
 	    RenderResultType[RenderResultType["Success"] = 0] = "Success";
 	    RenderResultType[RenderResultType["Redirect"] = 1] = "Redirect";
@@ -735,15 +735,15 @@ webpackJsonp([1],[
 	
 	var _createStore2 = _interopRequireDefault(_createStore);
 	
-	var _combineReducers = __webpack_require__(318);
+	var _combineReducers = __webpack_require__(319);
 	
 	var _combineReducers2 = _interopRequireDefault(_combineReducers);
 	
-	var _bindActionCreators = __webpack_require__(317);
+	var _bindActionCreators = __webpack_require__(318);
 	
 	var _bindActionCreators2 = _interopRequireDefault(_bindActionCreators);
 	
-	var _applyMiddleware = __webpack_require__(316);
+	var _applyMiddleware = __webpack_require__(317);
 	
 	var _applyMiddleware2 = _interopRequireDefault(_applyMiddleware);
 	
@@ -3213,7 +3213,7 @@ webpackJsonp([1],[
 	
 	var _isPlainObject2 = _interopRequireDefault(_isPlainObject);
 	
-	var _symbolObservable = __webpack_require__(320);
+	var _symbolObservable = __webpack_require__(321);
 	
 	var _symbolObservable2 = _interopRequireDefault(_symbolObservable);
 	
@@ -3669,7 +3669,7 @@ webpackJsonp([1],[
 	var React = __webpack_require__(3);
 	var assign = __webpack_require__(211);
 	var isPlainObject = __webpack_require__(212);
-	var xssFilters = __webpack_require__(324);
+	var xssFilters = __webpack_require__(325);
 	var pascalCase = __webpack_require__(223);
 	
 	var typeAliases = {
@@ -5336,7 +5336,7 @@ webpackJsonp([1],[
 	var unescapeString = common.unescapeString;
 	var fromCodePoint = __webpack_require__(182);
 	var decodeHTML = __webpack_require__(100).decodeHTML;
-	__webpack_require__(319); // Polyfill for String.prototype.repeat
+	__webpack_require__(320); // Polyfill for String.prototype.repeat
 	
 	// Constants for character codes:
 	
@@ -7955,17 +7955,23 @@ webpackJsonp([1],[
 
 
 /***/ },
-/* 224 */,
-/* 225 */
+/* 224 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!function(t,n){"use strict"; true?!(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_FACTORY__ = (n), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)):"object"==typeof exports?module.exports=n.call(t):t.path=n.call(t)}(this,function(){"use strict";function t(t){var n=d.createElement("a");n.href=t;var e=n.protocol,r=n.hostname,o=n.port,s=n.pathname,i=n.search,u=n.hash,a=n.host,h=n.origin,l=y.test(s)?y.exec(s)[1]:"",c=j.test(s)?j.exec(s)[1]:"",f=A.test(s)?A.exec(s)[1]:"";return{protocol:e,domain:r,port:o,host:a,origin:h,path:s,search:i,hash:u,dir:l,base:c,ext:f}}function n(n,e){var r=t(n).base;return e&&r.substr(-1*e.length)===e&&(r=r.substr(0,r.length-e.length)),r}function e(n){return t(n).dir}function r(n){return t(n).ext}function o(){var t="",n=w.call(arguments,0);arguments.length<=1&&n.unshift(p());for(var e=0;e<n.length;e+=1){var r=n[e];if(!v(r))throw new TypeError("Arguemnts to path.join must be strings");r&&(t+=t?"/"+r:r)}return l(t)}function s(){for(var t="",n=!1,e=!1,r=arguments.length-1;r>=-1&&!n;r-=1){var o=r>=0?arguments[r]:e?"":p();if(e||(e=g(o)),!v(o))throw new TypeError("Arguments to path.resolve must be strings");o&&(t=o+"/"+t,n="/"===o[0])}return t=c(t.split("/"),!n).join("/"),(n?"/":"")+t||"."}function i(t,n){t=s(t).substr(1),n=s(n).substr(1);for(var e=m(t.split("/")),r=m(n.split("/")),o=Math.min(e.length,r.length),i=o,u=0;o>u;u+=1)if(e[u]!==r[u]){i=u;break}for(var a=[],u=i;u<e.length;u+=1)a.push("..");return a=a.concat(r.slice(i)),a.join("/")}function u(t,n){1===arguments.length&&(t=p(),n=arguments[0]),f(n)||(n=o(p(),n)),f(t)||(t=o(p(),t));for(var e=m(t.split("/")),s=m(n.split("/")),i=Math.max(e.length,s.length),u=e.length-s.length,a=!0,h=0;i>h;h+=1)"**"!==s[h]?"*"!==s[h]&&(/^(\*\.)/.test(s[h])&&r(e[h])===r(s[h])||e[h]!==s[h]&&(a=!1)):u--&&s.splice(h,0,"**");return a}function a(t,n,e){return u(t)?n&&n():e&&e()}function h(t,n){arguments.length<2&&(t=p(),n=arguments[0]);for(var e=f(t)?"/":"",r=m(t.split("/")),o=m(n.split("/")),s=r.length,i=0,u=0;s>u;u+=1)r[u]===o[i]&&(i+=1);var a=s-i,h=r.slice(0,a),l=h.concat(o);return e+l.join("/")}function l(t){var n=f(t),e=t&&"/"===t[t.length-1];return t=c(t.split("/"),!n).join("/"),t||n||(t+="."),t&&e&&(t+="/"),(n?"/":"")+t}function c(t,n){for(var e=[],r=0;r<t.length;r+=1){var o=t[r];o&&"."!==o&&(".."===o?e.length&&".."!==e[e.length-1]?e.pop():n&&e.push(".."):/^http(s)?:/.test(o)?e.push(o+"/"):e.push(o))}return e}function f(t){return"/"===t.charAt(0)}function g(t){return E.test(t)}function p(){return e(t(x.href).path)}function m(t){return t.filter(function(t){return""!==t})}function v(t){return"string"==typeof t}var b=this||window,d=b.document,x=b.location,w=[].slice,j=/([^\/?#]*)$/,y=/(?:([^?#]*)\/)*/,A=/(?:[^.\/]+)(\.[^\/.]+)$/,E=/(?:^[\w]+?\:\/{2,})/;return function(){return{parse:t,basename:n,dirname:e,extname:r,join:o,cwd:p,resolve:s,relative:i,normalize:l,equal:u,pass:a,misbutton:h}}()});
+
+/***/ },
+/* 225 */,
+/* 226 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	module.exports = __webpack_require__(277);
+	module.exports = __webpack_require__(278);
 
 
 /***/ },
-/* 226 */
+/* 227 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -8048,7 +8054,7 @@ webpackJsonp([1],[
 	};
 
 /***/ },
-/* 227 */
+/* 228 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -8064,11 +8070,11 @@ webpackJsonp([1],[
 	
 	var _storeShape2 = _interopRequireDefault(_storeShape);
 	
-	var _shallowEqual = __webpack_require__(229);
+	var _shallowEqual = __webpack_require__(230);
 	
 	var _shallowEqual2 = _interopRequireDefault(_shallowEqual);
 	
-	var _wrapActionCreators = __webpack_require__(230);
+	var _wrapActionCreators = __webpack_require__(231);
 	
 	var _wrapActionCreators2 = _interopRequireDefault(_wrapActionCreators);
 	
@@ -8446,7 +8452,7 @@ webpackJsonp([1],[
 	}
 
 /***/ },
-/* 228 */
+/* 229 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -8454,11 +8460,11 @@ webpackJsonp([1],[
 	exports.__esModule = true;
 	exports.connect = exports.Provider = undefined;
 	
-	var _Provider = __webpack_require__(226);
+	var _Provider = __webpack_require__(227);
 	
 	var _Provider2 = _interopRequireDefault(_Provider);
 	
-	var _connect = __webpack_require__(227);
+	var _connect = __webpack_require__(228);
 	
 	var _connect2 = _interopRequireDefault(_connect);
 	
@@ -8468,7 +8474,7 @@ webpackJsonp([1],[
 	exports.connect = _connect2["default"];
 
 /***/ },
-/* 229 */
+/* 230 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -8499,7 +8505,7 @@ webpackJsonp([1],[
 	}
 
 /***/ },
-/* 230 */
+/* 231 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -8516,7 +8522,6 @@ webpackJsonp([1],[
 	}
 
 /***/ },
-/* 231 */,
 /* 232 */,
 /* 233 */,
 /* 234 */,
@@ -8562,7 +8567,8 @@ webpackJsonp([1],[
 /* 274 */,
 /* 275 */,
 /* 276 */,
-/* 277 */
+/* 277 */,
+/* 278 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -8579,7 +8585,7 @@ webpackJsonp([1],[
 	'use strict';
 	
 	var ReactDefaultInjection = __webpack_require__(138);
-	var ReactServerRendering = __webpack_require__(290);
+	var ReactServerRendering = __webpack_require__(291);
 	var ReactVersion = __webpack_require__(83);
 	
 	ReactDefaultInjection.inject();
@@ -8593,7 +8599,6 @@ webpackJsonp([1],[
 	module.exports = ReactDOMServer;
 
 /***/ },
-/* 278 */,
 /* 279 */,
 /* 280 */,
 /* 281 */,
@@ -8604,7 +8609,8 @@ webpackJsonp([1],[
 /* 286 */,
 /* 287 */,
 /* 288 */,
-/* 289 */
+/* 289 */,
+/* 290 */
 /***/ function(module, exports) {
 
 	/**
@@ -8631,7 +8637,7 @@ webpackJsonp([1],[
 	module.exports = ReactServerBatchingStrategy;
 
 /***/ },
-/* 290 */
+/* 291 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -8654,7 +8660,7 @@ webpackJsonp([1],[
 	var ReactInstrumentation = __webpack_require__(10);
 	var ReactMarkupChecksum = __webpack_require__(143);
 	var ReactReconciler = __webpack_require__(25);
-	var ReactServerBatchingStrategy = __webpack_require__(289);
+	var ReactServerBatchingStrategy = __webpack_require__(290);
 	var ReactServerRenderingTransaction = __webpack_require__(148);
 	var ReactUpdates = __webpack_require__(13);
 	
@@ -8726,7 +8732,6 @@ webpackJsonp([1],[
 	};
 
 /***/ },
-/* 291 */,
 /* 292 */,
 /* 293 */,
 /* 294 */,
@@ -8751,7 +8756,8 @@ webpackJsonp([1],[
 /* 313 */,
 /* 314 */,
 /* 315 */,
-/* 316 */
+/* 316 */,
+/* 317 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -8814,7 +8820,7 @@ webpackJsonp([1],[
 	}
 
 /***/ },
-/* 317 */
+/* 318 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -8870,7 +8876,7 @@ webpackJsonp([1],[
 	}
 
 /***/ },
-/* 318 */
+/* 319 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -9017,7 +9023,7 @@ webpackJsonp([1],[
 	}
 
 /***/ },
-/* 319 */
+/* 320 */
 /***/ function(module, exports) {
 
 	/*! http://mths.be/repeat v0.2.0 by @mathias */
@@ -9073,14 +9079,14 @@ webpackJsonp([1],[
 
 
 /***/ },
-/* 320 */
+/* 321 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__(321);
+	module.exports = __webpack_require__(322);
 
 
 /***/ },
-/* 321 */
+/* 322 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(global, module) {'use strict';
@@ -9089,7 +9095,7 @@ webpackJsonp([1],[
 	  value: true
 	});
 	
-	var _ponyfill = __webpack_require__(322);
+	var _ponyfill = __webpack_require__(323);
 	
 	var _ponyfill2 = _interopRequireDefault(_ponyfill);
 	
@@ -9112,10 +9118,10 @@ webpackJsonp([1],[
 	
 	var result = (0, _ponyfill2['default'])(root);
 	exports['default'] = result;
-	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }()), __webpack_require__(323)(module)))
+	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }()), __webpack_require__(324)(module)))
 
 /***/ },
-/* 322 */
+/* 323 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -9143,7 +9149,7 @@ webpackJsonp([1],[
 	};
 
 /***/ },
-/* 323 */
+/* 324 */
 /***/ function(module, exports) {
 
 	module.exports = function(module) {
@@ -9159,7 +9165,7 @@ webpackJsonp([1],[
 
 
 /***/ },
-/* 324 */
+/* 325 */
 /***/ function(module, exports) {
 
 	/*
@@ -10264,14 +10270,14 @@ webpackJsonp([1],[
 
 
 /***/ },
-/* 325 */
+/* 326 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 	const React = __webpack_require__(3);
 	const _1 = __webpack_require__(42);
-	const ContentModel_1 = __webpack_require__(326);
-	const ContentViewer_1 = __webpack_require__(327);
+	const ContentModel_1 = __webpack_require__(327);
+	const ContentViewer_1 = __webpack_require__(328);
 	const Loading_1 = __webpack_require__(96);
 	const Error_1 = __webpack_require__(95);
 	class Content extends React.Component {
@@ -10279,7 +10285,7 @@ webpackJsonp([1],[
 	        super(props);
 	        this.state = {
 	            datasource: null,
-	            origin: null,
+	            metadata: null,
 	            error: false
 	        };
 	        this.model = _1.app.services.get(ContentModel_1.ContentModel);
@@ -10287,6 +10293,7 @@ webpackJsonp([1],[
 	    }
 	    componentWillReceiveProps(nextProps) {
 	        this.updateDatasource(nextProps);
+	        window.scrollTo(0, 0);
 	    }
 	    render() {
 	        if (this.state.error) {
@@ -10296,12 +10303,12 @@ webpackJsonp([1],[
 	        if (this.state.datasource === null) {
 	            return (React.createElement(Loading_1.Loading, null));
 	        }
-	        return (React.createElement(ContentViewer_1.ContentViewer, { datasource: this.state.datasource, origin: this.state.origin }));
+	        return (React.createElement(ContentViewer_1.ContentViewer, { datasource: this.state.datasource, metadata: this.state.metadata }));
 	    }
 	    updateDatasource(props) {
 	        this.model.getContent(props.params.splat)
-	            .then((response) => { this.setState({ datasource: response.datasource, origin: response.origin, error: false }); })
-	            .catch((err) => { this.setState({ datasource: null, origin: null, error: err }); });
+	            .then((response) => { this.setState({ datasource: response.datasource, metadata: response.metadata, error: false }); })
+	            .catch((err) => { this.setState({ datasource: null, metadata: null, error: err }); });
 	    }
 	}
 	exports.Content = Content;
@@ -10310,7 +10317,7 @@ webpackJsonp([1],[
 
 
 /***/ },
-/* 326 */
+/* 327 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -10335,8 +10342,12 @@ webpackJsonp([1],[
 	            const promise = fetch(`${this.dataSourceUrl}${contentUrl}`)
 	                .then((response) => response.text())
 	                .then((text) => ({
-	                origin: `${this.dataOriginUrl}${contentUrl}`,
-	                datasource: text
+	                datasource: text,
+	                metadata: {
+	                    originUrl: `${this.dataOriginUrl}${contentUrl}`,
+	                    sourceUrl: `${this.dataSourceUrl}${contentUrl}`,
+	                    path: contentUrl
+	                }
 	            }));
 	            this.cache.set(['content', contentUrl], promise);
 	            return yield promise;
@@ -10366,27 +10377,42 @@ webpackJsonp([1],[
 
 
 /***/ },
-/* 327 */
+/* 328 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 	const React = __webpack_require__(3);
+	const path = __webpack_require__(224);
 	const ReactMarkdown = __webpack_require__(59);
 	const Conditional_1 = __webpack_require__(94);
 	class ContentViewer extends React.Component {
 	    constructor(props) {
 	        super(props);
 	    }
+	    isAbsolutePath(pathString) {
+	        return /^(?:\/|[a-z]+:\/\/)/.test(pathString);
+	    }
+	    getPathDirname(pathString) {
+	        const lastSlashIndex = pathString.lastIndexOf('/');
+	        if (lastSlashIndex === -1) {
+	            return '';
+	        }
+	        return pathString.substr(0, lastSlashIndex);
+	    }
 	    getContent() {
-	        const data = this.props.datasource;
-	        return data.replace(/\[([^\]]*)\]\(([^\)]*)\)/g, (all, first, second) => `[${first}](#/content/${second})`);
+	        const data = this.props.datasource, metadata = this.props.metadata;
+	        let basePath = '#/content/';
+	        if (metadata && metadata.path) {
+	            basePath = path.join(basePath, this.getPathDirname(metadata.path));
+	        }
+	        return data.replace(/\[([^\]]*)\]\(([^\)]*)\)/g, (all, first, second) => `[${first}](${this.isAbsolutePath(second) ? second : path.join(basePath, second)})`);
 	    }
 	    render() {
 	        return (React.createElement("div", null,
 	            React.createElement(ReactMarkdown, { source: this.getContent() }),
-	            React.createElement(Conditional_1.Conditional, { test: this.props.origin && this.props.origin.length > 0 },
+	            React.createElement(Conditional_1.Conditional, { test: this.props.metadata && this.props.metadata.originUrl && this.props.metadata.originUrl.length > 0 },
 	                React.createElement("div", { className: "text-right margin-top-15px" },
-	                    React.createElement("a", { href: this.props.origin },
+	                    React.createElement("a", { href: this.props.metadata.originUrl },
 	                        React.createElement("i", { className: "fa fa-fw fa-pencil-square-o", "aria-hidden": "true" }),
 	                        " Bu sayfan\u0131n kayna\u011F\u0131na ula\u015F")))));
 	    }
@@ -10397,7 +10423,7 @@ webpackJsonp([1],[
 
 
 /***/ },
-/* 328 */
+/* 329 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -10446,7 +10472,7 @@ webpackJsonp([1],[
 
 
 /***/ },
-/* 329 */
+/* 330 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -10454,8 +10480,8 @@ webpackJsonp([1],[
 	const react_router_1 = __webpack_require__(36);
 	const _1 = __webpack_require__(42);
 	const redux_1 = __webpack_require__(93);
-	const react_redux_1 = __webpack_require__(228);
-	const combinedReducers_1 = __webpack_require__(338);
+	const react_redux_1 = __webpack_require__(229);
+	const combinedReducers_1 = __webpack_require__(339);
 	class Layout extends React.Component {
 	    constructor(props) {
 	        super(props);
@@ -10508,14 +10534,14 @@ webpackJsonp([1],[
 
 
 /***/ },
-/* 330 */
+/* 331 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 	const React = __webpack_require__(3);
 	const _1 = __webpack_require__(42);
-	const OrganizationModel_1 = __webpack_require__(331);
-	const OrganizationList_1 = __webpack_require__(332);
+	const OrganizationModel_1 = __webpack_require__(332);
+	const OrganizationList_1 = __webpack_require__(333);
 	const Loading_1 = __webpack_require__(96);
 	const Error_1 = __webpack_require__(95);
 	class Organizations extends React.Component {
@@ -10555,7 +10581,7 @@ webpackJsonp([1],[
 
 
 /***/ },
-/* 331 */
+/* 332 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -10594,7 +10620,7 @@ webpackJsonp([1],[
 
 
 /***/ },
-/* 332 */
+/* 333 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -10637,14 +10663,14 @@ webpackJsonp([1],[
 
 
 /***/ },
-/* 333 */
+/* 334 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 	const React = __webpack_require__(3);
 	const _1 = __webpack_require__(42);
-	const ProjectModel_1 = __webpack_require__(334);
-	const ProjectList_1 = __webpack_require__(335);
+	const ProjectModel_1 = __webpack_require__(335);
+	const ProjectList_1 = __webpack_require__(336);
 	const Loading_1 = __webpack_require__(96);
 	const Error_1 = __webpack_require__(95);
 	class Projects extends React.Component {
@@ -10684,7 +10710,7 @@ webpackJsonp([1],[
 
 
 /***/ },
-/* 334 */
+/* 335 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -10723,7 +10749,7 @@ webpackJsonp([1],[
 
 
 /***/ },
-/* 335 */
+/* 336 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -10767,7 +10793,7 @@ webpackJsonp([1],[
 
 
 /***/ },
-/* 336 */
+/* 337 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -10788,11 +10814,11 @@ webpackJsonp([1],[
 
 
 /***/ },
-/* 337 */
+/* 338 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
-	const constants = __webpack_require__(340);
+	const constants = __webpack_require__(341);
 	const initialState = {
 	    userLevel: constants.UserLevels.Visitor
 	};
@@ -10809,30 +10835,30 @@ webpackJsonp([1],[
 
 
 /***/ },
-/* 338 */
+/* 339 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 	const redux_1 = __webpack_require__(93);
-	const loginReducer_1 = __webpack_require__(337);
+	const loginReducer_1 = __webpack_require__(338);
 	exports.combinedReducers = redux_1.combineReducers({
 	    login: loginReducer_1.loginReducer
 	});
 
 
 /***/ },
-/* 339 */
+/* 340 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 	const React = __webpack_require__(3);
 	const react_router_1 = __webpack_require__(36);
-	const Layout_1 = __webpack_require__(329);
-	const NotFound_1 = __webpack_require__(336);
-	const Home_1 = __webpack_require__(328);
-	const Content_1 = __webpack_require__(325);
-	const Projects_1 = __webpack_require__(333);
-	const Organizations_1 = __webpack_require__(330);
+	const Layout_1 = __webpack_require__(330);
+	const NotFound_1 = __webpack_require__(337);
+	const Home_1 = __webpack_require__(329);
+	const Content_1 = __webpack_require__(326);
+	const Projects_1 = __webpack_require__(334);
+	const Organizations_1 = __webpack_require__(331);
 	class Main {
 	    get root() {
 	        return Layout_1.Layout.instance;
@@ -10857,7 +10883,7 @@ webpackJsonp([1],[
 
 
 /***/ },
-/* 340 */
+/* 341 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -10871,7 +10897,7 @@ webpackJsonp([1],[
 
 
 /***/ },
-/* 341 */
+/* 342 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -10911,7 +10937,7 @@ webpackJsonp([1],[
 
 
 /***/ },
-/* 342 */
+/* 343 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -10965,7 +10991,7 @@ webpackJsonp([1],[
 
 
 /***/ },
-/* 343 */
+/* 344 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -10986,7 +11012,7 @@ webpackJsonp([1],[
 
 
 /***/ },
-/* 344 */
+/* 345 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -11004,13 +11030,13 @@ webpackJsonp([1],[
 
 
 /***/ },
-/* 345 */
+/* 346 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(global) {"use strict";
 	const es6promise = __webpack_require__(101);
 	const _1 = __webpack_require__(42);
-	const Main_1 = __webpack_require__(339);
+	const Main_1 = __webpack_require__(340);
 	if (global.Promise === undefined) {
 	    es6promise.polyfill();
 	}

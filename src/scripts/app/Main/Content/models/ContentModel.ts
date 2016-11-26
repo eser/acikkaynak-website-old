@@ -24,8 +24,12 @@ export class ContentModel {
             .then((response) => response.text())
             .then((text) => (
                 {
-                    origin: `${this.dataOriginUrl}${contentUrl}`,
-                    datasource: text
+                    datasource: text,
+                    metadata: {
+                        originUrl: `${this.dataOriginUrl}${contentUrl}`,
+                        sourceUrl: `${this.dataSourceUrl}${contentUrl}`,
+                        path: contentUrl
+                    }
                 }
             ));
 
