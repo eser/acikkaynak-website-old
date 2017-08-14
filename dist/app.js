@@ -26314,8 +26314,8 @@ class AppContainer extends React.Component {
         return (React.createElement(react_router_dom_1.Switch, null,
             React.createElement(react_router_dom_1.Route, { path: "/", exact: true, strict: true, render: () => React.createElement(layoutContainer_1.LayoutContainer, null,
                     React.createElement(homeContainer_1.HomeContainer, null)) }),
-            React.createElement(react_router_dom_1.Route, { path: "/content/:contentUrl", exact: true, strict: true, render: (props) => React.createElement(layoutContainer_1.LayoutContainer, null,
-                    React.createElement(contentContainer_1.ContentContainer, { contentUrl: props.match.params.contentUrl })) }),
+            React.createElement(react_router_dom_1.Route, { path: "/content/*", exact: false, strict: true, render: (props) => React.createElement(layoutContainer_1.LayoutContainer, null,
+                    React.createElement(contentContainer_1.ContentContainer, { contentPath: props.match.params[0] })) }),
             React.createElement(react_router_dom_1.Route, { path: "/projects/", exact: true, strict: true, render: () => React.createElement(layoutContainer_1.LayoutContainer, null,
                     React.createElement(projectsContainer_1.ProjectsContainer, null)) }),
             React.createElement(react_router_dom_1.Route, { path: "/organizations/", exact: true, strict: true, render: () => React.createElement(layoutContainer_1.LayoutContainer, null,
@@ -26867,33 +26867,33 @@ const esm_1 = __webpack_require__(40);
 const dataOriginUrl = 'https://github.com/acikkaynak/acikkaynak/tree/master/Icerik/';
 const dataSourceUrl = 'https://raw.githubusercontent.com/acikkaynak/acikkaynak/master/Icerik/';
 class ContentService {
-    async getContentFetch(contentUrl) {
-        const promise = fetch(`${dataSourceUrl}${contentUrl}`)
+    async getContentFetch(contentPath) {
+        const promise = fetch(`${dataSourceUrl}${contentPath}`)
             .then((response) => response.text())
             .then((text) => ({
             datasource: text,
             metadata: {
-                originUrl: `${dataOriginUrl}${contentUrl}`,
-                sourceUrl: `${dataSourceUrl}${contentUrl}`,
-                path: contentUrl
+                originUrl: `${dataOriginUrl}${contentPath}`,
+                sourceUrl: `${dataSourceUrl}${contentPath}`,
+                path: contentPath
             }
         }));
         return await promise;
     }
-    async getContent(contentUrl) {
-        let contentUrl_ = contentUrl || '';
-        if (contentUrl_.length === 0) {
-            contentUrl_ = 'README.md';
+    async getContent(contentPath) {
+        let contentPath_ = contentPath || '';
+        if (contentPath_.length === 0) {
+            contentPath_ = 'README.md';
         }
-        else if (contentUrl_.substr(-3) !== '.md') {
-            if (contentUrl_.substr(-1) === '/') {
-                contentUrl_ += 'README.md';
+        else if (contentPath_.substr(-3) !== '.md') {
+            if (contentPath_.substr(-1) === '/') {
+                contentPath_ += 'README.md';
             }
             else {
-                contentUrl_ += '/README.md';
+                contentPath_ += '/README.md';
             }
         }
-        return await esm_1.cacheManager.get(['content', contentUrl], () => this.getContentFetch(contentUrl));
+        return await esm_1.cacheManager.get(['content', contentPath_], () => this.getContentFetch(contentPath_));
     }
 }
 exports.ContentService = ContentService;
@@ -27140,10 +27140,10 @@ class ContentContainer extends React.Component {
         };
     }
     componentWillMount() {
-        this.updateDatasource(this.props.contentUrl);
+        this.updateDatasource(this.props.contentPath);
     }
     componentWillReceiveProps(nextProps) {
-        this.updateDatasource(nextProps.contentUrl);
+        this.updateDatasource(nextProps.contentPath);
     }
     render() {
         if (this.state.error !== false) {
@@ -27155,9 +27155,9 @@ class ContentContainer extends React.Component {
         }
         return (React.createElement(contentView_1.ContentView, { datasource: this.state.datasource, metadata: this.state.metadata }));
     }
-    updateDatasource(contentUrl) {
+    updateDatasource(contentPath) {
         const contentService = this.context.appContext.get('contentService');
-        contentService.getContent(contentUrl)
+        contentService.getContent(contentPath)
             .then((response) => { this.setState({ datasource: response.datasource, metadata: response.metadata, error: false }); })
             .catch((err) => { this.setState({ datasource: null, metadata: null, error: err }); });
     }
