@@ -22,9 +22,9 @@ class AuthorizationFilter extends React.Component<AuthorizationFilterPropsInterf
     }
 
     render(): any {
-        const sessionManager = this.context.appContext.get('sessionManager');
+        const sessionService = this.context.appContext.get('sessionService');
 
-        if (!sessionManager.state.logged) {
+        if (!sessionService.state.logged) {
             return (
                 <Redirect to="/login" />
             );

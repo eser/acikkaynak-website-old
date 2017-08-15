@@ -5,7 +5,7 @@ class SessionService {
         this.state = {
             logged: false,
             token: null,
-            details: null
+            details: null,
         };
     }
 
