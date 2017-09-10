@@ -47,7 +47,7 @@ class LayoutContainer extends React.Component<LayoutContainerPropsInterface, Lay
                         <li className="link"><NavLink to="/projects/" activeClassName="active">Projeler</NavLink></li>
                         <li className="link"><NavLink to="/organizations/" activeClassName="active">Organizasyonlar</NavLink></li>
                         <li className="buttons pull-right text-right">
-                            <a href="http://s.acikkaynak.info/slackin/"><img src="http://s.acikkaynak.info/slackin/badge.svg" /></a>
+                            <a href="https://s.acikkaynak.info/"><img src="https://s.acikkaynak.info/badge.svg" /></a>
                             <a href="https://github.com/acikkaynak/acikkaynak"><img src="https://img.shields.io/github/stars/acikkaynak/acikkaynak.svg?style=social&amp;label=Star" /></a>
                         </li>
                     </ul>

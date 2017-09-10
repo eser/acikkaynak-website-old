@@ -26958,7 +26958,7 @@ class SessionService {
         this.state = {
             logged: false,
             token: null,
-            details: null
+            details: null,
         };
     }
     async init() {
@@ -27056,8 +27056,8 @@ class LayoutContainer extends React.Component {
                     React.createElement("li", { className: "link" },
                         React.createElement(react_router_dom_1.NavLink, { to: "/organizations/", activeClassName: "active" }, "Organizasyonlar")),
                     React.createElement("li", { className: "buttons pull-right text-right" },
-                        React.createElement("a", { href: "http://s.acikkaynak.info/slackin/" },
-                            React.createElement("img", { src: "http://s.acikkaynak.info/slackin/badge.svg" })),
+                        React.createElement("a", { href: "https://s.acikkaynak.info/" },
+                            React.createElement("img", { src: "https://s.acikkaynak.info/badge.svg" })),
                         React.createElement("a", { href: "https://github.com/acikkaynak/acikkaynak" },
                             React.createElement("img", { src: "https://img.shields.io/github/stars/acikkaynak/acikkaynak.svg?style=social&label=Star" }))))),
             React.createElement("div", { className: "content" },

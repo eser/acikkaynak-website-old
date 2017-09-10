@@ -1,12 +1,12 @@
-# [açık kaynak website](https://github.com/acikkaynak/acikkaynak.github.io)
+# [açık kaynak website](https://github.com/acikkaynak/acikkaynak-website)
 
 Based on [https://github.com/eserozvataf/ts-spa-boilerplate](https://github.com/eserozvataf/ts-spa-boilerplate)
 
 # Quick start
 
 Clone the git repo `git clone
-   https://github.com/acikkaynak/acikkaynak.github.io.git` - and checkout the [tagged
-   release](https://github.com/acikkaynak/acikkaynak.github.io/releases) you'd like to
+   https://github.com/acikkaynak/acikkaynak-website.git` - and checkout the [tagged
+   release](https://github.com/acikkaynak/acikkaynak-website/releases) you'd like to
    use.
 
 Execute `npm install` to install dependencies for development environment.
@@ -51,7 +51,7 @@ Use `jsmake` command in project folder to execute tasks defined in `makefile.js`
 
 ## Todo List
 
-See [GitHub Projects](https://github.com/acikkaynak/acikkaynak.github.io/projects) for more.
+See [GitHub Projects](https://github.com/acikkaynak/acikkaynak-website/projects) for more.
 
 
 ## Requirements
@@ -77,4 +77,4 @@ See [contributors.md](contributors.md)
 It is publicly open for any contribution. Bugfixes, new features and extra modules are welcome.
 
 * To contribute to code: Fork the repo, push your changes to your fork, and submit a pull request.
-* To report a bug: If something does not work, please report it using [GitHub Issues](https://github.com/acikkaynak/acikkaynak.github.io/issues).
+* To report a bug: If something does not work, please report it using [GitHub Issues](https://github.com/acikkaynak/acikkaynak-website/issues).
