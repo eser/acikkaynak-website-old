@@ -26266,8 +26266,8 @@ const React = __webpack_require__(3);
 const react_router_dom_1 = __webpack_require__(31);
 const PropTypes = __webpack_require__(6);
 const appContext_1 = __webpack_require__(243);
-const layoutContainer_1 = __webpack_require__(260);
-const homeContainer_1 = __webpack_require__(261);
+const layoutContainer_1 = __webpack_require__(259);
+const homeContainer_1 = __webpack_require__(260);
 const contentContainer_1 = __webpack_require__(262);
 const projectsContainer_1 = __webpack_require__(285);
 const organizationsContainer_1 = __webpack_require__(287);
@@ -26284,19 +26284,9 @@ class AppContainer extends React.Component {
         if (this.state.initialized) {
             return;
         }
-        const sessionService = appContext_1.appContext.get('sessionService');
-        await sessionService.init();
         this.setState({
             initialized: true,
         });
-    }
-    setUser(user) {
-        appContext_1.appContext.get('eventManager').emit('userInformationHasChanged', user);
-    }
-    async logout() {
-        const sessionService = appContext_1.appContext.get('sessionService');
-        await sessionService.logout();
-        this.context.router.history.push('/login');
     }
     getChildContext() {
         return {
@@ -26347,7 +26337,6 @@ const esm_3 = __webpack_require__(247);
 const contentService_1 = __webpack_require__(256);
 const projectService_1 = __webpack_require__(257);
 const organizationService_1 = __webpack_require__(258);
-const sessionService_1 = __webpack_require__(259);
 const appContext = new esm_1.ServiceManager();
 exports.appContext = appContext;
 appContext.set('cacheManager', new esm_2.CacheManager(), esm_1.ServiceLifetime.Singleton);
@@ -26355,7 +26344,6 @@ appContext.set('eventManager', new esm_3.EventManager(), esm_1.ServiceLifetime.S
 appContext.set('contentService', () => new contentService_1.ContentService(), esm_1.ServiceLifetime.Transient);
 appContext.set('projectService', () => new projectService_1.ProjectService(), esm_1.ServiceLifetime.Transient);
 appContext.set('organizationService', () => new organizationService_1.OrganizationService(), esm_1.ServiceLifetime.Transient);
-appContext.set('sessionService', new sessionService_1.SessionService(), esm_1.ServiceLifetime.Singleton);
 exports.default = appContext;
 
 
@@ -26953,81 +26941,6 @@ exports.default = OrganizationService;
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-class SessionService {
-    constructor() {
-        this.state = {
-            logged: false,
-            token: null,
-            details: null,
-        };
-    }
-    async init() {
-        let sessionToken;
-        sessionToken = localStorage.getItem('sessionToken');
-        if (sessionToken === null) {
-            sessionToken = sessionStorage.getItem('sessionToken');
-        }
-        if (sessionToken !== null) {
-            await this.validateToken(sessionToken);
-        }
-    }
-    setSessionToken(sessionToken, rememberSession) {
-        if (rememberSession) {
-            localStorage.setItem('sessionToken', sessionToken);
-        }
-        sessionStorage.setItem('sessionToken', sessionToken);
-    }
-    unsetSessionToken() {
-        sessionStorage.removeItem('sessionToken');
-        localStorage.removeItem('sessionToken');
-    }
-    setSessionInfo(sessionToken, data) {
-        this.state.logged = true;
-        this.state.token = sessionToken;
-        this.state.details = data;
-    }
-    unsetSessionInfo() {
-        this.state.logged = false;
-        this.state.token = null;
-        this.state.details = null;
-    }
-    async validateToken(sessionToken) {
-        await Promise.resolve()
-            .then(() => {
-            this.setSessionInfo(sessionToken, {
-                name: 'Kullanıcı-2',
-            });
-        });
-    }
-    async login(email, password, rememberSession) {
-        const sessionToken = 'test';
-        await Promise.resolve()
-            .then(() => {
-            this.setSessionToken(sessionToken, rememberSession);
-            this.setSessionInfo(sessionToken, {
-                name: 'Kullanıcı-2',
-            });
-        });
-    }
-    async logout() {
-        await Promise.resolve()
-            .then(() => {
-            this.unsetSessionToken();
-            this.unsetSessionInfo();
-        });
-    }
-}
-exports.SessionService = SessionService;
-exports.default = SessionService;
-
-
-/***/ }),
-/* 260 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", { value: true });
 const React = __webpack_require__(3);
 const react_router_dom_1 = __webpack_require__(31);
 class LayoutContainer extends React.Component {
@@ -27069,7 +26982,7 @@ exports.default = LayoutContainer;
 
 
 /***/ }),
-/* 261 */
+/* 260 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -27082,23 +26995,20 @@ class HomeContainer extends React.Component {
     }
     render() {
         return (React.createElement("div", null,
-            React.createElement("img", { src: "./src/images/acikkaynak-logo-142px.png", alt: "açık kaynak" }),
+            React.createElement("img", { src: __webpack_require__(261), alt: "açık kaynak" }),
             React.createElement("p", { className: "margin-top-15px" },
                 "Merhaba,",
                 React.createElement("br", null),
                 React.createElement("br", null),
-                "Bu organizasyon GitHub'\u0131n kendi do\u011Fal ara\u00E7lar\u0131 kullan\u0131larak T\u00FCrk\u00E7e konu\u015Fan kullan\u0131c\u0131lar\u0131n a\u00E7\u0131k kaynakl\u0131 projelere katk\u0131 sa\u011Flamas\u0131na yard\u0131mc\u0131 olmak amac\u0131yla olu\u015Fturulmu\u015Ftur.",
+                "Bu organizasyon GitHub'\u0131n kendi do\u011Fal ara\u00E7lar\u0131 kullan\u0131larak a\u00E7\u0131k kaynak'a katk\u0131 sa\u011Flamak amac\u0131yla olu\u015Fturulmu\u015Ftur.",
                 React.createElement("br", null),
                 React.createElement("br", null),
-                "Ama\u00E7lar\u0131 aras\u0131nda,",
-                React.createElement("ul", null,
-                    React.createElement("li", null, "A\u00E7\u0131k kaynak felsefesini \u00E7e\u015Fitli kaynak/i\u00E7erik destekleriyle kullan\u0131c\u0131lara aktarmak,"),
-                    React.createElement("li", null, "A\u00E7\u0131k kaynak projelere nas\u0131l katk\u0131da bulunabilece\u011Fi konusunda kaynak/i\u00E7erik sa\u011Flamak,"),
-                    React.createElement("li", null, "T\u00FCrk\u00E7e konu\u015Fan kullan\u0131c\u0131lar\u0131n teknik veya dil bariyerlerinin kald\u0131rmas\u0131 i\u00E7in \u00E7al\u0131\u015Fmalar yapmak,"),
-                    React.createElement("li", null, "Kullan\u0131c\u0131lar\u0131n kendi veya ba\u015Fka a\u00E7\u0131k kaynak projelerini tan\u0131tmas\u0131 i\u00E7in imkan sa\u011Flamak,"),
-                    React.createElement("li", null, "Yeni veya halihaz\u0131rda bulunan a\u00E7\u0131k kaynak projelerine kat\u0131l\u0131mc\u0131 bulmak,"),
-                    React.createElement("li", null, "Birlikte \u00E7al\u0131\u015Fma ve kat\u0131l\u0131m i\u00E7in insanlara bir platform sunmak,")),
-                "bulunmaktad\u0131r.",
+                "T\u00FCrkiyede geli\u015Ftirilen a\u00E7\u0131k kaynakl\u0131 \u00E7al\u0131\u015Fmalar i\u00E7in bir indeks olu\u015Fturarak, a\u00E7\u0131k kaynak projelerin tan\u0131nmas\u0131 i\u00E7in imkanlar sa\u011Flamaya \u00E7al\u0131\u015F\u0131yoruz.",
+                React.createElement("br", null),
+                React.createElement("br", null),
+                "Bunu ayn\u0131 zamanda bir \"networking\" olarak d\u00FC\u015F\u00FCn\u00FCrsek; hem indeksimizde yer alan proje linkleri hem de slack grubumuz arac\u0131l\u0131\u011F\u0131yla a\u00E7\u0131k kaynak projelerine kat\u0131l\u0131mc\u0131 bulmak, bu insanlarla ileti\u015Fime ge\u00E7mek ve gerek fikir gerek \u00E7al\u0131\u015Fma baz\u0131nda yard\u0131mla\u015Fma i\u00E7in bir platform g\u00F6revini \u00FCstleniyoruz.",
+                React.createElement("br", null),
+                "Ayn\u0131 zamanda; a\u00E7\u0131k kaynak felsefesini \u00E7e\u015Fitli kaynak/i\u00E7erik destekleriyle kullan\u0131c\u0131lara aktarmak ve projelere nas\u0131l katk\u0131da bulunabilece\u011Fi konusunda rehberlik etmek ama\u00E7lar\u0131m\u0131z aras\u0131nda.",
                 React.createElement("br", null),
                 React.createElement("br", null),
                 "E\u011Fer proje ve birlikte \u00E7al\u0131\u015Fma deneyimini artt\u0131rmak isteyen, ba\u015Fka platformlarda geli\u015Ftirme yapmak konusunda bir ba\u015Flang\u0131\u00E7 arayan bir yaz\u0131l\u0131mc\u0131 veya organizasyonsan\u0131z, veya yaln\u0131zca a\u00E7\u0131k kaynak'a kat\u0131l\u0131mc\u0131 olmak istiyorsan\u0131z inisiyatifimiz arac\u0131l\u0131\u011F\u0131yla kendinize kat\u0131l\u0131m sa\u011Flayabilece\u011Finiz, sizden yard\u0131m bekleyen bir proje bulabilirsiniz.",
@@ -27117,6 +27027,12 @@ class HomeContainer extends React.Component {
 exports.HomeContainer = HomeContainer;
 exports.default = HomeContainer;
 
+
+/***/ }),
+/* 261 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__.p + "assets/acikkaynak-logo-142px.png";
 
 /***/ }),
 /* 262 */

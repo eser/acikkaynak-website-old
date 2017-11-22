@@ -14,22 +14,17 @@ class HomeContainer extends React.Component<HomeContainerPropsInterface, HomeCon
     render(): any {
         return (
             <div>
-                <img src="./src/images/acikkaynak-logo-142px.png" alt="açık kaynak" />
+                <img src={require('../../assets/images/acikkaynak-logo-142px.png')} alt="açık kaynak" />
                 <p className="margin-top-15px">
                     Merhaba,<br />
                     <br />
-                    Bu organizasyon GitHub'ın kendi doğal araçları kullanılarak Türkçe konuşan kullanıcıların açık kaynaklı projelere katkı sağlamasına yardımcı olmak amacıyla oluşturulmuştur.<br />
+                    Bu organizasyon GitHub'ın kendi doğal araçları kullanılarak açık kaynak'a katkı sağlamak amacıyla oluşturulmuştur.<br />
                     <br />
-                    Amaçları arasında,
-                    <ul>
-                        <li>Açık kaynak felsefesini çeşitli kaynak/içerik destekleriyle kullanıcılara aktarmak,</li>
-                        <li>Açık kaynak projelere nasıl katkıda bulunabileceği konusunda kaynak/içerik sağlamak,</li>
-                        <li>Türkçe konuşan kullanıcıların teknik veya dil bariyerlerinin kaldırması için çalışmalar yapmak,</li>
-                        <li>Kullanıcıların kendi veya başka açık kaynak projelerini tanıtması için imkan sağlamak,</li>
-                        <li>Yeni veya halihazırda bulunan açık kaynak projelerine katılımcı bulmak,</li>
-                        <li>Birlikte çalışma ve katılım için insanlara bir platform sunmak,</li>
-                    </ul>
-                    bulunmaktadır.<br />
+                    Türkiyede geliştirilen açık kaynaklı çalışmalar için bir indeks oluşturarak, açık kaynak projelerin tanınması için imkanlar sağlamaya çalışıyoruz.<br />
+                    <br />
+                    Bunu aynı zamanda bir "networking" olarak düşünürsek; hem indeksimizde yer alan proje linkleri hem de slack grubumuz aracılığıyla açık kaynak projelerine katılımcı bulmak, bu insanlarla iletişime geçmek ve gerek fikir gerek çalışma bazında yardımlaşma için bir platform görevini üstleniyoruz.
+                    <br />
+                    Aynı zamanda; açık kaynak felsefesini çeşitli kaynak/içerik destekleriyle kullanıcılara aktarmak ve projelere nasıl katkıda bulunabileceği konusunda rehberlik etmek amaçlarımız arasında.<br />
                     <br />
                     Eğer proje ve birlikte çalışma deneyimini arttırmak isteyen, başka platformlarda geliştirme yapmak konusunda bir başlangıç arayan bir yazılımcı veya organizasyonsanız, veya yalnızca açık kaynak'a katılımcı olmak istiyorsanız inisiyatifimiz aracılığıyla kendinize katılım sağlayabileceğiniz, sizden yardım bekleyen bir proje bulabilirsiniz.<br />
                     <br />

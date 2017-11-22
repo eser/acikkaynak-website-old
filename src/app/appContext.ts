@@ -5,7 +5,6 @@ import { EventManager } from 'react-eventmanager/lib/esm';
 import { ContentService } from './modules/content/contentService';
 import { ProjectService } from './modules/projects/projectService';
 import { OrganizationService } from './modules/organizations/organizationService';
-import { SessionService } from './modules/shared/sessionService';
 
 const appContext = new ServiceManager();
 
@@ -15,7 +14,6 @@ appContext.set('eventManager', new EventManager(), ServiceLifetime.Singleton);
 appContext.set('contentService', () => new ContentService(), ServiceLifetime.Transient);
 appContext.set('projectService', () => new ProjectService(), ServiceLifetime.Transient);
 appContext.set('organizationService', () => new OrganizationService(), ServiceLifetime.Transient);
-appContext.set('sessionService', new SessionService(), ServiceLifetime.Singleton);
 
 export {
     appContext,

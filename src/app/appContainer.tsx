@@ -4,8 +4,6 @@ import * as PropTypes from 'prop-types';
 
 import { appContext } from './appContext';
 
-import { AuthorizationFilter } from './modules/shared/authorizationFilter';
-
 import { LayoutContainer } from './layouts/default/layoutContainer';
 import { HomeContainer } from './modules/home/homeContainer';
 import { ContentContainer } from './modules/content/contentContainer';
@@ -45,28 +43,11 @@ class AppContainer extends React.Component<AppContainerPropsInterface, AppContai
             return;
         }
 
-        const sessionService = appContext.get('sessionService');
-
-        await sessionService.init();
-
         this.setState({
             initialized: true,
         });
 
         // this.events.emit('appInit');
-    }
-
-    // TODO designed to be a shortcut, and will be removed on production...
-    setUser(user) {
-        appContext.get('eventManager').emit('userInformationHasChanged', user);
-    }
-
-    async logout() {
-        const sessionService = appContext.get('sessionService');
-
-        await sessionService.logout();
-
-        this.context.router.history.push('/login');
     }
 
     getChildContext() {
@@ -95,9 +76,6 @@ class AppContainer extends React.Component<AppContainerPropsInterface, AppContai
 
                 <Route path="/projects/" exact={true} strict={true} render={() => <LayoutContainer><ProjectsContainer /></LayoutContainer>} />
                 <Route path="/organizations/" exact={true} strict={true} render={() => <LayoutContainer><OrganizationsContainer /></LayoutContainer>} />
-
-                {/* <Route path="/login" exact={true} strict={true} render={() => <LoginContainer />} />
-                <Route path="/settings" exact={true} strict={true} render={() => <AuthorizationFilter><LayoutContainer><SettingsContainer /></LayoutContainer></AuthorizationFilter>} /> */}
 
                 <Route render={() => <NotFoundContainer />} />
             </Switch>
