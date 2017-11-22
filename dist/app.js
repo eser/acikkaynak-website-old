@@ -32463,32 +32463,49 @@ const conditionalView_1 = __webpack_require__(67);
 class ProjectListView extends React.Component {
     constructor(props, context) {
         super(props, context);
+        this.actionRefs = {
+            onFilterChanged: this.onFilterChanged.bind(this),
+        };
+        this.state = {
+            filter: '',
+        };
+    }
+    onFilterChanged(ev) {
+        this.setState({
+            filter: ev.target.value,
+        });
     }
     render() {
         const data = this.props.datasource;
-        return (React.createElement("div", null, Object.keys(data).map((category) => {
-            const categoryKey = `category.${encodeURIComponent(category)}`, categoryData = data[category];
-            return (React.createElement("div", { key: categoryKey },
-                React.createElement("h3", { key: `${categoryKey}.caption` },
-                    React.createElement("i", { className: "fa fa-folder-o fa-fw" }),
-                    category),
-                React.createElement("div", { key: `${categoryKey}.list` }, categoryData.map((project) => {
-                    const projectKey = `project.${encodeURIComponent(project.name)}`;
-                    return (React.createElement("div", { className: "project", key: `${categoryKey}.${projectKey}` },
-                        React.createElement("div", { className: "row" },
-                            React.createElement("div", { className: "col-md-8" },
-                                React.createElement("h4", null,
-                                    React.createElement("a", { key: `${categoryKey}.${projectKey}.link`, href: project.url }, project.name))),
-                            React.createElement("div", { className: "col-md-4 text-right" },
-                                React.createElement(conditionalView_1.ConditionalView, { test: project.needsContribution },
-                                    React.createElement("span", { className: "label label-success margin-right-8px" },
-                                        React.createElement("i", { className: "fa fa-code-fork", "aria-hidden": "true" }),
-                                        " Kat\u0131l\u0131m Bekliyor")),
-                                React.createElement("img", { src: `https://img.shields.io/github/stars/${project.githubUrl}.svg?style=social&amp;label=Star`, alt: `${project.name} stars` }))),
-                        React.createElement("p", null,
-                            React.createElement(ReactMarkdown, { source: project.content }))));
-                }))));
-        })));
+        const filter = this.state.filter.trim();
+        return (React.createElement("div", null,
+            React.createElement("input", { type: "text", className: "form-control", placeholder: "Filtreleme", value: this.state.filter, onChange: this.actionRefs.onFilterChanged }),
+            Object.keys(data).map((category) => {
+                const categoryKey = `category.${encodeURIComponent(category)}`, categoryData = data[category];
+                return (React.createElement("div", { key: categoryKey },
+                    React.createElement("h3", { key: `${categoryKey}.caption` },
+                        React.createElement("i", { className: "fa fa-folder-o fa-fw" }),
+                        category),
+                    React.createElement("div", { key: `${categoryKey}.list` }, categoryData.map((project) => {
+                        const projectKey = `project.${encodeURIComponent(project.name)}`;
+                        if (filter.length >= 3 && project.name.indexOf(filter) === -1 && project.content.indexOf(filter) === -1) {
+                            return null;
+                        }
+                        return (React.createElement("div", { className: "project", key: `${categoryKey}.${projectKey}` },
+                            React.createElement("div", { className: "row" },
+                                React.createElement("div", { className: "col-md-8" },
+                                    React.createElement("h4", null,
+                                        React.createElement("a", { key: `${categoryKey}.${projectKey}.link`, href: project.url }, project.name))),
+                                React.createElement("div", { className: "col-md-4 text-right" },
+                                    React.createElement(conditionalView_1.ConditionalView, { test: project.needsContribution },
+                                        React.createElement("span", { className: "label label-success margin-right-8px" },
+                                            React.createElement("i", { className: "fa fa-code-fork", "aria-hidden": "true" }),
+                                            " Kat\u0131l\u0131m Bekliyor")),
+                                    React.createElement("img", { src: `https://img.shields.io/github/stars/${project.githubUrl}.svg?style=social&amp;label=Star`, alt: `${project.name} stars` }))),
+                            React.createElement("p", null,
+                                React.createElement(ReactMarkdown, { source: project.content }))));
+                    }))));
+            })));
     }
 }
 exports.ProjectListView = ProjectListView;

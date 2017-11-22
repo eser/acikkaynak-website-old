@@ -10,18 +10,38 @@ interface ProjectListViewPropsInterface {
 }
 
 interface ProjectListViewStateInterface {
+    filter: string;
 }
 
 class ProjectListView extends React.Component<ProjectListViewPropsInterface, ProjectListViewStateInterface> {
+    actionRefs: { [key: string]: any };
+
     constructor(props: ProjectListViewPropsInterface, context: any) {
         super(props, context);
+
+        this.actionRefs = {
+            onFilterChanged: this.onFilterChanged.bind(this),
+        };
+
+        this.state = {
+            filter: '',
+        };
+    }
+
+    onFilterChanged(ev) {
+        this.setState({
+            filter: ev.target.value,
+        });
     }
 
     render(): any {
         const data = this.props.datasource;
 
+        const filter = this.state.filter.trim();
+
         return (
             <div>
+                <input type="text" className="form-control" placeholder="Filtreleme" value={this.state.filter} onChange={this.actionRefs.onFilterChanged} />
                 {Object.keys(data).map((category) => {
                     const categoryKey = `category.${encodeURIComponent(category)}`,
                         categoryData = data[category];
@@ -33,6 +53,10 @@ class ProjectListView extends React.Component<ProjectListViewPropsInterface, Pro
                             <div key={`${categoryKey}.list`}>
                                 {categoryData.map((project) => {
                                     const projectKey = `project.${encodeURIComponent(project.name)}`;
+
+                                    if (filter.length >= 3 && project.name.indexOf(filter) === -1 && project.content.indexOf(filter) === -1) {
+                                        return null;
+                                    }
 
                                     return (
                                         <div className="project" key={`${categoryKey}.${projectKey}`}>
