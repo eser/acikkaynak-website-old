@@ -9,6 +9,7 @@ import { HomeContainer } from './modules/home/homeContainer';
 import { ContentContainer } from './modules/content/contentContainer';
 import { ProjectsContainer } from './modules/projects/projectsContainer';
 import { OrganizationsContainer } from './modules/organizations/organizationsContainer';
+import { AboutContainer } from './modules/about/aboutContainer';
 import { NotFoundContainer } from './modules/notFound/notFoundContainer';
 
 import { LoadingView } from './modules/shared/loadingView';
@@ -76,6 +77,7 @@ class AppContainer extends React.Component<AppContainerPropsInterface, AppContai
 
                 <Route path="/projects/" exact={true} strict={true} render={() => <LayoutContainer><ProjectsContainer /></LayoutContainer>} />
                 <Route path="/organizations/" exact={true} strict={true} render={() => <LayoutContainer><OrganizationsContainer /></LayoutContainer>} />
+                <Route path="/about" exact={true} strict={true} render={() => <LayoutContainer><AboutContainer /></LayoutContainer>} />
 
                 <Route render={() => <NotFoundContainer />} />
             </Switch>

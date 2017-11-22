@@ -37,7 +37,7 @@ class ProjectListView extends React.Component<ProjectListViewPropsInterface, Pro
     render(): any {
         const data = this.props.datasource;
 
-        const filter = this.state.filter.trim();
+        const filter = this.state.filter.trim().toLocaleLowerCase();
 
         return (
             <div>
@@ -46,38 +46,50 @@ class ProjectListView extends React.Component<ProjectListViewPropsInterface, Pro
                     const categoryKey = `category.${encodeURIComponent(category)}`,
                         categoryData = data[category];
 
+                    const categoryHtml = categoryData.map((project) => {
+                        const projectKey = `project.${encodeURIComponent(project.name)}`;
+
+                        if (filter.length >= 3) {
+                            const pname = project.name.toLocaleLowerCase();
+                            const pcontent = project.content.toLocaleLowerCase();
+
+                            if (pname.indexOf(filter) === -1 && pcontent.indexOf(filter) === -1) {
+                                return null;
+                            }
+                        }
+
+                        return (
+                            <div className="project" key={`${categoryKey}.${projectKey}`}>
+                                <div className="row">
+                                    <div className="col-md-8">
+                                        <h4><a key={`${categoryKey}.${projectKey}.link`} href={project.url}>{project.name}</a></h4>
+                                    </div>
+                                    <div className="col-md-4 text-right">
+                                        <ConditionalView test={project.needsContribution}>
+                                            <span className="label label-success margin-right-8px"><i className="fa fa-code-fork" aria-hidden="true"></i> Katılım Bekliyor</span>
+                                        </ConditionalView>
+
+                                        <img src={`https://img.shields.io/github/stars/${project.githubUrl}.svg?style=social&amp;label=Star`} alt={`${project.name} stars`} />
+                                    </div>
+                                </div>
+                                <p>
+                                    <ReactMarkdown source={project.content} />
+                                </p>
+                            </div>
+                        );
+                    })
+                        .filter(x => x !== null);
+
+                    if (categoryHtml.length === 0) {
+                        return null;
+                    }
+
                     return (
                         <div key={categoryKey}>
                             <h3 key={`${categoryKey}.caption`}><i className="fa fa-folder-o fa-fw"></i>{category}</h3>
 
                             <div key={`${categoryKey}.list`}>
-                                {categoryData.map((project) => {
-                                    const projectKey = `project.${encodeURIComponent(project.name)}`;
-
-                                    if (filter.length >= 3 && project.name.indexOf(filter) === -1 && project.content.indexOf(filter) === -1) {
-                                        return null;
-                                    }
-
-                                    return (
-                                        <div className="project" key={`${categoryKey}.${projectKey}`}>
-                                            <div className="row">
-                                                <div className="col-md-8">
-                                                    <h4><a key={`${categoryKey}.${projectKey}.link`} href={project.url}>{project.name}</a></h4>
-                                                </div>
-                                                <div className="col-md-4 text-right">
-                                                    <ConditionalView test={project.needsContribution}>
-                                                        <span className="label label-success margin-right-8px"><i className="fa fa-code-fork" aria-hidden="true"></i> Katılım Bekliyor</span>
-                                                    </ConditionalView>
-
-                                                    <img src={`https://img.shields.io/github/stars/${project.githubUrl}.svg?style=social&amp;label=Star`} alt={`${project.name} stars`} />
-                                                </div>
-                                            </div>
-                                            <p>
-                                                <ReactMarkdown source={project.content} />
-                                            </p>
-                                        </div>
-                                    );
-                                })}
+                                {categoryHtml}
                             </div>
                         </div>
                     );

@@ -42,10 +42,11 @@ class LayoutContainer extends React.Component<LayoutContainerPropsInterface, Lay
             <div>
                 <div className="header">
                     <ul className="inner">
-                        <li className="link"><NavLink exact={true} to="/" activeClassName="active">Giriş</NavLink></li>
-                        <li className="link"><NavLink to="/content/" activeClassName="active">İçerik</NavLink></li>
+                        <li className="link"><NavLink exact={true} to="/" activeClassName="active">Haberler</NavLink></li>
+                        <li className="link"><NavLink to="/content/" activeClassName="active">Kaynaklar</NavLink></li>
                         <li className="link"><NavLink to="/projects/" activeClassName="active">Projeler</NavLink></li>
                         <li className="link"><NavLink to="/organizations/" activeClassName="active">Organizasyonlar</NavLink></li>
+                        <li className="link"><NavLink to="/about" activeClassName="active">Hakkımızda</NavLink></li>
                         <li className="buttons pull-right text-right">
                             <a href="https://s.acikkaynak.info/"><img src="https://s.acikkaynak.info/badge.svg" /></a>
                             <a href="https://github.com/acikkaynak/acikkaynak"><img src="https://img.shields.io/github/stars/acikkaynak/acikkaynak.svg?style=social&amp;label=Star" /></a>

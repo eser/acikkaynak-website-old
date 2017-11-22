@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { Link } from 'react-router-dom';
 
 interface HomeContainerPropsInterface {
 }
@@ -18,19 +19,9 @@ class HomeContainer extends React.Component<HomeContainerPropsInterface, HomeCon
                 <p className="margin-top-15px">
                     Merhaba,<br />
                     <br />
-                    Bu organizasyon GitHub'ın kendi doğal araçları kullanılarak açık kaynak'a katkı sağlamak amacıyla oluşturulmuştur.<br />
+                    Şu anda Graphcool ile altyapımızı oluşturmakla meşguluz. Şimdilik <Link to="/about">Hakkımızda</Link> bölümünden bizimle ilgili bilgi alabilir veya <Link to="/projects/">Projeler</Link> bağlantısı altından açık kaynak proje indeksimize ulaşabilirsiniz.<br />
                     <br />
-                    Türkiyede geliştirilen açık kaynaklı çalışmalar için bir indeks oluşturarak, açık kaynak projelerin tanınması için imkanlar sağlamaya çalışıyoruz.<br />
-                    <br />
-                    Bunu aynı zamanda bir "networking" olarak düşünürsek; hem indeksimizde yer alan proje linkleri hem de slack grubumuz aracılığıyla açık kaynak projelerine katılımcı bulmak, bu insanlarla iletişime geçmek ve gerek fikir gerek çalışma bazında yardımlaşma için bir platform görevini üstleniyoruz.
-                    <br />
-                    Aynı zamanda; açık kaynak felsefesini çeşitli kaynak/içerik destekleriyle kullanıcılara aktarmak ve projelere nasıl katkıda bulunabileceği konusunda rehberlik etmek amaçlarımız arasında.<br />
-                    <br />
-                    Eğer proje ve birlikte çalışma deneyimini arttırmak isteyen, başka platformlarda geliştirme yapmak konusunda bir başlangıç arayan bir yazılımcı veya organizasyonsanız, veya yalnızca açık kaynak'a katılımcı olmak istiyorsanız inisiyatifimiz aracılığıyla kendinize katılım sağlayabileceğiniz, sizden yardım bekleyen bir proje bulabilirsiniz.<br />
-                    <br />
-                    Daha da iyisi <a href="https://github.com/acikkaynak/acikkaynak">açık kaynak repository'si</a> altında "issue" oluşturarak, (örneğin) Bootstrap üzerinde istediğiniz bir özelliği diğer kişilere tanıtarak bunun dökümantasyonundan testlerinde kadar ilgilenecek bir ekip oluşturup Bootstrap'in istediği standartlarda bir Pull Request hazırlayabilirsiniz.<br />
-                    <br />
-                    Çevrenize de bizden bahsedin, Türkçe de konuşan bir açık kaynak toplulukta hep birlikte iletişimde ve girişimde olalım.
+                    Biz çalışırken açık kaynak dünyasından ve organizasyonumuzdan uzakta kalmamak için <a href="https://twitter.com/acikkaynakinfo">Twitter Hesabımız</a>ı takibe alabileceğiniz gibi, <a href="https://s.acikkaynak.info">Slack grubumuza katılmak için davetiye</a> talebinde de bulunabilirsiniz.
                 </p>
                 <p className="text-right text-muted">
                     <a href="http://acikkaynak.info/">açık kaynak inisiyatifi</a>
