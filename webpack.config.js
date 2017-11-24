@@ -6,6 +6,12 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 const extractTextCSS = new ExtractTextPlugin('[name]');
 
+const postcssConfig = {
+    autoprefixer: {
+        browsers: [ 'last 2 versions', '> 5%' ],
+    },
+};
+
 const config = {
     entry: {
         'app.js': './src/index.ts',
@@ -45,7 +51,10 @@ const config = {
                                 importLoaders: 1,
                             },
                         },
-                        'postcss-loader',
+                        {
+                            loader: 'postcss-loader',
+                            options: postcssConfig,
+                        },
                         'sass-loader',
                     ],
                 }),
@@ -61,7 +70,10 @@ const config = {
                                 importLoaders: 1,
                             },
                         },
-                        'postcss-loader',
+                        {
+                            loader: 'postcss-loader',
+                            options: postcssConfig,
+                        },
                     ],
                 }),
             },

@@ -8,6 +8,20 @@ const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 const extractTextCSS = new ExtractTextPlugin('[name]');
 
+const postcssConfig = {
+    autoprefixer: {
+        browsers: [ 'last 2 versions', '> 5%' ],
+    },
+    cssnano: {
+        preset: [
+            'default',
+            {
+                discardComments: { removeAll: true },
+            },
+        ],
+    },
+};
+
 const config = {
     entry: {
         'app.js': './src/index.ts',
@@ -47,7 +61,10 @@ const config = {
                                 importLoaders: 1,
                             },
                         },
-                        'postcss-loader',
+                        {
+                            loader: 'postcss-loader',
+                            options: postcssConfig,
+                        },
                         'sass-loader',
                     ],
                 }),
@@ -63,7 +80,10 @@ const config = {
                                 importLoaders: 1,
                             },
                         },
-                        'postcss-loader',
+                        {
+                            loader: 'postcss-loader',
+                            options: postcssConfig,
+                        },
                     ],
                 }),
             },
