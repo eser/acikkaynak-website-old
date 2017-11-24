@@ -17,8 +17,8 @@
   },
   "scripts": {
     "start": "cross-env NODE_ENV=development node ./server.js",
-    "bundle": "cross-env NODE_ENV=development webpack",
-    "bundle:prod": "cross-env NODE_ENV=production webpack"
+    "bundle": "webpack",
+    "bundle:prod": "cross-env NODE_ENV=production webpack --config ./webpack.config.prod.js"
   },
   "license": "Apache-2.0",
   "contributors": [

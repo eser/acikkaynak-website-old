@@ -3,12 +3,8 @@ const webpack = require('webpack');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const DotenvPlugin = require('webpack-dotenv-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 const extractTextCSS = new ExtractTextPlugin('[name]');
-
-const isProduction = (process.env.NODE_ENV === 'production');
 
 const config = {
     entry: {
@@ -93,9 +89,9 @@ const config = {
     },
 
     plugins: [
-        new webpack.EnvironmentPlugin([
-            'NODE_ENV',
-        ]),
+        new webpack.DefinePlugin({
+            'process.env.NODE_ENV': 'development',
+        }),
         new DotenvPlugin({
             sample: './.env.default',
             path: './.env',
@@ -118,27 +114,5 @@ const config = {
         extractTextCSS,
     ],
 };
-
-if (isProduction) {
-    config.plugins = [
-        ...config.plugins,
-        new BundleAnalyzerPlugin({
-            // Start analyzer HTTP-server.
-            // You can use this plugin to just generate Webpack Stats JSON file by setting
-            // `startAnalyzer` to `false` and `generateStatsFile` to `true`.
-            startAnalyzer: false,
-            // Analyzer HTTP-server port
-            analyzerPort: 8888,
-            // Automatically open analyzer page in default browser if `startAnalyzer` is `true`
-            openAnalyzer: true,
-            // If `true`, Webpack Stats JSON file will be generated in bundles output directory
-            generateStatsFile: true,
-            // Name of Webpack Stats JSON file that will be generated if `generateStatsFile`
-            // is `true`. Relative to bundles output directory.
-            statsFilename: 'stats.json',
-        }),
-        new UglifyJsPlugin(),
-    ];
-}
 
 module.exports = config;
