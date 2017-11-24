@@ -16,9 +16,9 @@
     "email": "eser@ozvataf.com"
   },
   "scripts": {
-    "start": "node ./server.js",
-    "bundle": "webpack",
-    "bundle:prod": "webpack -p"
+    "start": "cross-env NODE_ENV=development node ./server.js",
+    "bundle": "cross-env NODE_ENV=development webpack",
+    "bundle:prod": "cross-env NODE_ENV=production webpack"
   },
   "license": "Apache-2.0",
   "contributors": [
@@ -38,6 +38,7 @@
     "autoprefixer": "^7.1.2",
     "bootstrap-sass": "^3.3.7",
     "copy-webpack-plugin": "^4.0.1",
+    "cross-env": "^5.1.1",
     "css-loader": "^0.28.4",
     "cssnano": "^3.10.0",
     "es6-cachemanager": "^0.0.2",
@@ -57,6 +58,7 @@
     "path-browser": "^2.2.1",
     "postcss": "^6.0.9",
     "postcss-loader": "^2.0.6",
+    "postcss-modules": "^1.1.0",
     "prop-types": "^15.5.10",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
@@ -69,6 +71,7 @@
     "style-loader": "^0.18.2",
     "ts-loader": "^2.3.2",
     "typescript": "^2.4.2",
+    "uglifyjs-webpack-plugin": "^1.1.1",
     "webpack": "^3.5.3",
     "webpack-bundle-analyzer": "^2.9.0",
     "webpack-dev-middleware": "^1.12.0",

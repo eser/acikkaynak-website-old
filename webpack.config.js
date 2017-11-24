@@ -4,12 +4,13 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const DotenvPlugin = require('webpack-dotenv-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 const extractTextCSS = new ExtractTextPlugin('[name]');
 
 const isProduction = (process.env.NODE_ENV === 'production');
 
-module.exports = {
+const config = {
     entry: {
         'app.js': './src/index.ts',
         'app-styles.css': './src/app/assets/styles.scss',
@@ -115,6 +116,12 @@ module.exports = {
             'window.jQuery': 'jquery',
         }),
         extractTextCSS,
+    ],
+};
+
+if (isProduction) {
+    config.plugins = [
+        ...config.plugins,
         new BundleAnalyzerPlugin({
             // Start analyzer HTTP-server.
             // You can use this plugin to just generate Webpack Stats JSON file by setting
@@ -130,5 +137,8 @@ module.exports = {
             // is `true`. Relative to bundles output directory.
             statsFilename: 'stats.json',
         }),
-    ],
-};
+        new UglifyJsPlugin(),
+    ];
+}
+
+module.exports = config;

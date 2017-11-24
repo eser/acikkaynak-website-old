@@ -8,7 +8,7 @@ module.exports = (ctx) => {
         generateScopedName: '[name]__[local]___[hash:base64:5]',
         getJSON: (cssFileName, json) => {
             const cssName = path.basename(cssFileName, '.css');
-            const jsonFileName = path.resolve(`./dist/styles/${cssName}.json`);
+            const jsonFileName = path.resolve(`./dist/${cssName}.json`);
 
             fs.writeFileSync(jsonFileName, JSON.stringify(json));
         },
