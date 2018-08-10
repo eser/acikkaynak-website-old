@@ -32,11 +32,11 @@ Use `jsmake` command in project folder to execute tasks defined in `makefile.js`
 
 | Directory                                          | Description                                                  |
 |----------------------------------------------------|--------------------------------------------------------------|
-| `/src/`                                            | Application Manager                                          |
+| `/src/`                                            | Bootstrap                                                    |
 | `/src/app/`                                        | Main Application                                             |
 | `/src/app/assets/`                                 | - Assets (images, fonts, stylesheets, etc.)                  |
 | `/src/app/layouts/`                                | - Layouts / Templates                                        |
-| `/src/app/modules/`                                | - Application modules / blocks                               |
+| `/src/app/pages/`                                  | - Pages                                                      |
 
 
 ## Todo List

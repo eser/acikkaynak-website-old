@@ -1,27 +1,38 @@
+/* eslint-env node */
 const path = require('path');
 const webpack = require('webpack');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const DotenvPlugin = require('webpack-dotenv-plugin');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+// const CleanWebpackPlugin = require('clean-webpack-plugin');
 
-const extractTextCSS = new ExtractTextPlugin('[name]');
+const dirRoot = __dirname;
+
+const envValue = process.env.NODE_ENV || 'development';
+const isProduction = (envValue === 'production');
 
 const postcssConfig = {
     autoprefixer: {
         browsers: [ 'last 2 versions', '> 5%' ],
     },
+    sourceMap: true,
 };
 
 const config = {
+    target: 'web',
+    mode: isProduction ? 'production' : 'development',
+
     entry: {
-        'app.js': './src/index.ts',
+        'app': './src/index.ts',
         'app-styles.css': './src/app/assets/styles.scss',
         'app-fonts.css': './src/app/assets/fonts.scss',
     },
 
     output: {
-        path: path.resolve(__dirname, 'dist'),
-        filename: '[name]',
+        path: path.join(dirRoot, 'dist'),
+        filename: '[name].js',
+        chunkFilename: '[id].[chunkhash].js',
         publicPath: '/',
     },
 
@@ -34,7 +45,6 @@ const config = {
                         loader: 'ts-loader',
                         options: {
                             transpileOnly: true,
-                            entryFileIsJs: true,
                         },
                     },
                 ],
@@ -42,40 +52,43 @@ const config = {
             },
             {
                 test: /\.scss$/,
-                use: extractTextCSS.extract({
-                    fallback: 'style-loader',
-                    use: [
-                        {
-                            loader: 'css-loader',
-                            options: {
-                                importLoaders: 1,
-                            },
+                use: [
+                    MiniCssExtractPlugin.loader,
+                    {
+                        loader: 'css-loader',
+                        options: {
+                            importLoaders: 2,
+                            sourceMap: true,
                         },
-                        {
-                            loader: 'postcss-loader',
-                            options: postcssConfig,
+                    },
+                    {
+                        loader: 'postcss-loader',
+                        options: postcssConfig,
+                    },
+                    {
+                        loader: 'sass-loader',
+                        options: {
+                            sourceMap: true,
                         },
-                        'sass-loader',
-                    ],
-                }),
+                    },
+                ],
             },
             {
                 test: /\.css$/,
-                use: extractTextCSS.extract({
-                    fallback: 'style-loader',
-                    use: [
-                        {
-                            loader: 'css-loader',
-                            options: {
-                                importLoaders: 1,
-                            },
+                use: [
+                    MiniCssExtractPlugin.loader,
+                    {
+                        loader: 'css-loader',
+                        options: {
+                            importLoaders: 2,
+                            sourceMap: true,
                         },
-                        {
-                            loader: 'postcss-loader',
-                            options: postcssConfig,
-                        },
-                    ],
-                }),
+                    },
+                    {
+                        loader: 'postcss-loader',
+                        options: postcssConfig,
+                    },
+                ],
             },
             {
                 test: /\.(eot|woff2?|ttf|jpe?g|png|gif|svg|ico)([\?]?.*)$/,
@@ -95,14 +108,20 @@ const config = {
     resolve: {
         extensions: [ '.ts', '.tsx', '.js', '.jsx' ],
         modules: [
-            path.join(__dirname, 'src'),
-            path.join(__dirname, 'node_modules'),
+            path.join(dirRoot, 'src'),
+            path.join(dirRoot, 'node_modules'),
         ],
     },
 
     plugins: [
+        // new CleanWebpackPlugin(
+        //     [ 'dist' ],
+        //     { root: dirRoot },
+        // ),
         new webpack.DefinePlugin({
-            'process.env.NODE_ENV': '\'development\'',
+            'process.env': {
+                NODE_ENV: JSON.stringify(envValue),
+            },
         }),
         new DotenvPlugin({
             sample: './.env.default',
@@ -118,13 +137,36 @@ const config = {
             { from: './src/tile-wide.png', to: './' },
             { from: './src/tile.png', to: './' },
         ]),
-        new webpack.ProvidePlugin({
-            $: 'jquery',
-            jQuery: 'jquery',
-            'window.jQuery': 'jquery',
+        new webpack.NamedModulesPlugin(),
+        new webpack.HotModuleReplacementPlugin(),
+        new MiniCssExtractPlugin({
+            filename: '[name]',
+            chunkFilename: '[id]',
         }),
-        extractTextCSS,
+        new BundleAnalyzerPlugin({
+            // Start analyzer HTTP-server.
+            // You can use this plugin to just generate Webpack Stats JSON file by setting
+            // `startAnalyzer` to `false` and `generateStatsFile` to `true`.
+            startAnalyzer: false,
+            // Analyzer HTTP-server port
+            analyzerPort: 8888,
+            // Automatically open analyzer page in default browser if `startAnalyzer` is `true`
+            openAnalyzer: true,
+            // If `true`, Webpack Stats JSON file will be generated in bundles output directory
+            generateStatsFile: true,
+            // Name of Webpack Stats JSON file that will be generated if `generateStatsFile`
+            // is `true`. Relative to bundles output directory.
+            statsFilename: 'stats.json',
+        }),
     ],
+
+    stats: {
+        children: false,
+        colors: true,
+        entrypoints: true,
+        env: true,
+        modules: false,
+    },
 };
 
 module.exports = config;

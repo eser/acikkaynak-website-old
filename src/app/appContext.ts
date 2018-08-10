@@ -1,10 +1,11 @@
-import { ServiceLifetime, ServiceManager } from 'servicemanager/lib/esm';
+import { ServiceLifetime, ServiceManager } from 'servicemanager';
+
 import { CacheManager } from 'es6-cachemanager/lib/esm';
 import { EventManager } from 'react-eventmanager/lib/esm';
 
-import { ContentService } from './modules/content/contentService';
-import { ProjectService } from './modules/projects/projectService';
-import { OrganizationService } from './modules/organizations/organizationService';
+import ContentService from './pages/content/contentService';
+import ProjectService from './pages/projects/projectService';
+import OrganizationService from './pages/organizations/organizationService';
 
 const appContext = new ServiceManager();
 
@@ -16,7 +17,5 @@ appContext.set('projectService', () => new ProjectService(), ServiceLifetime.Tra
 appContext.set('organizationService', () => new OrganizationService(), ServiceLifetime.Transient);
 
 export {
-    appContext,
+    appContext as default,
 };
-
-export default appContext;

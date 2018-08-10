@@ -3,14 +3,14 @@ declare var global: any;
 import * as React from 'react';
 import { NavLink } from 'react-router-dom';
 
-interface LayoutContainerPropsInterface {
+interface LayoutContainerProps {
 }
 
-interface LayoutContainerStateInterface {
+interface LayoutContainerState {
 }
 
-class LayoutContainer extends React.Component<LayoutContainerPropsInterface, LayoutContainerStateInterface> {
-    constructor(props: LayoutContainerPropsInterface, context: any) {
+class LayoutContainer extends React.Component<LayoutContainerProps, LayoutContainerState> {
+    constructor(props: LayoutContainerProps, context: any) {
         super(props, context);
 
         this.state = {};
@@ -37,37 +37,60 @@ class LayoutContainer extends React.Component<LayoutContainerPropsInterface, Lay
     // the JSX syntax is quite intuitive but check out
     // https://facebook.github.io/react/docs/jsx-in-depth.html
     // if you need additional help
-    render(): any {
+    render(): JSX.Element {
         return (
-            <div>
-                <div className="header">
-                    <ul className="inner">
-                        <li className="link"><NavLink exact={true} to="/" activeClassName="active">Haberler</NavLink></li>
-                        <li className="link"><NavLink to="/content/" activeClassName="active">Kaynaklar</NavLink></li>
-                        <li className="link"><NavLink to="/projects/" activeClassName="active">Projeler</NavLink></li>
-                        <li className="link"><NavLink to="/organizations/" activeClassName="active">Organizasyonlar</NavLink></li>
-                        <li className="link"><NavLink to="/about" activeClassName="active">Hakkımızda</NavLink></li>
-                        <li className="buttons pull-right text-right">
-                            <a href="https://s.acikkaynak.info/"><img src="https://s.acikkaynak.info/badge.svg" /></a>
-                            <a href="https://github.com/acikkaynak/acikkaynak"><img src="https://img.shields.io/github/stars/acikkaynak/acikkaynak.svg?style=social&amp;label=Star" /></a>
-                        </li>
-                    </ul>
-                </div>
-
-                <div className="content">
-                    <div className="inner" onClick={this.clickHandler.bind(this)}>
-                        {this.props.children}
+            <div className="hero is-fullheight">
+                <header className="header hero-head">
+                    <nav className="navbar is-transparent" role="navigation" aria-label="main navigation">
+                        <div className="container">
+                            <div className="navbar-brand">
+                                {/* <div className="navbar-item">
+                                    ts-spa-boilerplate
+                                </div> */}
+                                <span className="navbar-burger burger" role="button" aria-label="menu" aria-expanded="false" data-target="navbarMenu">
+                                    <span aria-hidden="true"></span>
+                                    <span aria-hidden="true"></span>
+                                    <span aria-hidden="true"></span>
+                                </span>
+                            </div>
+                            <div id="navbarMenu" className="navbar-menu">
+                                <div className="navbar-start">
+                                    <NavLink exact={true} to="/" className="navbar-item" activeClassName="is-active">Haberler</NavLink>
+                                    <NavLink to="/content/" className="navbar-item" activeClassName="is-active">Kaynaklar</NavLink>
+                                    <NavLink to="/projects/" className="navbar-item" activeClassName="is-active">Projeler</NavLink>
+                                    <NavLink to="/organizations/" className="navbar-item" activeClassName="is-active">Organizasyonlar</NavLink>
+                                    <NavLink to="/about" className="navbar-item" activeClassName="is-active">Hakkımızda</NavLink>
+                                </div>
+                                <div className="navbar-end">
+                                    <a className="navbar-item" href="https://acikkaynak-slack-inviter.herokuapp.com/"><img src="https://acikkaynak-slack-inviter.herokuapp.com/badge.svg" /></a>
+                                    <a className="navbar-item" href="https://github.com/acikkaynak/acikkaynak"><img src="https://img.shields.io/github/stars/acikkaynak/acikkaynak.svg?style=social&amp;label=Star" /></a>
+                                </div>
+                            </div>
+                        </div>
+                    </nav>
+                </header>
+                <main className="section hero-body">
+                    <div className="container">
+                        <div className="content" onClick={this.clickHandler.bind(this)}>
+                            {this.props.children}
+                        </div>
                     </div>
-                </div>
+                </main>
+                {/* <footer className="footer hero-foot">
+                    <div className="container">
+                        <div className="content has-text-centered">
+                            TypeScript SPA Boilerplate is a front-end development stack for starting with a structured, scaleable and adaptable basecode.<br />
+                            Visit <a href="https://github.com/eserozvataf/ts-spa-boilerplate">GitHub page</a> for details. Apache License, Version 2.0
+                        </div>
+                    </div>
+                </footer> */}
             </div>
         );
     }
 }
 
 export {
-    LayoutContainerPropsInterface,
-    LayoutContainerStateInterface,
-    LayoutContainer,
+    LayoutContainer as default,
+    LayoutContainerProps,
+    LayoutContainerState,
 };
-
-export default LayoutContainer;

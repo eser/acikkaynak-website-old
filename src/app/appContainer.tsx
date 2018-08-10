@@ -1,37 +1,25 @@
 import * as React from 'react';
 import { Route, Switch } from 'react-router-dom';
-import * as PropTypes from 'prop-types';
 
-import { appContext } from './appContext';
+import LayoutContainer from './layouts/default/layoutContainer';
+import HomeContainer from './pages/home/homeContainer';
+import ContentContainer from './pages/content/contentContainer';
+import ProjectsContainer from './pages/projects/projectsContainer';
+import OrganizationsContainer from './pages/organizations/organizationsContainer';
+import AboutContainer from './pages/about/aboutContainer';
+import NotFoundContainer from './pages/notFound/notFoundContainer';
 
-import { LayoutContainer } from './layouts/default/layoutContainer';
-import { HomeContainer } from './modules/home/homeContainer';
-import { ContentContainer } from './modules/content/contentContainer';
-import { ProjectsContainer } from './modules/projects/projectsContainer';
-import { OrganizationsContainer } from './modules/organizations/organizationsContainer';
-import { AboutContainer } from './modules/about/aboutContainer';
-import { NotFoundContainer } from './modules/notFound/notFoundContainer';
+import LoadingView from './pages/shared/loadingView';
 
-import { LoadingView } from './modules/shared/loadingView';
-
-interface AppContainerPropsInterface {
+interface AppContainerProps {
 }
 
-interface AppContainerStateInterface {
+interface AppContainerState {
     initialized: boolean;
 }
 
-class AppContainer extends React.Component<AppContainerPropsInterface, AppContainerStateInterface> {
-    static contextTypes = {
-        router: PropTypes.object,
-    };
-
-    static childContextTypes = {
-        appContainer: PropTypes.object,
-        appContext: PropTypes.object,
-    };
-
-    constructor(props: AppContainerPropsInterface, context: any) {
+class AppContainer extends React.Component<AppContainerProps, AppContainerState> {
+    constructor(props: AppContainerProps, context: any) {
         super(props, context);
 
         this.state = {
@@ -39,7 +27,7 @@ class AppContainer extends React.Component<AppContainerPropsInterface, AppContai
         };
     }
 
-    async init() {
+    async init(): Promise<void> {
         if (this.state.initialized) {
             return;
         }
@@ -51,18 +39,11 @@ class AppContainer extends React.Component<AppContainerPropsInterface, AppContai
         // this.events.emit('appInit');
     }
 
-    getChildContext() {
-        return {
-            appContainer: this,
-            appContext: appContext,
-        };
-    }
-
-    componentWillMount() {
+    componentDidMount(): void {
         this.init();
     }
 
-    render() {
+    render(): JSX.Element {
         if (this.state === null || !this.state.initialized) {
             return (
                 <LoadingView />
@@ -86,7 +67,5 @@ class AppContainer extends React.Component<AppContainerPropsInterface, AppContai
 }
 
 export {
-    AppContainer,
+    AppContainer as default,
 };
-
-export default AppContainer;

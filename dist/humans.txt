@@ -13,5 +13,4 @@
 
     CSS3, HTML5, JavaScript
     TypeScript, jsmake
-    React, jQuery, Bootstrap
-    Redux
+    React, Bulma
