@@ -51,6 +51,7 @@ module.exports = (ctx) => {
             'postcss-modules': isProduction ? configPostCssModules : false,
             autoprefixer: isProduction ? configAutoprefixer : false,
             cssnano: isProduction ? configCssNano : false,
+            'postcss-nesting': true,
         },
     };
 };
