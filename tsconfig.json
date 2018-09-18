@@ -17,10 +17,16 @@
         "rootDirs": [
             "./src/"
         ],
-        "outDir": "./dist/",
+        "outDir": "./dist/compiled/",
         "lib": [
             "es2015"
-        ]
+        ],
+        "baseUrl": ".",
+        "paths": {
+            "@/*": [
+                "./src/*"
+            ]
+        }
     },
     "exclude": [
     ]

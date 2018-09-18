@@ -13,7 +13,7 @@ class ConditionalView extends React.Component<ConditionalViewProps, ConditionalV
         super(props, context);
     }
 
-    render(): JSX.Element {
+    render(): JSX.Element | null {
         if (!this.props.test) {
             return null;
         }

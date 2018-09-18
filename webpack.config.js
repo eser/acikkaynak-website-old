@@ -25,7 +25,7 @@ const config = (env, argv) => {
         context: dirRoot,
 
         entry: {
-            'app': isProduction ? './src/index.ts' : [ hotMiddlewareScript, './src/index.ts' ],
+            'app': isProduction ? './src/index.tsx' : [ hotMiddlewareScript, './src/index.tsx' ],
         },
 
         output: {

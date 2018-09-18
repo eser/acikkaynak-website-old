@@ -1,39 +1,27 @@
 import * as React from 'react';
-import * as ReactDOM from 'react-dom';
-import * as ReactDOMServer from 'react-dom/server';
-import { StaticRouter } from 'react-router-dom';
 
 import AppStackContainer from './appStackContainer';
 
 class AppStack {
-    router: any;
     appClasses: { [key: string]: any };
 
-    constructor(router, appClasses) {
-        this.router = router;
+    constructor(appClasses: { [key: string]: any } = []) {
         this.appClasses = appClasses;
     }
 
-    renderToDOM(targetElement, fullRender = true): void {
-        const renderMethod = fullRender ? ReactDOM.render : ReactDOM.hydrate;
+    add(path: string, appClass: any): AppStack {
+        this.appClasses[path] = appClass;
 
-        renderMethod(
-            React.createElement(
-                this.router.component,
-                this.router.props,
-                <AppStackContainer appStack={this} />,
-            ),
-            targetElement,
-        );
+        return this;
     }
 
-    renderToString(path): string {
-        const context = {};
+    wrapWith(wrapper: (children: React.ReactFragment) => JSX.Element): JSX.Element {
+        return wrapper(this.render());
+    }
 
-        return ReactDOMServer.renderToString(
-            <StaticRouter location={path} context={context}>
-                <AppStackContainer appStack={this} />
-            </StaticRouter>
+    render(): JSX.Element {
+        return (
+            <AppStackContainer appStack={this} />
         );
     }
 }
