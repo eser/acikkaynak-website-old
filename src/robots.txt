@@ -1,5 +1,0 @@
-# Rule 1
-User-agent: *
-Allow: /
-
-# Sitemap: http://acikkaynak.info/sitemap.xml
