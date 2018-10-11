@@ -41,9 +41,9 @@ class ProjectListView extends React.Component<ProjectListViewProps, ProjectListV
 
         return (
             <React.Fragment>
-                <p>
+                <div>
                     <input type="text" className="input" placeholder="Filtreleme" value={this.state.filter} onChange={this.actionRefs.onFilterChanged} />
-                </p>
+                </div>
 
                 {Object.keys(data).map((category) => {
                     const categoryKey = `category.${encodeURIComponent(category)}`,
@@ -62,18 +62,18 @@ class ProjectListView extends React.Component<ProjectListViewProps, ProjectListV
                         }
 
                         return (
-                            <p className="project" key={`${categoryKey}.${projectKey}`}>
+                            <div className="project" key={`${categoryKey}.${projectKey}`}>
                                 <div className="card">
                                     <a key={`${categoryKey}.${projectKey}.link`} href={project.url}>
                                         <header className="card-header">
-                                            <p className="card-header-title">
+                                            <div className="card-header-title">
                                                 <div className="column is-three-fifths">
                                                     {project.name}
                                                 </div>
                                                 <div className="column has-text-right">
                                                     <img src={`https://img.shields.io/github/stars/${project.githubUrl}.svg?style=social&amp;label=Star`} alt={`${project.name} stars`} />
                                                 </div>
-                                            </p>
+                                            </div>
                                         </header>
                                     </a>
                                     <div className="card-content">
@@ -92,7 +92,7 @@ class ProjectListView extends React.Component<ProjectListViewProps, ProjectListV
                                         </div>
                                     </footer>
                                 </div>
-                            </p>
+                            </div>
                         );
                     })
                         .filter(x => x !== null);
@@ -102,7 +102,7 @@ class ProjectListView extends React.Component<ProjectListViewProps, ProjectListV
                     }
 
                     return (
-                        <div key={categoryKey}>
+                        <div className="margin-top-15px" key={categoryKey}>
                             <h2 className="title is-spaced" key={`${categoryKey}.caption`}><i className="fa fa-folder-o fa-fw"></i>{category}</h2>
 
                             <div key={`${categoryKey}.list`}>

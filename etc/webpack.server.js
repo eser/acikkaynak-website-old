@@ -4,10 +4,9 @@ const { configWrapper, commonConfig } = require('./webpack.common');
 const path = require('path');
 const webpack = require('webpack');
 const nodeExternals = require('webpack-node-externals');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 const serverConfig = configWrapper((vars) => {
-    const common = commonConfig(vars.env, vars.argv);
+    const common = commonConfig('server')(vars.env, vars.argv);
 
     return {
         ...common,
@@ -16,38 +15,56 @@ const serverConfig = configWrapper((vars) => {
         externals: [ nodeExternals() ],
 
         entry: {
-            'base-vendor': [
-                'es6-cachemanager',
-                'react',
-                'react-eventmanager',
-                'react-intl',
-                'react-markdown',
-                'react-router',
-                'servicemanager'
-            ],
-            'base': './src/core/index.server.tsx',
+            'server': [ './src/core/index.server.tsx' ],
         },
 
         output: {
             ...common.output,
-            path: path.join(vars.dirRoot, 'dist/server'),
+            // library: 'app',
             libraryExport: 'default',
             libraryTarget: 'commonjs2',
         },
 
+        module: {
+            rules: [
+                ...common.module.rules,
+                {
+                    test: /\.scss$/,
+                    use: [
+                        {
+                            loader: 'css-loader/locals',
+                        },
+                    ],
+                },
+                {
+                    test: /\.css$/,
+                    use: [
+                        {
+                            loader: 'css-loader/locals',
+                        },
+                    ],
+                },
+                {
+                    test: /\.(eot|ttf|jpe?g|png|gif|svg|ico)([\?]?.*)$/,
+                    use: [
+                        {
+                            loader: 'file-loader?emitFile=false'
+                        },
+                    ],
+                },
+                {
+                    test: /\.(woff2?)([\?]?.*)$/,
+                    use: [
+                        {
+                            loader: 'url-loader?emitFile=false',
+                        },
+                    ],
+                },
+            ],
+        },
+
         plugins: [
             ...common.plugins,
-            new CopyWebpackPlugin([
-                { from: './src/base/index.html', to: './' },
-                { from: './src/base/apple-touch-icon-precomposed.png', to: './' },
-                { from: './src/base/browserconfig.xml', to: './' },
-                { from: './src/base/crossdomain.xml', to: './' },
-                { from: './src/base/favicon.ico', to: './' },
-                { from: './src/base/humans.txt', to: './' },
-                { from: './src/base/robots.txt', to: './' },
-                { from: './src/base/tile-wide.png', to: './' },
-                { from: './src/base/tile.png', to: './' },
-            ]),
             new webpack.NamedModulesPlugin(),
         ],
     };

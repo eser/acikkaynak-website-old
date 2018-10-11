@@ -17,19 +17,19 @@ class HomeContainer extends React.Component<HomeContainerProps, HomeContainerSta
     render(): JSX.Element {
         return (
             <React.Fragment>
-                <p>
+                <div>
                     <img src={logo} alt="açık kaynak" />
-                </p>
-                <p>
+                </div>
+                <div className="margin-top-15px">
                     Merhaba,<br />
                     <br />
                     Şu anda Graphcool ile altyapımızı oluşturmakla meşguluz. Şimdilik <Link to="/about">Hakkımızda</Link> bölümünden bizimle ilgili bilgi alabilir veya <Link to="/projects/">Projeler</Link> bağlantısı altından açık kaynak proje indeksimize ulaşabilirsiniz.<br />
                     <br />
                     Biz çalışırken açık kaynak dünyasından ve organizasyonumuzdan uzakta kalmamak için <a href="https://twitter.com/acikkaynakinfo">Twitter Hesabımız</a>ı takibe alabileceğiniz gibi, <a href="https://acikkaynak-slack-inviter.herokuapp.com/">Slack grubumuza katılmak için davetiye</a> talebinde de bulunabilirsiniz.
-                </p>
-                <p className="has-text-right">
+                </div>
+                <div className="margin-top-15px has-text-right">
                     <a href="http://acikkaynak.info/">açık kaynak inisiyatifi</a>
-                </p>
+                </div>
             </React.Fragment>
         );
     }

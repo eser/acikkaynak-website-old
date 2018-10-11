@@ -4,11 +4,10 @@ const { configWrapper, commonConfig } = require('./webpack.common');
 const path = require('path');
 const webpack = require('webpack');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
-
-const hotMiddlewareScript = 'webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000'; // &reload=true
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 const browserConfig = configWrapper((vars) => {
-    const common = commonConfig(vars.env, vars.argv);
+    const common = commonConfig('browser')(vars.env, vars.argv);
 
     let optionalPlugins = [];
 
@@ -25,25 +24,101 @@ const browserConfig = configWrapper((vars) => {
         target: 'web',
 
         entry: {
-            'base-vendor': [
-                'es6-cachemanager',
-                'react',
-                'react-eventmanager',
-                'react-intl',
-                'react-markdown',
-                'react-router',
-                'servicemanager'
-            ],
-            'base': vars.isProduction ? [ './src/core/index.browser.tsx' ] : [ hotMiddlewareScript, './src/core/index.browser.tsx' ],
+            'browser': [ './src/core/index.browser.tsx' ],
         },
 
         output: {
             ...common.output,
-            path: path.join(vars.dirRoot, 'dist/browser'),
+        },
+
+        devServer: {
+            historyApiFallback: true,
+            open: true,
+        },
+
+        module: {
+            rules: [
+                ...common.module.rules,
+                {
+                    test: /\.scss$/,
+                    use: [
+                        {
+                            loader: 'style-loader',
+                        },
+                        MiniCssExtractPlugin.loader,
+                        {
+                            loader: 'css-loader',
+                            options: {
+                                importLoaders: 2,
+                                sourceMap: true,
+                            },
+                        },
+                        {
+                            loader: 'postcss-loader',
+                            options: {
+                                sourceMap: true,
+                            },
+                        },
+                        {
+                            loader: 'sass-loader',
+                            options: {
+                                sourceMap: true,
+                            },
+                        },
+                    ],
+                },
+                {
+                    test: /\.css$/,
+                    use: [
+                        {
+                            loader: 'style-loader',
+                        },
+                        MiniCssExtractPlugin.loader,
+                        {
+                            loader: 'css-loader',
+                            options: {
+                                importLoaders: 2,
+                                sourceMap: true,
+                            },
+                        },
+                        {
+                            loader: 'postcss-loader',
+                            options: {
+                                sourceMap: true,
+                            },
+                        },
+                    ],
+                },
+                {
+                    test: /\.(eot|ttf|jpe?g|png|gif|svg|ico)([\?]?.*)$/,
+                    use: [
+                        {
+                            loader: 'file-loader',
+                            options: {
+                                name: '[name].[ext]',
+                                outputPath: 'assets/',
+                            },
+                        },
+                    ],
+                },
+                {
+                    test: /\.(woff2?)([\?]?.*)$/,
+                    use: [
+                        {
+                            loader: 'url-loader',
+                        },
+                    ],
+                },
+            ],
         },
 
         plugins: [
             ...common.plugins,
+            new MiniCssExtractPlugin({
+                filename: '[name].css',
+                // chunkFilename: '[id].[chunkhash].css',
+                chunkFilename: '[id].css',
+            }),
             new CopyWebpackPlugin([
                 { from: './src/base/index.html', to: './' },
                 { from: './src/base/apple-touch-icon-precomposed.png', to: './' },

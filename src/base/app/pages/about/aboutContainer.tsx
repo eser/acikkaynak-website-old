@@ -16,7 +16,7 @@ class AboutContainer extends React.Component<AboutContainerProps, AboutContainer
             <React.Fragment>
                 <h1>Hakkımızda</h1>
 
-                <p className="margin-top-15px">
+                <div className="margin-top-15px">
                     Bu organizasyon GitHub'ın kendi doğal araçları kullanılarak açık kaynak'a katkı sağlamak amacıyla oluşturulmuştur.<br />
                     <br />
                     Türkiye'de geliştirilen açık kaynaklı çalışmalar için bir indeks oluşturarak, açık kaynak projelerin tanınması için imkanlar sağlamaya çalışıyoruz.<br />
@@ -28,11 +28,11 @@ class AboutContainer extends React.Component<AboutContainerProps, AboutContainer
                     Eğer proje ve birlikte çalışma deneyimini arttırmak isteyen, başka platformlarda geliştirme yapmak konusunda bir başlangıç arayan bir yazılımcı veya yazılımcı grubuysanız, burada kolaylıkla sizden yardım bekleyen bir proje bulabilirsiniz.<br />
                     <br />
                     Çevrenize de bizden bahsedin, açık kaynak toplulukta hep birlikte iletişimde ve girişimde olalım.
-                </p>
+                </div>
 
-                <p className="has-text-right">
+                <div className="has-text-right">
                     <a href="http://acikkaynak.info/">açık kaynak inisiyatifi</a>
-                </p>
+                </div>
             </React.Fragment>
         );
     }

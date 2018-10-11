@@ -3,6 +3,7 @@ const path = require('path');
 const webpack = require('webpack');
 const DotenvPlugin = require('webpack-dotenv-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const AsyncChunkNames = require('webpack-async-chunk-names-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 const configWrapper = (targetConfigFunction) => (env, argv) => {
@@ -20,7 +21,7 @@ const configWrapper = (targetConfigFunction) => (env, argv) => {
     });
 };
 
-const commonConfig = configWrapper((vars) => {
+const commonConfig = (name) => configWrapper((vars) => {
     return {
         mode: vars.isProduction ? 'production' : 'development',
         devtool: vars.isProduction ? 'source-map' : 'cheap-module-eval-source-map',
@@ -33,6 +34,37 @@ const commonConfig = configWrapper((vars) => {
             publicPath: '/',
             // hotUpdateChunkFilename: 'hot/hot-update.js',
             // hotUpdateMainFilename: 'hot/hot-update.json',
+            path: path.join(vars.dirRoot, 'dist'),
+        },
+
+        optimization: {
+            splitChunks: {
+                cacheGroups: {
+                    default: false,
+                    vendors: false,
+
+                    // vendor chunk
+                    vendor: {
+                        // name of the chunk
+                        name: `${name}-vendors`,
+                        // async + async chunks
+                        chunks: 'all',
+                        // import file path containing node_modules
+                        test: /node_modules/,
+                        // priority
+                        priority: 20,
+                    },
+                    // common chunk
+                    common: {
+                        name: `${name}-common`,
+                        minChunks: 2,
+                        chunks: 'async',
+                        priority: 10,
+                        reuseExistingChunk: true,
+                        enforce: true,
+                    },
+                },
+            },
         },
 
         module: {
@@ -48,68 +80,6 @@ const commonConfig = configWrapper((vars) => {
                         },
                     ],
                     exclude: /node_modules/,
-                },
-                {
-                    test: /\.scss$/,
-                    use: [
-                        {
-                            loader: 'style-loader',
-                        },
-                        MiniCssExtractPlugin.loader,
-                        {
-                            loader: 'css-loader',
-                            options: {
-                                importLoaders: 2,
-                                sourceMap: true,
-                            },
-                        },
-                        {
-                            loader: 'postcss-loader',
-                            options: {
-                                sourceMap: true,
-                            },
-                        },
-                        {
-                            loader: 'sass-loader',
-                            options: {
-                                sourceMap: true,
-                            },
-                        },
-                    ],
-                },
-                {
-                    test: /\.css$/,
-                    use: [
-                        {
-                            loader: 'style-loader',
-                        },
-                        MiniCssExtractPlugin.loader,
-                        {
-                            loader: 'css-loader',
-                            options: {
-                                importLoaders: 2,
-                                sourceMap: true,
-                            },
-                        },
-                        {
-                            loader: 'postcss-loader',
-                            options: {
-                                sourceMap: true,
-                            },
-                        },
-                    ],
-                },
-                {
-                    test: /\.(eot|woff2?|ttf|jpe?g|png|gif|svg|ico)([\?]?.*)$/,
-                    use: [
-                        {
-                            loader: 'file-loader',
-                            options: {
-                                name: '[name].[ext]',
-                                outputPath: 'assets/',
-                            },
-                        },
-                    ],
                 },
             ],
         },
@@ -132,11 +102,7 @@ const commonConfig = configWrapper((vars) => {
                 sample: './.env.default',
                 path: './.env',
             }),
-            new MiniCssExtractPlugin({
-                filename: '[name].css',
-                // chunkFilename: '[id].[chunkhash].css',
-                chunkFilename: '[id].css',
-            }),
+            new AsyncChunkNames(),
             new BundleAnalyzerPlugin({
                 // Start analyzer HTTP-server.
                 // You can use this plugin to just generate Webpack Stats JSON file by setting
@@ -150,7 +116,7 @@ const commonConfig = configWrapper((vars) => {
                 generateStatsFile: true,
                 // Name of Webpack Stats JSON file that will be generated if `generateStatsFile`
                 // is `true`. Relative to bundles output directory.
-                statsFilename: 'base-stats.json',
+                statsFilename: `${name}-stats.json`,
             }),
         ],
 

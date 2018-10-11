@@ -35,13 +35,13 @@ class OrganizationListView extends React.Component<OrganizationListViewProps, Or
                                     const organizationKey = `organization.${encodeURIComponent(organization.name)}`;
 
                                     return (
-                                        <p className="organization" key={`${categoryKey}.${organizationKey}`}>
+                                        <div className="organization" key={`${categoryKey}.${organizationKey}`}>
                                             <div className="card">
                                                 <a key={`${categoryKey}.${organizationKey}.link`} href={organization.url}>
                                                     <header className="card-header">
-                                                        <p className="card-header-title">
+                                                        <div className="card-header-title">
                                                             {organization.name}
-                                                        </p>
+                                                        </div>
                                                     </header>
                                                 </a>
                                                 <div className="card-content">
@@ -60,7 +60,7 @@ class OrganizationListView extends React.Component<OrganizationListViewProps, Or
                                                     </div>
                                                 </footer>
                                             </div>
-                                        </p>
+                                        </div>
                                     );
                                 })}
                             </div>

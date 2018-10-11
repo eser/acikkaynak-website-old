@@ -19,26 +19,29 @@ import * as ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
 
 // execute startup
-import('../base/startup')
-    .then(({ appStack }) => {
-        const root = appStack.wrapWith(
-            children =>
-            <BrowserRouter>{children}</BrowserRouter>
-        );
+import { appStack } from '../base/startup';
 
-        const targetElement = document.getElementsByTagName('app')[0];
-        if (targetElement.childNodes.length > 0) {
-            ReactDOM.hydrate(root, targetElement);
-        }
-        else {
-            ReactDOM.render(root, targetElement);
-        }
+const root = appStack.wrapWith(
+    children =>
+    <BrowserRouter>{children}</BrowserRouter>
+);
 
-        // webpack
-        if (module.hot !== undefined) {
-            module.hot.accept(
-                undefined,
-                () => ReactDOM.hydrate(root, targetElement),
-            );
-        }
-    });
+const targetElement = document.getElementsByTagName('app')[0];
+if (targetElement.childNodes.length > 0) {
+    ReactDOM.hydrate(root, targetElement);
+}
+else {
+    ReactDOM.render(root, targetElement);
+}
+
+// webpack
+if (module.hot !== undefined) {
+    module.hot.accept(
+        (err) => {
+            if (err) {
+                console.error('Cannot apply HMR update.', err);
+            }
+        },
+        () => ReactDOM.hydrate(root, targetElement),
+    );
+}
