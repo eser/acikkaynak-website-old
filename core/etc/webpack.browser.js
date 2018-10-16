@@ -4,7 +4,7 @@ const { configWrapper, commonConfig } = require('./webpack.common');
 const path = require('path');
 const webpack = require('webpack');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const ExtractCssChunksPlugin = require('extract-css-chunks-webpack-plugin');
 
 const browserConfig = configWrapper((vars) => {
     const common = commonConfig('browser')(vars.env, vars.argv);
@@ -42,10 +42,7 @@ const browserConfig = configWrapper((vars) => {
                 {
                     test: /\.scss$/,
                     use: [
-                        {
-                            loader: 'style-loader',
-                        },
-                        MiniCssExtractPlugin.loader,
+                        ExtractCssChunksPlugin.loader,
                         {
                             loader: 'css-loader',
                             options: {
@@ -71,10 +68,7 @@ const browserConfig = configWrapper((vars) => {
                 {
                     test: /\.css$/,
                     use: [
-                        {
-                            loader: 'style-loader',
-                        },
-                        MiniCssExtractPlugin.loader,
+                        ExtractCssChunksPlugin.loader,
                         {
                             loader: 'css-loader',
                             options: {
@@ -116,7 +110,7 @@ const browserConfig = configWrapper((vars) => {
 
         plugins: [
             ...common.plugins,
-            new MiniCssExtractPlugin({
+            new ExtractCssChunksPlugin({
                 filename: '[name].css',
                 // chunkFilename: '[id].[chunkhash].css',
                 chunkFilename: '[id].css',

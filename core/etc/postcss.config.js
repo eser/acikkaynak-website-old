@@ -48,6 +48,7 @@ module.exports = (ctx) => {
 
     return {
         plugins: {
+            'postcss-import': { skipDuplicates: true },
             'postcss-modules': isProduction ? configPostCssModules : false,
             autoprefixer: isProduction ? configAutoprefixer : false,
             cssnano: isProduction ? configCssNano : false,
