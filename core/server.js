@@ -3,19 +3,15 @@ const express = require('express');
 const path = require('path');
 const fs = require('fs');
 
-const React = require('react');
-const ReactDOMServer = require('react-dom/server');
-const StaticRouter = require('react-router-dom').StaticRouter;
-
 const app = express();
 
 const hostname = 'localhost';
-const port = parseInt(process.env.PORT || '80', 10);
+const port = parseInt(process.env.PORT || '3000', 10);
 
 const pwd = process.cwd();
 
 const serverRenderer = (req, res, next) => {
-    const appStack = require(`${pwd}/dist/server`);
+    const serverObjects = require(`${pwd}/dist/server`);
 
     const filePath = path.join(pwd, 'dist/index.html');
 
@@ -27,21 +23,7 @@ const serverRenderer = (req, res, next) => {
         }
 
         // render the app as a string
-        const context = {};
-        const root = appStack.wrapWith(
-            children =>
-            // <StaticRouter location={req.originalUrl} context={context}>{children}</StaticRouter>
-            React.createElement(
-                StaticRouter,
-                {
-                    location: req.originalUrl,
-                    context: context,
-                },
-                children
-            )
-        );
-
-        const html = ReactDOMServer.renderToString(root);
+        const html = serverObjects.ssrRenderer(serverObjects.appStack, req.originalUrl);
 
         // inject the rendered app into our html and send it
         res.send(
@@ -68,7 +50,7 @@ app.use(
     ),
 );
 
-app.listen(port, hostname, (err) => {
+app.listen(port, (err) => {
     if (err) {
         console.error(err);
 

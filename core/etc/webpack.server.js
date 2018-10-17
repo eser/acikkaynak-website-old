@@ -1,18 +1,27 @@
 /* eslint-env node */
 const { configWrapper, commonConfig } = require('./webpack.common');
 
-const path = require('path');
 const webpack = require('webpack');
 const nodeExternals = require('webpack-node-externals');
 
 const serverConfig = configWrapper((vars) => {
     const common = commonConfig('server')(vars.env, vars.argv);
 
+    // const packageJson = require(`${vars.dirRoot}/package.json`);
+    // const whiteListModules = [
+    //     ...Object.keys(packageJson.dependencies || {}),
+    //     ...Object.keys(packageJson.devDependencies || {}),
+    // ];
+
     return {
         ...common,
 
         target: 'node',
-        externals: [ nodeExternals() ],
+        externals: [
+            nodeExternals({
+                whitelist: /^(?!fs$|path$|express$|webpack$).*/, // anything but fs, path, express and webpack
+            }),
+        ],
 
         entry: {
             'server': [ './core/src/index.server.tsx' ],

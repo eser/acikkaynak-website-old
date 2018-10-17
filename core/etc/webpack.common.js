@@ -36,36 +36,6 @@ const commonConfig = (name) => configWrapper((vars) => {
             path: path.join(vars.dirRoot, 'dist'),
         },
 
-        optimization: {
-            splitChunks: {
-                cacheGroups: {
-                    default: false,
-                    vendors: false,
-
-                    // vendor chunk
-                    vendor: {
-                        // name of the chunk
-                        name: `${name}-vendors`,
-                        // async + async chunks
-                        chunks: 'all',
-                        // import file path containing node_modules
-                        test: /node_modules/,
-                        // priority
-                        priority: 20,
-                    },
-                    // common chunk
-                    common: {
-                        name: `${name}-common`,
-                        minChunks: 2,
-                        chunks: 'async',
-                        priority: 10,
-                        reuseExistingChunk: true,
-                        enforce: true,
-                    },
-                },
-            },
-        },
-
         module: {
             rules: [
                 {
