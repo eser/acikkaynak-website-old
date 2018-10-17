@@ -9,6 +9,15 @@ const ExtractCssChunksPlugin = require('extract-css-chunks-webpack-plugin');
 const browserConfig = configWrapper((vars) => {
     const common = commonConfig('browser')(vars.env, vars.argv);
 
+    let assets;
+
+    try {
+        assets = require(`${vars.dirRoot}/assets.json`);
+    }
+    catch (ex) {
+        assets = [];
+    }
+
     let optionalPlugins = [];
 
     if (vars.isProduction) {
@@ -145,17 +154,9 @@ const browserConfig = configWrapper((vars) => {
                 // chunkFilename: '[id].[chunkhash].css',
                 chunkFilename: '[id].css',
             }),
-            new CopyWebpackPlugin([
-                { from: './src/index.html', to: './' },
-                { from: './src/apple-touch-icon-precomposed.png', to: './' },
-                { from: './src/browserconfig.xml', to: './' },
-                { from: './src/crossdomain.xml', to: './' },
-                { from: './src/favicon.ico', to: './' },
-                { from: './src/humans.txt', to: './' },
-                { from: './src/robots.txt', to: './' },
-                { from: './src/tile-wide.png', to: './' },
-                { from: './src/tile.png', to: './' },
-            ]),
+            new CopyWebpackPlugin(
+                assets.map(x => ({ from: `./src/${x}`, to: './' }))
+            ),
             ...optionalPlugins,
         ],
     };

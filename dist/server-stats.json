@@ -5,8 +5,8 @@
   ],
   "version": "4.20.2",
   "hash": "55bc0a625ac6be48eacf",
-  "time": 1765,
-  "builtAt": 1539748534212,
+  "time": 1822,
+  "builtAt": 1539749090848,
   "publicPath": "/",
   "outputPath": "/Users/eserozvataf/Projects/open-source/acikkaynak-website/dist",
   "assetsByChunkName": {
@@ -3498,9 +3498,9 @@
           "chunks": [
             "server"
           ],
-          "issuer": "/Users/eserozvataf/Projects/open-source/acikkaynak-website/node_modules/history/es/createHashHistory.js",
-          "issuerId": "./node_modules/history/es/createHashHistory.js",
-          "issuerName": "./node_modules/history/es/createHashHistory.js",
+          "issuer": "/Users/eserozvataf/Projects/open-source/acikkaynak-website/node_modules/history/es/createBrowserHistory.js",
+          "issuerId": "./node_modules/history/es/createBrowserHistory.js",
+          "issuerName": "./node_modules/history/es/createBrowserHistory.js",
           "issuerPath": [
             {
               "id": 0,
@@ -3518,9 +3518,9 @@
               "name": "./node_modules/react-router-dom/es/index.js"
             },
             {
-              "id": "./node_modules/react-router-dom/es/BrowserRouter.js",
-              "identifier": "/Users/eserozvataf/Projects/open-source/acikkaynak-website/node_modules/react-router-dom/es/BrowserRouter.js",
-              "name": "./node_modules/react-router-dom/es/BrowserRouter.js"
+              "id": "./node_modules/react-router-dom/es/HashRouter.js",
+              "identifier": "/Users/eserozvataf/Projects/open-source/acikkaynak-website/node_modules/react-router-dom/es/HashRouter.js",
+              "name": "./node_modules/react-router-dom/es/HashRouter.js"
             },
             {
               "id": "./node_modules/history/es/index.js",
@@ -3528,9 +3528,9 @@
               "name": "./node_modules/history/es/index.js"
             },
             {
-              "id": "./node_modules/history/es/createHashHistory.js",
-              "identifier": "/Users/eserozvataf/Projects/open-source/acikkaynak-website/node_modules/history/es/createHashHistory.js",
-              "name": "./node_modules/history/es/createHashHistory.js"
+              "id": "./node_modules/history/es/createBrowserHistory.js",
+              "identifier": "/Users/eserozvataf/Projects/open-source/acikkaynak-website/node_modules/history/es/createBrowserHistory.js",
+              "name": "./node_modules/history/es/createBrowserHistory.js"
             }
           ],
           "failed": false,
@@ -3733,9 +3733,9 @@
               "name": "./node_modules/react-router-dom/es/index.js"
             },
             {
-              "id": "./node_modules/react-router-dom/es/BrowserRouter.js",
-              "identifier": "/Users/eserozvataf/Projects/open-source/acikkaynak-website/node_modules/react-router-dom/es/BrowserRouter.js",
-              "name": "./node_modules/react-router-dom/es/BrowserRouter.js"
+              "id": "./node_modules/react-router-dom/es/HashRouter.js",
+              "identifier": "/Users/eserozvataf/Projects/open-source/acikkaynak-website/node_modules/react-router-dom/es/HashRouter.js",
+              "name": "./node_modules/react-router-dom/es/HashRouter.js"
             },
             {
               "id": "./node_modules/history/es/index.js",
@@ -3946,9 +3946,9 @@
               "name": "./node_modules/react-router-dom/es/index.js"
             },
             {
-              "id": "./node_modules/react-router-dom/es/BrowserRouter.js",
-              "identifier": "/Users/eserozvataf/Projects/open-source/acikkaynak-website/node_modules/react-router-dom/es/BrowserRouter.js",
-              "name": "./node_modules/react-router-dom/es/BrowserRouter.js"
+              "id": "./node_modules/react-router-dom/es/HashRouter.js",
+              "identifier": "/Users/eserozvataf/Projects/open-source/acikkaynak-website/node_modules/react-router-dom/es/HashRouter.js",
+              "name": "./node_modules/react-router-dom/es/HashRouter.js"
             },
             {
               "id": "./node_modules/history/es/index.js",
@@ -4299,9 +4299,9 @@
               "name": "./node_modules/react-router-dom/es/index.js"
             },
             {
-              "id": "./node_modules/react-router-dom/es/BrowserRouter.js",
-              "identifier": "/Users/eserozvataf/Projects/open-source/acikkaynak-website/node_modules/react-router-dom/es/BrowserRouter.js",
-              "name": "./node_modules/react-router-dom/es/BrowserRouter.js"
+              "id": "./node_modules/react-router-dom/es/HashRouter.js",
+              "identifier": "/Users/eserozvataf/Projects/open-source/acikkaynak-website/node_modules/react-router-dom/es/HashRouter.js",
+              "name": "./node_modules/react-router-dom/es/HashRouter.js"
             },
             {
               "id": "./node_modules/history/es/index.js",
@@ -4376,9 +4376,9 @@
               "name": "./node_modules/react-router-dom/es/index.js"
             },
             {
-              "id": "./node_modules/react-router-dom/es/BrowserRouter.js",
-              "identifier": "/Users/eserozvataf/Projects/open-source/acikkaynak-website/node_modules/react-router-dom/es/BrowserRouter.js",
-              "name": "./node_modules/react-router-dom/es/BrowserRouter.js"
+              "id": "./node_modules/react-router-dom/es/HashRouter.js",
+              "identifier": "/Users/eserozvataf/Projects/open-source/acikkaynak-website/node_modules/react-router-dom/es/HashRouter.js",
+              "name": "./node_modules/react-router-dom/es/HashRouter.js"
             },
             {
               "id": "./node_modules/history/es/index.js",
@@ -4453,9 +4453,9 @@
               "name": "./node_modules/react-router-dom/es/index.js"
             },
             {
-              "id": "./node_modules/react-router-dom/es/BrowserRouter.js",
-              "identifier": "/Users/eserozvataf/Projects/open-source/acikkaynak-website/node_modules/react-router-dom/es/BrowserRouter.js",
-              "name": "./node_modules/react-router-dom/es/BrowserRouter.js"
+              "id": "./node_modules/react-router-dom/es/HashRouter.js",
+              "identifier": "/Users/eserozvataf/Projects/open-source/acikkaynak-website/node_modules/react-router-dom/es/HashRouter.js",
+              "name": "./node_modules/react-router-dom/es/HashRouter.js"
             },
             {
               "id": "./node_modules/history/es/index.js",
@@ -4530,9 +4530,9 @@
               "name": "./node_modules/react-router-dom/es/index.js"
             },
             {
-              "id": "./node_modules/react-router-dom/es/BrowserRouter.js",
-              "identifier": "/Users/eserozvataf/Projects/open-source/acikkaynak-website/node_modules/react-router-dom/es/BrowserRouter.js",
-              "name": "./node_modules/react-router-dom/es/BrowserRouter.js"
+              "id": "./node_modules/react-router-dom/es/HashRouter.js",
+              "identifier": "/Users/eserozvataf/Projects/open-source/acikkaynak-website/node_modules/react-router-dom/es/HashRouter.js",
+              "name": "./node_modules/react-router-dom/es/HashRouter.js"
             },
             {
               "id": "./node_modules/history/es/index.js",
@@ -4628,9 +4628,9 @@
           "chunks": [
             "server"
           ],
-          "issuer": "/Users/eserozvataf/Projects/open-source/acikkaynak-website/node_modules/react-router-dom/es/BrowserRouter.js",
-          "issuerId": "./node_modules/react-router-dom/es/BrowserRouter.js",
-          "issuerName": "./node_modules/react-router-dom/es/BrowserRouter.js",
+          "issuer": "/Users/eserozvataf/Projects/open-source/acikkaynak-website/node_modules/react-router-dom/es/HashRouter.js",
+          "issuerId": "./node_modules/react-router-dom/es/HashRouter.js",
+          "issuerName": "./node_modules/react-router-dom/es/HashRouter.js",
           "issuerPath": [
             {
               "id": 0,
@@ -4648,9 +4648,9 @@
               "name": "./node_modules/react-router-dom/es/index.js"
             },
             {
-              "id": "./node_modules/react-router-dom/es/BrowserRouter.js",
-              "identifier": "/Users/eserozvataf/Projects/open-source/acikkaynak-website/node_modules/react-router-dom/es/BrowserRouter.js",
-              "name": "./node_modules/react-router-dom/es/BrowserRouter.js"
+              "id": "./node_modules/react-router-dom/es/HashRouter.js",
+              "identifier": "/Users/eserozvataf/Projects/open-source/acikkaynak-website/node_modules/react-router-dom/es/HashRouter.js",
+              "name": "./node_modules/react-router-dom/es/HashRouter.js"
             }
           ],
           "failed": false,
@@ -7156,9 +7156,9 @@
           "chunks": [
             "server"
           ],
-          "issuer": "/Users/eserozvataf/Projects/open-source/acikkaynak-website/node_modules/react-router/es/matchPath.js",
-          "issuerId": "./node_modules/react-router/es/matchPath.js",
-          "issuerName": "./node_modules/react-router/es/matchPath.js",
+          "issuer": "/Users/eserozvataf/Projects/open-source/acikkaynak-website/node_modules/react-router/es/generatePath.js",
+          "issuerId": "./node_modules/react-router/es/generatePath.js",
+          "issuerName": "./node_modules/react-router/es/generatePath.js",
           "issuerPath": [
             {
               "id": 0,
@@ -7176,14 +7176,14 @@
               "name": "./node_modules/react-router-dom/es/index.js"
             },
             {
-              "id": "./node_modules/react-router-dom/es/matchPath.js",
-              "identifier": "/Users/eserozvataf/Projects/open-source/acikkaynak-website/node_modules/react-router-dom/es/matchPath.js",
-              "name": "./node_modules/react-router-dom/es/matchPath.js"
+              "id": "./node_modules/react-router-dom/es/generatePath.js",
+              "identifier": "/Users/eserozvataf/Projects/open-source/acikkaynak-website/node_modules/react-router-dom/es/generatePath.js",
+              "name": "./node_modules/react-router-dom/es/generatePath.js"
             },
             {
-              "id": "./node_modules/react-router/es/matchPath.js",
-              "identifier": "/Users/eserozvataf/Projects/open-source/acikkaynak-website/node_modules/react-router/es/matchPath.js",
-              "name": "./node_modules/react-router/es/matchPath.js"
+              "id": "./node_modules/react-router/es/generatePath.js",
+              "identifier": "/Users/eserozvataf/Projects/open-source/acikkaynak-website/node_modules/react-router/es/generatePath.js",
+              "name": "./node_modules/react-router/es/generatePath.js"
             }
           ],
           "failed": false,
@@ -7453,9 +7453,9 @@
               "name": "./node_modules/react-router-dom/es/index.js"
             },
             {
-              "id": "./node_modules/react-router-dom/es/BrowserRouter.js",
-              "identifier": "/Users/eserozvataf/Projects/open-source/acikkaynak-website/node_modules/react-router-dom/es/BrowserRouter.js",
-              "name": "./node_modules/react-router-dom/es/BrowserRouter.js"
+              "id": "./node_modules/react-router-dom/es/HashRouter.js",
+              "identifier": "/Users/eserozvataf/Projects/open-source/acikkaynak-website/node_modules/react-router-dom/es/HashRouter.js",
+              "name": "./node_modules/react-router-dom/es/HashRouter.js"
             },
             {
               "id": "./node_modules/prop-types/index.js",
@@ -7499,9 +7499,9 @@
           "chunks": [
             "server"
           ],
-          "issuer": "/Users/eserozvataf/Projects/open-source/acikkaynak-website/node_modules/react-router-dom/es/BrowserRouter.js",
-          "issuerId": "./node_modules/react-router-dom/es/BrowserRouter.js",
-          "issuerName": "./node_modules/react-router-dom/es/BrowserRouter.js",
+          "issuer": "/Users/eserozvataf/Projects/open-source/acikkaynak-website/node_modules/react-router-dom/es/HashRouter.js",
+          "issuerId": "./node_modules/react-router-dom/es/HashRouter.js",
+          "issuerName": "./node_modules/react-router-dom/es/HashRouter.js",
           "issuerPath": [
             {
               "id": 0,
@@ -7519,9 +7519,9 @@
               "name": "./node_modules/react-router-dom/es/index.js"
             },
             {
-              "id": "./node_modules/react-router-dom/es/BrowserRouter.js",
-              "identifier": "/Users/eserozvataf/Projects/open-source/acikkaynak-website/node_modules/react-router-dom/es/BrowserRouter.js",
-              "name": "./node_modules/react-router-dom/es/BrowserRouter.js"
+              "id": "./node_modules/react-router-dom/es/HashRouter.js",
+              "identifier": "/Users/eserozvataf/Projects/open-source/acikkaynak-website/node_modules/react-router-dom/es/HashRouter.js",
+              "name": "./node_modules/react-router-dom/es/HashRouter.js"
             }
           ],
           "failed": false,
@@ -16673,9 +16673,9 @@
               "name": "./node_modules/react-router-dom/es/index.js"
             },
             {
-              "id": "./node_modules/react-router-dom/es/BrowserRouter.js",
-              "identifier": "/Users/eserozvataf/Projects/open-source/acikkaynak-website/node_modules/react-router-dom/es/BrowserRouter.js",
-              "name": "./node_modules/react-router-dom/es/BrowserRouter.js"
+              "id": "./node_modules/react-router-dom/es/HashRouter.js",
+              "identifier": "/Users/eserozvataf/Projects/open-source/acikkaynak-website/node_modules/react-router-dom/es/HashRouter.js",
+              "name": "./node_modules/react-router-dom/es/HashRouter.js"
             },
             {
               "id": "./node_modules/history/es/index.js",
@@ -19218,9 +19218,9 @@
               "name": "./node_modules/react-router-dom/es/index.js"
             },
             {
-              "id": "./node_modules/react-router-dom/es/BrowserRouter.js",
-              "identifier": "/Users/eserozvataf/Projects/open-source/acikkaynak-website/node_modules/react-router-dom/es/BrowserRouter.js",
-              "name": "./node_modules/react-router-dom/es/BrowserRouter.js"
+              "id": "./node_modules/react-router-dom/es/HashRouter.js",
+              "identifier": "/Users/eserozvataf/Projects/open-source/acikkaynak-website/node_modules/react-router-dom/es/HashRouter.js",
+              "name": "./node_modules/react-router-dom/es/HashRouter.js"
             },
             {
               "id": "./node_modules/history/es/index.js",
@@ -19619,9 +19619,9 @@
           "chunks": [
             "server"
           ],
-          "issuer": "/Users/eserozvataf/Projects/open-source/acikkaynak-website/node_modules/react-router-dom/es/BrowserRouter.js",
-          "issuerId": "./node_modules/react-router-dom/es/BrowserRouter.js",
-          "issuerName": "./node_modules/react-router-dom/es/BrowserRouter.js",
+          "issuer": "/Users/eserozvataf/Projects/open-source/acikkaynak-website/node_modules/react-router-dom/es/HashRouter.js",
+          "issuerId": "./node_modules/react-router-dom/es/HashRouter.js",
+          "issuerName": "./node_modules/react-router-dom/es/HashRouter.js",
           "issuerPath": [
             {
               "id": 0,
@@ -19639,9 +19639,9 @@
               "name": "./node_modules/react-router-dom/es/index.js"
             },
             {
-              "id": "./node_modules/react-router-dom/es/BrowserRouter.js",
-              "identifier": "/Users/eserozvataf/Projects/open-source/acikkaynak-website/node_modules/react-router-dom/es/BrowserRouter.js",
-              "name": "./node_modules/react-router-dom/es/BrowserRouter.js"
+              "id": "./node_modules/react-router-dom/es/HashRouter.js",
+              "identifier": "/Users/eserozvataf/Projects/open-source/acikkaynak-website/node_modules/react-router-dom/es/HashRouter.js",
+              "name": "./node_modules/react-router-dom/es/HashRouter.js"
             }
           ],
           "failed": false,
@@ -25319,9 +25319,9 @@
       "chunks": [
         "server"
       ],
-      "issuer": "/Users/eserozvataf/Projects/open-source/acikkaynak-website/node_modules/history/es/createHashHistory.js",
-      "issuerId": "./node_modules/history/es/createHashHistory.js",
-      "issuerName": "./node_modules/history/es/createHashHistory.js",
+      "issuer": "/Users/eserozvataf/Projects/open-source/acikkaynak-website/node_modules/history/es/createBrowserHistory.js",
+      "issuerId": "./node_modules/history/es/createBrowserHistory.js",
+      "issuerName": "./node_modules/history/es/createBrowserHistory.js",
       "issuerPath": [
         {
           "id": 0,
@@ -25339,9 +25339,9 @@
           "name": "./node_modules/react-router-dom/es/index.js"
         },
         {
-          "id": "./node_modules/react-router-dom/es/BrowserRouter.js",
-          "identifier": "/Users/eserozvataf/Projects/open-source/acikkaynak-website/node_modules/react-router-dom/es/BrowserRouter.js",
-          "name": "./node_modules/react-router-dom/es/BrowserRouter.js"
+          "id": "./node_modules/react-router-dom/es/HashRouter.js",
+          "identifier": "/Users/eserozvataf/Projects/open-source/acikkaynak-website/node_modules/react-router-dom/es/HashRouter.js",
+          "name": "./node_modules/react-router-dom/es/HashRouter.js"
         },
         {
           "id": "./node_modules/history/es/index.js",
@@ -25349,9 +25349,9 @@
           "name": "./node_modules/history/es/index.js"
         },
         {
-          "id": "./node_modules/history/es/createHashHistory.js",
-          "identifier": "/Users/eserozvataf/Projects/open-source/acikkaynak-website/node_modules/history/es/createHashHistory.js",
-          "name": "./node_modules/history/es/createHashHistory.js"
+          "id": "./node_modules/history/es/createBrowserHistory.js",
+          "identifier": "/Users/eserozvataf/Projects/open-source/acikkaynak-website/node_modules/history/es/createBrowserHistory.js",
+          "name": "./node_modules/history/es/createBrowserHistory.js"
         }
       ],
       "failed": false,
@@ -25554,9 +25554,9 @@
           "name": "./node_modules/react-router-dom/es/index.js"
         },
         {
-          "id": "./node_modules/react-router-dom/es/BrowserRouter.js",
-          "identifier": "/Users/eserozvataf/Projects/open-source/acikkaynak-website/node_modules/react-router-dom/es/BrowserRouter.js",
-          "name": "./node_modules/react-router-dom/es/BrowserRouter.js"
+          "id": "./node_modules/react-router-dom/es/HashRouter.js",
+          "identifier": "/Users/eserozvataf/Projects/open-source/acikkaynak-website/node_modules/react-router-dom/es/HashRouter.js",
+          "name": "./node_modules/react-router-dom/es/HashRouter.js"
         },
         {
           "id": "./node_modules/history/es/index.js",
@@ -25767,9 +25767,9 @@
           "name": "./node_modules/react-router-dom/es/index.js"
         },
         {
-          "id": "./node_modules/react-router-dom/es/BrowserRouter.js",
-          "identifier": "/Users/eserozvataf/Projects/open-source/acikkaynak-website/node_modules/react-router-dom/es/BrowserRouter.js",
-          "name": "./node_modules/react-router-dom/es/BrowserRouter.js"
+          "id": "./node_modules/react-router-dom/es/HashRouter.js",
+          "identifier": "/Users/eserozvataf/Projects/open-source/acikkaynak-website/node_modules/react-router-dom/es/HashRouter.js",
+          "name": "./node_modules/react-router-dom/es/HashRouter.js"
         },
         {
           "id": "./node_modules/history/es/index.js",
@@ -26120,9 +26120,9 @@
           "name": "./node_modules/react-router-dom/es/index.js"
         },
         {
-          "id": "./node_modules/react-router-dom/es/BrowserRouter.js",
-          "identifier": "/Users/eserozvataf/Projects/open-source/acikkaynak-website/node_modules/react-router-dom/es/BrowserRouter.js",
-          "name": "./node_modules/react-router-dom/es/BrowserRouter.js"
+          "id": "./node_modules/react-router-dom/es/HashRouter.js",
+          "identifier": "/Users/eserozvataf/Projects/open-source/acikkaynak-website/node_modules/react-router-dom/es/HashRouter.js",
+          "name": "./node_modules/react-router-dom/es/HashRouter.js"
         },
         {
           "id": "./node_modules/history/es/index.js",
@@ -26197,9 +26197,9 @@
           "name": "./node_modules/react-router-dom/es/index.js"
         },
         {
-          "id": "./node_modules/react-router-dom/es/BrowserRouter.js",
-          "identifier": "/Users/eserozvataf/Projects/open-source/acikkaynak-website/node_modules/react-router-dom/es/BrowserRouter.js",
-          "name": "./node_modules/react-router-dom/es/BrowserRouter.js"
+          "id": "./node_modules/react-router-dom/es/HashRouter.js",
+          "identifier": "/Users/eserozvataf/Projects/open-source/acikkaynak-website/node_modules/react-router-dom/es/HashRouter.js",
+          "name": "./node_modules/react-router-dom/es/HashRouter.js"
         },
         {
           "id": "./node_modules/history/es/index.js",
@@ -26274,9 +26274,9 @@
           "name": "./node_modules/react-router-dom/es/index.js"
         },
         {
-          "id": "./node_modules/react-router-dom/es/BrowserRouter.js",
-          "identifier": "/Users/eserozvataf/Projects/open-source/acikkaynak-website/node_modules/react-router-dom/es/BrowserRouter.js",
-          "name": "./node_modules/react-router-dom/es/BrowserRouter.js"
+          "id": "./node_modules/react-router-dom/es/HashRouter.js",
+          "identifier": "/Users/eserozvataf/Projects/open-source/acikkaynak-website/node_modules/react-router-dom/es/HashRouter.js",
+          "name": "./node_modules/react-router-dom/es/HashRouter.js"
         },
         {
           "id": "./node_modules/history/es/index.js",
@@ -26351,9 +26351,9 @@
           "name": "./node_modules/react-router-dom/es/index.js"
         },
         {
-          "id": "./node_modules/react-router-dom/es/BrowserRouter.js",
-          "identifier": "/Users/eserozvataf/Projects/open-source/acikkaynak-website/node_modules/react-router-dom/es/BrowserRouter.js",
-          "name": "./node_modules/react-router-dom/es/BrowserRouter.js"
+          "id": "./node_modules/react-router-dom/es/HashRouter.js",
+          "identifier": "/Users/eserozvataf/Projects/open-source/acikkaynak-website/node_modules/react-router-dom/es/HashRouter.js",
+          "name": "./node_modules/react-router-dom/es/HashRouter.js"
         },
         {
           "id": "./node_modules/history/es/index.js",
@@ -26449,9 +26449,9 @@
       "chunks": [
         "server"
       ],
-      "issuer": "/Users/eserozvataf/Projects/open-source/acikkaynak-website/node_modules/react-router-dom/es/BrowserRouter.js",
-      "issuerId": "./node_modules/react-router-dom/es/BrowserRouter.js",
-      "issuerName": "./node_modules/react-router-dom/es/BrowserRouter.js",
+      "issuer": "/Users/eserozvataf/Projects/open-source/acikkaynak-website/node_modules/react-router-dom/es/HashRouter.js",
+      "issuerId": "./node_modules/react-router-dom/es/HashRouter.js",
+      "issuerName": "./node_modules/react-router-dom/es/HashRouter.js",
       "issuerPath": [
         {
           "id": 0,
@@ -26469,9 +26469,9 @@
           "name": "./node_modules/react-router-dom/es/index.js"
         },
         {
-          "id": "./node_modules/react-router-dom/es/BrowserRouter.js",
-          "identifier": "/Users/eserozvataf/Projects/open-source/acikkaynak-website/node_modules/react-router-dom/es/BrowserRouter.js",
-          "name": "./node_modules/react-router-dom/es/BrowserRouter.js"
+          "id": "./node_modules/react-router-dom/es/HashRouter.js",
+          "identifier": "/Users/eserozvataf/Projects/open-source/acikkaynak-website/node_modules/react-router-dom/es/HashRouter.js",
+          "name": "./node_modules/react-router-dom/es/HashRouter.js"
         }
       ],
       "failed": false,
@@ -28977,9 +28977,9 @@
       "chunks": [
         "server"
       ],
-      "issuer": "/Users/eserozvataf/Projects/open-source/acikkaynak-website/node_modules/react-router/es/matchPath.js",
-      "issuerId": "./node_modules/react-router/es/matchPath.js",
-      "issuerName": "./node_modules/react-router/es/matchPath.js",
+      "issuer": "/Users/eserozvataf/Projects/open-source/acikkaynak-website/node_modules/react-router/es/generatePath.js",
+      "issuerId": "./node_modules/react-router/es/generatePath.js",
+      "issuerName": "./node_modules/react-router/es/generatePath.js",
       "issuerPath": [
         {
           "id": 0,
@@ -28997,14 +28997,14 @@
           "name": "./node_modules/react-router-dom/es/index.js"
         },
         {
-          "id": "./node_modules/react-router-dom/es/matchPath.js",
-          "identifier": "/Users/eserozvataf/Projects/open-source/acikkaynak-website/node_modules/react-router-dom/es/matchPath.js",
-          "name": "./node_modules/react-router-dom/es/matchPath.js"
+          "id": "./node_modules/react-router-dom/es/generatePath.js",
+          "identifier": "/Users/eserozvataf/Projects/open-source/acikkaynak-website/node_modules/react-router-dom/es/generatePath.js",
+          "name": "./node_modules/react-router-dom/es/generatePath.js"
         },
         {
-          "id": "./node_modules/react-router/es/matchPath.js",
-          "identifier": "/Users/eserozvataf/Projects/open-source/acikkaynak-website/node_modules/react-router/es/matchPath.js",
-          "name": "./node_modules/react-router/es/matchPath.js"
+          "id": "./node_modules/react-router/es/generatePath.js",
+          "identifier": "/Users/eserozvataf/Projects/open-source/acikkaynak-website/node_modules/react-router/es/generatePath.js",
+          "name": "./node_modules/react-router/es/generatePath.js"
         }
       ],
       "failed": false,
@@ -29274,9 +29274,9 @@
           "name": "./node_modules/react-router-dom/es/index.js"
         },
         {
-          "id": "./node_modules/react-router-dom/es/BrowserRouter.js",
-          "identifier": "/Users/eserozvataf/Projects/open-source/acikkaynak-website/node_modules/react-router-dom/es/BrowserRouter.js",
-          "name": "./node_modules/react-router-dom/es/BrowserRouter.js"
+          "id": "./node_modules/react-router-dom/es/HashRouter.js",
+          "identifier": "/Users/eserozvataf/Projects/open-source/acikkaynak-website/node_modules/react-router-dom/es/HashRouter.js",
+          "name": "./node_modules/react-router-dom/es/HashRouter.js"
         },
         {
           "id": "./node_modules/prop-types/index.js",
@@ -29320,9 +29320,9 @@
       "chunks": [
         "server"
       ],
-      "issuer": "/Users/eserozvataf/Projects/open-source/acikkaynak-website/node_modules/react-router-dom/es/BrowserRouter.js",
-      "issuerId": "./node_modules/react-router-dom/es/BrowserRouter.js",
-      "issuerName": "./node_modules/react-router-dom/es/BrowserRouter.js",
+      "issuer": "/Users/eserozvataf/Projects/open-source/acikkaynak-website/node_modules/react-router-dom/es/HashRouter.js",
+      "issuerId": "./node_modules/react-router-dom/es/HashRouter.js",
+      "issuerName": "./node_modules/react-router-dom/es/HashRouter.js",
       "issuerPath": [
         {
           "id": 0,
@@ -29340,9 +29340,9 @@
           "name": "./node_modules/react-router-dom/es/index.js"
         },
         {
-          "id": "./node_modules/react-router-dom/es/BrowserRouter.js",
-          "identifier": "/Users/eserozvataf/Projects/open-source/acikkaynak-website/node_modules/react-router-dom/es/BrowserRouter.js",
-          "name": "./node_modules/react-router-dom/es/BrowserRouter.js"
+          "id": "./node_modules/react-router-dom/es/HashRouter.js",
+          "identifier": "/Users/eserozvataf/Projects/open-source/acikkaynak-website/node_modules/react-router-dom/es/HashRouter.js",
+          "name": "./node_modules/react-router-dom/es/HashRouter.js"
         }
       ],
       "failed": false,
@@ -38494,9 +38494,9 @@
           "name": "./node_modules/react-router-dom/es/index.js"
         },
         {
-          "id": "./node_modules/react-router-dom/es/BrowserRouter.js",
-          "identifier": "/Users/eserozvataf/Projects/open-source/acikkaynak-website/node_modules/react-router-dom/es/BrowserRouter.js",
-          "name": "./node_modules/react-router-dom/es/BrowserRouter.js"
+          "id": "./node_modules/react-router-dom/es/HashRouter.js",
+          "identifier": "/Users/eserozvataf/Projects/open-source/acikkaynak-website/node_modules/react-router-dom/es/HashRouter.js",
+          "name": "./node_modules/react-router-dom/es/HashRouter.js"
         },
         {
           "id": "./node_modules/history/es/index.js",
@@ -41053,9 +41053,9 @@
           "name": "./node_modules/react-router-dom/es/index.js"
         },
         {
-          "id": "./node_modules/react-router-dom/es/BrowserRouter.js",
-          "identifier": "/Users/eserozvataf/Projects/open-source/acikkaynak-website/node_modules/react-router-dom/es/BrowserRouter.js",
-          "name": "./node_modules/react-router-dom/es/BrowserRouter.js"
+          "id": "./node_modules/react-router-dom/es/HashRouter.js",
+          "identifier": "/Users/eserozvataf/Projects/open-source/acikkaynak-website/node_modules/react-router-dom/es/HashRouter.js",
+          "name": "./node_modules/react-router-dom/es/HashRouter.js"
         },
         {
           "id": "./node_modules/history/es/index.js",
@@ -41454,9 +41454,9 @@
       "chunks": [
         "server"
       ],
-      "issuer": "/Users/eserozvataf/Projects/open-source/acikkaynak-website/node_modules/react-router-dom/es/BrowserRouter.js",
-      "issuerId": "./node_modules/react-router-dom/es/BrowserRouter.js",
-      "issuerName": "./node_modules/react-router-dom/es/BrowserRouter.js",
+      "issuer": "/Users/eserozvataf/Projects/open-source/acikkaynak-website/node_modules/react-router-dom/es/HashRouter.js",
+      "issuerId": "./node_modules/react-router-dom/es/HashRouter.js",
+      "issuerName": "./node_modules/react-router-dom/es/HashRouter.js",
       "issuerPath": [
         {
           "id": 0,
@@ -41474,9 +41474,9 @@
           "name": "./node_modules/react-router-dom/es/index.js"
         },
         {
-          "id": "./node_modules/react-router-dom/es/BrowserRouter.js",
-          "identifier": "/Users/eserozvataf/Projects/open-source/acikkaynak-website/node_modules/react-router-dom/es/BrowserRouter.js",
-          "name": "./node_modules/react-router-dom/es/BrowserRouter.js"
+          "id": "./node_modules/react-router-dom/es/HashRouter.js",
+          "identifier": "/Users/eserozvataf/Projects/open-source/acikkaynak-website/node_modules/react-router-dom/es/HashRouter.js",
+          "name": "./node_modules/react-router-dom/es/HashRouter.js"
         }
       ],
       "failed": false,
