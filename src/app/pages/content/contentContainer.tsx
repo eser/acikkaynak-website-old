@@ -1,72 +1,79 @@
 import * as React from 'react';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
 
-import appContext from '../../appContext';
+import AppContext from '../../appContext';
 
 import ContentView from './contentView';
 import LoadingView from '../shared/loadingView';
 import ErrorView from '../shared/errorView';
 
+import getContentRequestAction from '../../actions/getContentRequestAction';
+
 interface ContentContainerProps {
+    content: any;
+    getContentRequestAction: (contentPath: string) => void;
     contentPath: string;
 }
 
 interface ContentContainerState {
-    datasource: any;
-    metadata: any;
-    error: string | false;
 }
 
 class ContentContainer extends React.Component<ContentContainerProps, ContentContainerState> {
     constructor(props: ContentContainerProps, context: any) {
         super(props, context);
-
-        this.state = {
-            datasource: null,
-            metadata: null,
-            error: false,
-        };
     }
 
-    componentWillMount(): void {
-        this.updateDatasource(this.props.contentPath);
+    componentDidMount(): void {
+        this.update(this.props.contentPath);
     }
 
-    componentWillReceiveProps(nextProps: ContentContainerProps): void {
-        this.updateDatasource(nextProps.contentPath);
+    componentDidUpdate(prevProps: ContentContainerProps): void {
+        if (this.props.contentPath !== prevProps.contentPath) {
+            this.update(this.props.contentPath);
+        }
+    }
+
+    update(contentPath: string): void {
+        this.props.getContentRequestAction(contentPath);
     }
 
     render(): JSX.Element {
-        if (this.state.error !== false) {
-            console.error(this.state.error);
+        if (this.props.content.error !== false) {
+            console.error(this.props.content.error);
 
             return (
                 <ErrorView message="An error occurred" />
             );
         }
 
-        if (this.state.datasource === null) {
+        if (this.props.content.data === null) {
             return (
                 <LoadingView />
             );
         }
 
         return (
-            <ContentView datasource={this.state.datasource} metadata={this.state.metadata} />
+            <AppContext.Consumer>
+                {(startupArgs: any) => <ContentView datasource={this.props.content.data.datasource} metadata={this.props.content.data.metadata} history={startupArgs.history} />}
+            </AppContext.Consumer>
         );
     }
-
-    updateDatasource(contentPath: string): void {
-        const contentService = appContext.get('contentService');
-
-        contentService.getContent(contentPath)
-            .then((response) => { this.setState({ datasource: response.datasource, metadata: response.metadata, error: false }); })
-            .catch((err) => { this.setState({ datasource: null, metadata: null, error: err }); });
-    }
-
 }
 
+const mapStateToProps = (state) => ({
+    content: state.content,
+});
+
+const mapDispatchToProps = (dispatch) => bindActionCreators({
+    getContentRequestAction,
+}, dispatch);
+
+const ContentContainerConnected = connect(mapStateToProps, mapDispatchToProps)(ContentContainer);
+
 export {
-    ContentContainer as default,
+    ContentContainerConnected as default,
+    ContentContainer,
     ContentContainerProps,
     ContentContainerState,
 };

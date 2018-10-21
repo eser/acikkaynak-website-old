@@ -1,47 +1,48 @@
 import * as React from 'react';
-
-import appContext from '../../appContext';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
 
 import ProjectListView from './projectListView';
 import LoadingView from '../shared/loadingView';
 import ErrorView from '../shared/errorView';
 
+import getProjectsRequestAction from '../../actions/getProjectsRequestAction';
+
 interface ProjectsContainerProps {
+    projects: any;
+    getProjectsRequestAction: () => void;
 }
 
 interface ProjectsContainerState {
-    datasource: any;
-    error: string | false;
 }
 
 class ProjectsContainer extends React.Component<ProjectsContainerProps, ProjectsContainerState> {
     constructor(props: ProjectsContainerProps, context: any) {
         super(props, context);
-
-        this.state = {
-            datasource: null,
-            error: false,
-        };
     }
 
     componentWillMount(): void {
-        this.updateDatasource();
+        this.update();
     }
 
-    componentWillReceiveProps(nextProps: ProjectsContainerProps): void {
-        this.updateDatasource();
+    componentDidUpdate(prevProps: ProjectsContainerProps): void {
+        // this.update();
+    }
+
+    update(): void {
+        this.props.getProjectsRequestAction();
     }
 
     render(): JSX.Element {
-        if (this.state.error !== false) {
-            console.error(this.state.error);
+        if (this.props.projects.error !== false) {
+            console.error(this.props.projects.error);
 
             return (
                 <ErrorView message="An error occurred" />
             );
         }
 
-        if (this.state.datasource === null) {
+        if (this.props.projects.data === null) {
             return (
                 <LoadingView />
             );
@@ -51,23 +52,25 @@ class ProjectsContainer extends React.Component<ProjectsContainerProps, Projects
             <div>
                 <h1>Projeler</h1>
 
-                <ProjectListView datasource={this.state.datasource} />
+                <ProjectListView datasource={this.props.projects.data} />
             </div>
         );
     }
-
-    updateDatasource(): void {
-        const projectService = appContext.get('projectService');
-
-        projectService.getProjects()
-            .then((response) => { this.setState({ datasource: response, error: false }); })
-            .catch((err) => { this.setState({ datasource: null, error: err }); });
-    }
-
 }
 
+const mapStateToProps = (state) => ({
+    projects: state.projects,
+});
+
+const mapDispatchToProps = (dispatch) => bindActionCreators({
+    getProjectsRequestAction,
+}, dispatch);
+
+const ProjectsContainerConnected = connect(mapStateToProps, mapDispatchToProps)(ProjectsContainer);
+
 export {
-    ProjectsContainer as default,
+    ProjectsContainerConnected as default,
+    ProjectsContainer,
     ProjectsContainerProps,
     ProjectsContainerState,
 };

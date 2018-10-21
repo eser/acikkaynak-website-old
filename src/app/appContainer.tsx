@@ -1,5 +1,7 @@
 import * as React from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch } from 'react-router';
+
+import AppContext from './appContext';
 
 import LayoutContainer from './layouts/default/layoutContainer';
 import HomeContainer from './pages/home/homeContainer';
@@ -9,13 +11,12 @@ import OrganizationsContainer from './pages/organizations/organizationsContainer
 import AboutContainer from './pages/about/aboutContainer';
 import NotFoundContainer from './pages/notFound/notFoundContainer';
 
-import LoadingView from './pages/shared/loadingView';
-
 // stylesheets
 import './assets/styles.scss';
 import './assets/fonts.scss';
 
 interface AppContainerProps {
+    startupArgs: { [key: string]: any }
 }
 
 interface AppContainerState {
@@ -48,24 +49,20 @@ class AppContainer extends React.Component<AppContainerProps, AppContainerState>
     }
 
     render(): JSX.Element {
-        if (this.state === null || !this.state.initialized) {
-            return (
-                <LoadingView />
-            );
-        }
-
         return (
-            <Switch>
-                <Route path="/" exact={true} strict={true} render={() => <LayoutContainer><HomeContainer /></LayoutContainer>} />
+            <AppContext.Provider value={this.props.startupArgs}>
+                <Switch>
+                    <Route path="/" exact={true} strict={true} render={() => <LayoutContainer><HomeContainer /></LayoutContainer>} />
 
-                <Route path="/content/*" exact={false} strict={true} render={(props) => <LayoutContainer><ContentContainer contentPath={props.match.params[0]} /></LayoutContainer> } />
+                    <Route path="/content/*" exact={false} strict={true} render={(props) => <LayoutContainer><ContentContainer contentPath={props.match.params[0]} /></LayoutContainer> } />
 
-                <Route path="/projects/" exact={true} strict={true} render={() => <LayoutContainer><ProjectsContainer /></LayoutContainer>} />
-                <Route path="/organizations/" exact={true} strict={true} render={() => <LayoutContainer><OrganizationsContainer /></LayoutContainer>} />
-                <Route path="/about" exact={true} strict={true} render={() => <LayoutContainer><AboutContainer /></LayoutContainer>} />
+                    <Route path="/projects/" exact={true} strict={true} render={() => <LayoutContainer><ProjectsContainer /></LayoutContainer>} />
+                    <Route path="/organizations/" exact={true} strict={true} render={() => <LayoutContainer><OrganizationsContainer /></LayoutContainer>} />
+                    <Route path="/about" exact={true} strict={true} render={() => <LayoutContainer><AboutContainer /></LayoutContainer>} />
 
-                <Route render={() => <NotFoundContainer />} />
-            </Switch>
+                    <Route render={() => <NotFoundContainer />} />
+                </Switch>
+            </AppContext.Provider>
         );
     }
 }

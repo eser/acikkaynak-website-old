@@ -12,8 +12,6 @@ interface LayoutContainerState {
 class LayoutContainer extends React.Component<LayoutContainerProps, LayoutContainerState> {
     constructor(props: LayoutContainerProps, context: any) {
         super(props, context);
-
-        this.state = {};
     }
 
     clickHandler(ev): void {
@@ -45,7 +43,7 @@ class LayoutContainer extends React.Component<LayoutContainerProps, LayoutContai
                         <div className="container">
                             <div className="navbar-brand">
                                 {/* <div className="navbar-item">
-                                    ts-spa-boilerplate
+                                    açık kaynak
                                 </div> */}
                                 <span className="navbar-burger burger" role="button" aria-label="menu" aria-expanded="false" data-target="navbarMenu">
                                     <span aria-hidden="true"></span>
@@ -79,8 +77,8 @@ class LayoutContainer extends React.Component<LayoutContainerProps, LayoutContai
                 {/* <footer className="footer hero-foot">
                     <div className="container">
                         <div className="content has-text-centered">
-                            TypeScript SPA Boilerplate is a front-end development stack for starting with a structured, scaleable and adaptable basecode.<br />
-                            Visit <a href="https://github.com/eserozvataf/ts-spa-boilerplate">GitHub page</a> for details. Apache License, Version 2.0
+                            Dart App is a front-end development stack for starting with a structured, scaleable and adaptable basecode.<br />
+                            Visit <a href="https://github.com/eserozvataf/dart-app">GitHub page</a> for details. Apache License, Version 2.0
                         </div>
                     </div>
                 </footer> */}

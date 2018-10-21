@@ -1,6 +1,6 @@
 # [açık kaynak website](https://github.com/acikkaynak/acikkaynak-website)
 
-Based on [https://github.com/eserozvataf/ts-spa-boilerplate](https://github.com/eserozvataf/ts-spa-boilerplate)
+Based on [https://github.com/eserozvataf/dart-app](https://github.com/eserozvataf/dart-app)
 
 # Quick start
 

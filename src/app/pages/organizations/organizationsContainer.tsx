@@ -1,47 +1,48 @@
 import * as React from 'react';
-
-import appContext from '../../appContext';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
 
 import OrganizationListView from './organizationListView';
 import LoadingView from '../shared/loadingView';
 import ErrorView from '../shared/errorView';
 
+import getOrganizationsRequestAction from '../../actions/getOrganizationsRequestAction';
+
 interface OrganizationsContainerProps {
+    organizations: any;
+    getOrganizationsRequestAction: () => void;
 }
 
 interface OrganizationsContainerState {
-    datasource: any;
-    error: string | false;
 }
 
 class OrganizationsContainer extends React.Component<OrganizationsContainerProps, OrganizationsContainerState> {
     constructor(props: OrganizationsContainerProps, context: any) {
         super(props, context);
-
-        this.state = {
-            datasource: null,
-            error: false,
-        };
     }
 
     componentWillMount(): void {
-        this.updateDatasource();
+        this.update();
     }
 
-    componentWillReceiveProps(nextProps: OrganizationsContainerProps): void {
-        this.updateDatasource();
+    componentDidUpdate(prevProps: OrganizationsContainerProps): void {
+        // this.update();
+    }
+
+    update(): void {
+        this.props.getOrganizationsRequestAction();
     }
 
     render(): JSX.Element {
-        if (this.state.error !== false) {
-            console.error(this.state.error);
+        if (this.props.organizations.error !== false) {
+            console.error(this.props.organizations.error);
 
             return (
                 <ErrorView message="An error occurred" />
             );
         }
 
-        if (this.state.datasource === null) {
+        if (this.props.organizations.data === null) {
             return (
                 <LoadingView />
             );
@@ -51,23 +52,25 @@ class OrganizationsContainer extends React.Component<OrganizationsContainerProps
             <div>
                 <h1>Organizasyonlar</h1>
 
-                <OrganizationListView datasource={this.state.datasource} />
+                <OrganizationListView datasource={this.props.organizations.data} />
             </div>
         );
     }
-
-    updateDatasource(): void {
-        const organizationService = appContext.get('organizationService');
-
-        organizationService.getOrganizations()
-            .then((response) => { this.setState({ datasource: response, error: false }); })
-            .catch((err) => { this.setState({ datasource: null, error: err }); });
-    }
-
 }
 
+const mapStateToProps = (state) => ({
+    organizations: state.organizations,
+});
+
+const mapDispatchToProps = (dispatch) => bindActionCreators({
+    getOrganizationsRequestAction,
+}, dispatch);
+
+const OrganizationsContainerConnected = connect(mapStateToProps, mapDispatchToProps)(OrganizationsContainer);
+
 export {
-    OrganizationsContainer as default,
+    OrganizationsContainerConnected as default,
+    OrganizationsContainer,
     OrganizationsContainerProps,
     OrganizationsContainerState,
 };

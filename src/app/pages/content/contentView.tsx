@@ -1,22 +1,34 @@
 import * as React from 'react';
-import { Link } from 'react-router-dom';
 
 import * as path from 'path-browser';
-import * as ReactMarkdown from 'react-markdown';
+import ReactMarkdown from 'react-markdown';
 
 import ConditionalView from '../shared/conditionalView';
 
 interface ContentViewProps {
     datasource: any;
     metadata: any;
+    history: any;
 }
 
 interface ContentViewState {
 }
 
 class ContentView extends React.Component<ContentViewProps, ContentViewState> {
+    actionRefs: { [key: string]: any };
+    elementRefs: { [key: string]: any };
+
     constructor(props: ContentViewProps, context: any) {
         super(props, context);
+
+        this.actionRefs = {
+            transformLinkUri: this.transformLinkUri.bind(this),
+            handleClick: this.handleClick.bind(this),
+        };
+
+        this.elementRefs = {
+            markdownContainer: React.createRef(),
+        };
     }
 
     isAbsolutePath(pathString: string): boolean {
@@ -33,27 +45,37 @@ class ContentView extends React.Component<ContentViewProps, ContentViewState> {
         return pathString.substr(0, lastSlashIndex);
     }
 
-    getContent(): string {
-        const data = this.props.datasource,
-            metadata = this.props.metadata;
-
-        let basePath = '#/content/';
-
-        if (metadata && metadata.path) {
-            basePath = path.join(basePath, this.getPathDirname(metadata.path));
+    transformLinkUri(uri: string): string {
+        if (this.isAbsolutePath(uri)) {
+            return uri;
         }
 
-        return data.replace(
-            /\[([^\]]*)\]\(([^\)]*)\)/g,
-            (all, first, second) => `[${first}](${this.isAbsolutePath(second) ? second : path.join(basePath, second)})`
-            // (all, first, second) => `[${first}](${second})`
-        );
+        const { metadata } = this.props;
+
+        if (metadata && metadata.path) {
+            const basePath = this.getPathDirname(metadata.path);
+
+            return path.join(basePath, uri);
+        }
+
+        return uri;
+    }
+
+    handleClick(ev): void {
+        if (ev && ev.target && ev.target.tagName === 'A' && ev.target.href) {
+            const uri = ev.target.getAttribute('href');
+
+            ev.preventDefault();
+            this.props.history.push(uri);
+        }
     }
 
     render(): JSX.Element {
         return (
             <React.Fragment>
-                <ReactMarkdown source={this.getContent()} />
+                <div ref={this.elementRefs.markdownContainer} onClick={this.actionRefs.handleClick}>
+                    <ReactMarkdown source={this.props.datasource} transformLinkUri={this.actionRefs.transformLinkUri} />
+                </div>
 
                 <ConditionalView test={this.props.metadata && this.props.metadata.originUrl && this.props.metadata.originUrl.length > 0}>
                     <div className="has-text-right">
