@@ -1,4 +1,8 @@
 {
+    "title": "açık kaynak",
+    "htmlTemplates": {
+        "index.html": "./src/index.html"
+    },
     "staticFiles": [
         "./public/**/*"
     ]
